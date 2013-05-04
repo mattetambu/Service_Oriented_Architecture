@@ -13,7 +13,7 @@
 		
 		if (*client_socket == -1) return false;
 		if (connect (*client_socket, (sockaddr*) &server_address, sizeof (server_address)) == -1) {
-			cerr << "\t\t ERROR - Server unreachable" << endl;
+			//cerr << "\t\t ERROR - Server unreachable" << endl;
 			return false;
 		}
 
@@ -37,15 +37,17 @@
 	}
 	
 	string get_my_ip () {
+		int i = 0;
 		char host_name [100];
+		string address;
 		hostent* host_ip;
 		in_addr network_address;
-		string address;
 
 		gethostname(host_name, sizeof(host_name));
 		host_ip = gethostbyname(host_name);
 
-		memcpy(&network_address, host_ip->h_addr_list[0], sizeof(in_addr));
+		//for (i = 0; host_ip->h_addr_list[i+1] != 0; i++);
+		memcpy (&network_address, host_ip->h_addr_list[i], sizeof(in_addr));
 		address = inet_ntoa (network_address);
 		
 		return address;

@@ -6,7 +6,7 @@ string SR_address, SR_port;
 using namespace std;
 
 int main (int n_args, char ** args) {
-	cout << " ******* Client *******";
+	cout << "******* Client *******";
 	
 	if (!check_client_arguments (n_args, args)) {
 		cerr << endl << endl << "#CLIENT > ERROR - Invalid argument" << endl;
@@ -27,8 +27,10 @@ int main (int n_args, char ** args) {
 		sleep(1);
 		//cin.get();
 		
-		if (file_choice == "from_server"){	//******************************** LOOKING FOR IMAGE STORAGE SERVER ***************************************
+		if (file_choice == "from_server"){	//******************************** GETTING IMAGE FROM STORAGE SERVER ***************************************
 			cout << "#CLIENT > Choosing an image from service provider" << endl;
+			
+			//************************************ LOOKING FOR GET_LIST SERVICE *********************************************
 			cout << "#CLIENT > " << SPACER << " Looking for a get_list service" << endl;
 			Service* get_list_service = service_request("get_list");
 			if(get_list_service == NULL) {
@@ -36,7 +38,9 @@ int main (int n_args, char ** args) {
 				continue;
 			}
 			
-			cout << "#CLIENT > " << SPACER << " Sending get_list request to service provider" << endl;
+			
+			//************************************ REQUIRING GET_LIST SERVICE *********************************************
+			cout << "#CLIENT > " << SPACER << " Sending request for service get_list to service provider" << endl;
 			if(!get_list_service->send_service_request(&service_socket)) {
 				cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Unable to send the service request" << endl;
 				continue;	
@@ -45,7 +49,7 @@ int main (int n_args, char ** args) {
 				cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Unable to receive the responce from the service" << endl;
 				continue;	
 			}
-					
+			
 			vector<string> server_image_list;
 			get_list_service->responce_decode (&server_image_list);
 			if ((int) server_image_list.size() == 0) {
@@ -55,9 +59,12 @@ int main (int n_args, char ** args) {
 			else server_image_name = choose_random_file(server_image_list);		
 			delete get_list_service;
 			
-						
+			cout << "#CLIENT > " << SPACER << " Service get_list successfully completed" << endl;
+			cout << "#CLIENT > " << SPACER << " Choosed image: " << server_image_name << endl;
 			
-			//************************************** GETTING IMAGE FROM SERVER ***********************************************
+			
+			
+			//************************************ LOOKING FOR GET_IMAGE SERVICE *********************************************
 			cout << "#CLIENT > " << SPACER << " Looking for a get_image service" << endl;
 			Service* get_image_service = service_request("get_image");
 			if(get_image_service == NULL) {
@@ -65,6 +72,9 @@ int main (int n_args, char ** args) {
 				continue;
 			}
 
+			
+			//************************************** COMPILING GET_IMAGE SERVICE PARAMETERS ***********************************************
+			//cerr <<"#CLIENT > " << SPACER << " Setting parameters for requiring get_image service" << endl;
 			parameters.resize(1);
 			parameters[0].type = String;
 			parameters[0].data.String = server_image_name;
@@ -74,7 +84,9 @@ int main (int n_args, char ** args) {
 				continue;
 			}
 	
-			cout << "#CLIENT > " << SPACER << " Sending get_image request to service provider" << endl;
+	
+			//************************************** REQUIRING GET_IMAGE SERVICE ***********************************************
+			cout << "#CLIENT > " << SPACER << " Sending request for service get_image to service provider" << endl;
 			if(!get_image_service->send_service_request(&service_socket)) {
 				cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Unable to send the service request" << endl;
 				continue;	
@@ -84,11 +96,12 @@ int main (int n_args, char ** args) {
 				continue;	
 			}
 						
-			cout << "#CLIENT > " << SPACER << " Choosed image: " << server_image_name << endl;
 			image_path = CLIENT_DIRECTORY + server_image_name;
 			get_image_service->responce_decode (image_path);
 			image_name += server_image_name;
 
+			cout << "#CLIENT > " << SPACER << " Service get_image successfully completed" << endl;
+			
 			parameters.clear();		
 			delete get_image_service;
 		}
@@ -110,6 +123,7 @@ int main (int n_args, char ** args) {
 		image_path_after_service += image_name;	// TO BE RENAMED
 		
 		
+		
 		//************************************ LOOKING FOR CHOOSED SERVICE *********************************************
 		cout <<"#CLIENT > Requiring service " << required_service_name << endl;
 		cout << "#CLIENT > " << SPACER << " Looking for a " << required_service_name << " service" << endl;
@@ -121,7 +135,7 @@ int main (int n_args, char ** args) {
 		
 		
 		//************************************** COMPILING CHOOSED SERVICE PARAMETERS ***********************************************
-		cerr <<"#CLIENT > " << SPACER << " Setting parameters for requiring choosed service" << endl;
+		//cerr <<"#CLIENT > " << SPACER << " Setting parameters for requiring choosed service" << endl;
 		int index = 0;
 		if (required_service_name == "rotate_image") { 
 			parameters.resize(2);
@@ -159,6 +173,9 @@ int main (int n_args, char ** args) {
 		required_service->responce_decode (image_path_after_service);
 		delete required_service;
 		
+		cout << "#CLIENT > " << SPACER << " Service " << required_service_name << " successfully completed" << endl;
+		
+		
 		
 		//************************************** LOOKING FOR IMAGE STORAGE SERVER ***********************************************
 		cout << "#CLIENT > Requiring service store_image" << endl;
@@ -169,7 +186,9 @@ int main (int n_args, char ** args) {
 			continue;
 		}
 		
-		//************************************** SENDING IMAGE TO SERVER ***********************************************
+		
+		//************************************** COMPILING STORE_IMAGE SERVICE PARAMETERS ***********************************************
+		//cerr <<"#CLIENT > " << SPACER << " Setting parameters for requiring store_image service" << endl;
 		parameters.clear();
 		parameters.resize(2);
 
@@ -188,6 +207,8 @@ int main (int n_args, char ** args) {
 			continue;
 		}
 
+		
+		//************************************** SENDING IMAGE TO SERVER ***********************************************
 		cout << "#CLIENT > " << SPACER << " Sending request for service store_image to service provider" << endl;
 		if(!required_service->send_service_request(&service_socket)) {
 			cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Unable to send the service request" << endl;
@@ -197,7 +218,7 @@ int main (int n_args, char ** args) {
 			cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Unable to receive the responce from the service" << endl;
 			continue;	
 		}
-		
+		cout << "#CLIENT > " << SPACER << " Service store_image successfully completed" << endl;
 
 		//************************************** REQUEST COMPLETED ***********************************************
 		delete required_service;

@@ -6,6 +6,10 @@ extern Get_list* get_list;
 extern Threads thread[N_THREADS], control_thread;
 extern string SP_address, SR_address, SP_port, SR_port;
 
+extern pthread_mutex_t mutex_1, mutex_2;
+extern int readers_count;
+
+
 bool check_server_arguments (int n_args, char** args) { // Checking arguments
 	sockaddr_in server_address;
 	memset (&server_address, 0, sizeof (server_address));
@@ -37,10 +41,23 @@ bool check_server_arguments (int n_args, char** args) { // Checking arguments
 }
 
 
-void readers_prologue() {}
-void readers_epilogue() {}
-void writers_prologue() {}
-void writers_epilogue() {}
+void readers_prologue() {
+	pthread_mutex_lock (&mutex_1);
+	if (++readers_count == 1) pthread_mutex_lock (&mutex_2);
+	pthread_mutex_unlock (&mutex_1);	
+}
+
+void readers_epilogue() {
+	pthread_mutex_lock (&mutex_1);
+	if (--readers_count == 0) pthread_mutex_unlock (&mutex_2);
+	pthread_mutex_unlock (&mutex_1);	
+}
+void writers_prologue() {
+	pthread_mutex_lock (&mutex_2);
+}
+void writers_epilogue() {
+	pthread_mutex_unlock (&mutex_2);
+}
 	
 bool Image_storage_server_help () {
 	return true;
@@ -98,10 +115,7 @@ void *thread_body (void* thread_ID) {
 	return 0;
 }
 
-/*void *control_thread_body (void* args) {
-	//Service* store_image = new Store_image ("store_image", SP_address, SP_port);
-	//Service* get_image = new Get_image ("get_image", SP_address, SP_port);
-	//Service* get_list = new Get_list ("get_list", SP_address, SP_port);
+void *control_thread_body (void* args) {
 	bool result = false;
 	
 	while (control_thread.is_active()) {
@@ -129,6 +143,7 @@ void *thread_body (void* thread_ID) {
 		}
 		else if (command == "help" && operand == "") result = Image_storage_server_help ();
 		else if (command == "quit" && operand == "") {
+			// TO BE IMPLEMENTED
 			unregister_service_provider (SP_address, SP_port);
 			control_thread.thread_exit();
 		}
@@ -142,4 +157,4 @@ void *thread_body (void* thread_ID) {
 		cout << endl;
 	}
 	return 0;
-}*/
+}

@@ -41,10 +41,7 @@ class Service {
 		
 		bool virtual responce_decode (string folder_path);
 		bool virtual responce_decode (vector<string> *file_list);
-		bool virtual execute () {
-			cout << "Service::execute ()" << endl << endl;
-			return true;
-		}
+		bool virtual execute () { return true; }
 };
 	
 #endif

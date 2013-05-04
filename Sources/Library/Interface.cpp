@@ -1,9 +1,9 @@
 #include "Interface.h"
 
-	bool set_register_address (const char* address, const char* port) {
+	/*bool set_register_address (const char* address, const char* port) {
 		// TO BE IMPLEMENTED
 		return true;	
-	}
+	}*/
 
 	bool register_service_provider (string address, string port) {
 		int socket;

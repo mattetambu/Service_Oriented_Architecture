@@ -1,24 +1,25 @@
 	URGENTE:
-		Sposta la decode_responce sulle classi derivate per specializzare meglio ?
-		Sostituisci tutti i vector.resize con i push_back
-		Aggiungi degli ack nelle funzioni di registrazioni di Interface.cpp
-		
-	NECESSARIO:
-		Fai le atexit();
-		//Cambia i filelist.txt in vectors
-		Image Storage Server:
+		//Implementa il Register
+		Crea una classe Access_regolator dove spostare
 			void readers_prologue() {}
 			void readers_epilogue() {}
 			void writers_prologue() {}
 			void writers_epilogue() {}
+			
+		Installa una libreria di editing delle immagini
+		Realizza le funzioni di manipolazione
 		
+		
+	NECESSARIO:
+		Aggiungi degli ack nelle funzioni di registrazioni di Interface.cpp
+		Fai le atexit();
+		//Cambia i filelist.txt in vectors
 		Rendi bool le funzioni void che lo meritano
 		//Trasforma le set_parameter in responce in una sola funzione
 		Cerca tutti i path e trasformali in variabili di ambiente
 		Controlla continue e return e exit nei vari stati di errore nel client
 		Realizza gli else nei thread_body (comando non riconosciuto)
 			Verifica se la close(socket) fa interrompere l'attesa sincrosa della controparte
-		Separa gli spazi dei clients sullo storage_server
 		Riorganizza le funzioni nei giusti file
 			Crea una classe per la comunicazione
 			//Crea un file per la gestione delle immagini nelle directory e la creazione di immagine da buffer
@@ -37,6 +38,7 @@
 	
 	OPTIONALE:
 		Non sovrascrivere i file in storing
+		Separa gli spazi dei clients sullo storage_server
 		Suddividi ambiente di più client
 		Suddividi l'ambiente di più server
 			Correggi errore client che richiede la get_list su un server e la get_image su un altro se 2 server_storage sono attivi

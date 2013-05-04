@@ -10,7 +10,7 @@ string SP_address, SR_address, SP_port, SR_port;
 
 
 int main (int n_args, char ** args) {
-	cout << " ******* Image manipulation server *******" << endl << endl;
+	cout << "******* Image manipulation server *******" << endl << endl;
 	int listen_socket;
 	
 	if (!check_server_arguments (n_args, args)) {

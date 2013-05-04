@@ -8,7 +8,7 @@ Threads thread[N_THREADS], control_thread;
 string SR_address, SR_port;
 
 int main (int n_args, char ** args) {
-	cout << " ******* Service register server *******" << endl << endl;
+	cout << "******* Service register server *******" << endl << endl;
 	int listen_socket;
 	
 	if (!check_server_arguments (n_args, args)) {

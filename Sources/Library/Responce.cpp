@@ -24,7 +24,7 @@
 			parameters.back().data.Buffer.size = 0;
 	}
 	
-	bool Responce::set_parameter(int index, Parameter *parameter) {	// TO BE TESTED
+	bool Responce::set_parameter(int index, Parameter *parameter) {
 		if (parameter->type != parameters[index].type) return false;
 		parameters[index] = *parameter;
 		
@@ -80,7 +80,7 @@
 			if (parameters[i].type == Integer) parameters[i].data.Integer = receive_int (socket);
 			else if (parameters[i].type == Double) parameters[i].data.Double = receive_double (socket);
 			else if (parameters[i].type == String) parameters[i].data.String = receive_string (socket);
-			else parameters[i].data.Buffer = *(receive_buffer (socket)); // TO BE TESTED
+			else parameters[i].data.Buffer = *(receive_buffer (socket));
 		}
 		return true;
 	}

@@ -41,7 +41,7 @@ void *thread_body (void* thread_ID) {
 			address = receive_string (thread[ID].get_socket());
 			port = receive_string (thread[ID].get_socket());
 			
-			service_register->add_service_provider(address, port);
+			service_register->add_service_provider (address, port);
 			
 			cout << "#SERVER > Request for service add_service_provider served" << endl;
 		}
@@ -49,15 +49,15 @@ void *thread_body (void* thread_ID) {
 			address = receive_string (thread[ID].get_socket());
 			port = receive_string (thread[ID].get_socket());
 			
-			service_register->remove_service_provider(address, port);
+			service_register->remove_service_provider (address, port);
 			
 			cout << "#SERVER > Request for service remove_service_provider served" << endl;
 		}
 		else if (request == "add_service") {
 			name = receive_string (thread[ID].get_socket());
-			
 			s_description = receive_service_description (thread[ID].get_socket());
-			service_register->add_service(s_description);
+			
+			service_register->add_service(name, s_description);
 			
 			cout << "#SERVER > Request for adding service " << name << " served" << endl;
 		}
@@ -72,17 +72,17 @@ void *thread_body (void* thread_ID) {
 		}
 		else if (request == "get_service") {
 			name = receive_string (thread[ID].get_socket());
-			
 			s_description = service_register->get_service(name);
+						
+			//if (s_description == NULL) do_something
 			send_service_description (thread[ID].get_socket(), s_description);
 					
 			cout << "#SERVER > Request for getting service " << name << " served" << endl;
 		}
-		else if (request == "print_register") {
+		else {
 			// TO BE IMPLEMENTED
-			cout << "#SERVER > Request for service print_register served" << endl;
+			cout << "#SERVER > Request unknown" << endl;
 		}
-		else cout << "#SERVER > Request unknown" << endl;
 		
 		close(thread[ID].get_socket());
 		thread[ID].set_free();
@@ -90,7 +90,7 @@ void *thread_body (void* thread_ID) {
 	return 0;
 }
 
-/*
+
 void *control_thread_body (void* args) {
 	bool  result = false;
 	
@@ -119,4 +119,3 @@ void *control_thread_body (void* args) {
 	}
 	return 0;
 }
-*/

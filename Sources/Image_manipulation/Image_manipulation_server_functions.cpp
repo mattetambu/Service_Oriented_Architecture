@@ -76,9 +76,7 @@ void *thread_body (void* thread_ID) {
 	return 0;
 }
 
-/*void *control_thread_body (void* args) {
-	//Service* horizontal_flip_image = new Horizontal_flip_image ("horizontal_flip_image", SP_address, SP_port);
-	//Service* rotate_image = new Rotate_image ("rotate_image", SP_address, SP_port);
+void *control_thread_body (void* args) {
 	bool result = false;
 	
 	while (control_thread.is_active()) {
@@ -108,6 +106,7 @@ void *thread_body (void* thread_ID) {
 			control_thread.thread_exit();
 		}
 		else {
+			// TO BE IMPLEMENTED
 			cout << "#SERVER > Unknown command" << endl;
 			continue;
 		}
@@ -117,4 +116,4 @@ void *thread_body (void* thread_ID) {
 		cout << endl;
 	}
 	return 0;
-}*/
+}

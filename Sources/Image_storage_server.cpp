@@ -8,9 +8,12 @@ Get_list* get_list;
 Threads thread[N_THREADS], control_thread;
 string SP_address, SR_address, SP_port, SR_port;
 
+pthread_mutex_t mutex_1, mutex_2;
+int readers_count = 0;
+
 
 int main (int n_args, char ** args) {
-	cout << " ******* Image storage server *******" << endl << endl;
+	cout << "******* Image storage server *******" << endl << endl;
 	int listen_socket;
 	
 	if (!check_server_arguments (n_args, args)) {
@@ -40,6 +43,11 @@ int main (int n_args, char ** args) {
 		cout << "#SERVER > Registering get_list service" << endl;
 		if (!register_service (get_list)) cerr << "#SERVER > ERROR - Unable to register the get_list service" << endl;
 	}
+	
+	// Initializing mutex
+	pthread_mutex_init (&mutex_1, NULL);
+	pthread_mutex_init (&mutex_2, NULL);
+	readers_count = 0;
 	
 	// Creating threads
 	pthread_t thread_ID;
