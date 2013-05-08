@@ -3,6 +3,7 @@
 extern Service_register* service_register;
 extern Threads thread[N_THREADS], control_thread;
 extern string SR_address, SR_port;
+extern int listen_socket;
 
 bool check_server_arguments (int n_args, char** args) { // Checking arguments
 	sockaddr_in server_address;
@@ -91,31 +92,31 @@ void *thread_body (void* thread_ID) {
 }
 
 
-void *control_thread_body (void* args) {
-	bool  result = false;
+void *control_thread_body (void*) {
+	cin.get();
 	
 	while (control_thread.is_active()) {
-		result = false;
+		bool result = false;
 		string command = "", operand = "";
 		
 		cout << "#SERVER > (Insert a command) ";
 		getline(cin, command);
 		operand = (command.find(' ') == string::npos)? "" : command.substr(command.find(' ')+1);
 		command = command.substr(0, command.find_first_of(' '));
-		
+
 		if (command == "help" && operand == "") result = Service_register_server_help ();
 		else if (command == "quit" && operand == "") {
-			// TO BE IMPLEMENTED
 			control_thread.thread_exit();
+			shutdown(listen_socket, SHUT_RDWR);
+			result = true;
 		}
 		else {
-			cout << "#SERVER > Unknown command" << endl;
+			cout << "#SERVER > Unknown command\n" << endl;
 			continue;
 		}
 		
 		if (result) cout << "#SERVER > Command executed\n" << endl;
 		else cout << "#SERVER > Command not executed\n" << endl;
-		cout << endl;
 	}
 	return 0;
 }

@@ -6,10 +6,11 @@
 Service_register* service_register = new Service_register();
 Threads thread[N_THREADS], control_thread;
 string SR_address, SR_port;
+int listen_socket;
+
 
 int main (int n_args, char ** args) {
 	cout << "******* Service register server *******" << endl << endl;
-	int listen_socket;
 	
 	if (!check_server_arguments (n_args, args)) {
 		cout << "#SERVER > ERROR - Invalid argument" << endl;
@@ -31,16 +32,15 @@ int main (int n_args, char ** args) {
 		}
 		thread[i].set_ID (thread_ID);
 	}
-	/*if (pthread_create(&thread_ID, NULL, control_thread_body, NULL) != 0)  {
+	if (pthread_create(&thread_ID, NULL, control_thread_body, NULL) != 0)  {
 		cout << "#SERVER > ERROR - Can't create the control thread" << endl;
 		exit(-1);			
 	}
-	control_thread.set_ID (thread_ID);*/
+	control_thread.set_ID (thread_ID);
 	
 	
 	cout << "#SERVER > Waiting for connections" << endl;
-	//while (control_thread.is_active()) {
-	while (true) {
+	while (control_thread.is_active()) {
 		int client_address_lenght, client_socket;
 		sockaddr_in client_address;
 		cout << endl;
@@ -49,11 +49,10 @@ int main (int n_args, char ** args) {
 		memset (&client_address, 0, client_address_lenght);
 		client_socket = accept(listen_socket, (sockaddr *) &client_address, (socklen_t*) &client_address_lenght);
 		if (client_socket == -1)  {
-			cout << "#SERVER > ERROR - Can't accept the connection with the client" << endl;
+			if (control_thread.is_active()) cout << "#SERVER > ERROR - Can't accept the connection with the client" << endl;
 			continue;
 		}
 		
-		//if (!control_thread.is_active()) break;
 		for (int i = 0; i < N_THREADS; i++) {
 			if (thread[i].test_and_set_busy()) {
 				thread[i].set_socket(client_socket);

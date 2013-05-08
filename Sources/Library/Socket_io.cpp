@@ -57,7 +57,7 @@
 	bool send_int (int socket, int data) {
 		int sent = send (socket, &data, sizeof(data), 0);
 		if (sent == -1 || sent < (int) sizeof(data)) {
-			cout << "\t\t  ERROR - Unable to send an integer" << endl;
+			cout << "\t\t ERROR - Unable to send an integer" << endl;
 			return false;
 		}
 		return true;	
@@ -66,7 +66,7 @@
 	bool send_double (int socket, double data) {
 		int sent = send (socket, &data, sizeof(data), 0);
 		if (sent == -1 || sent < (int) sizeof(data)) {
-			cout << "\t\t  ERROR - Unable to send a double" << endl;
+			cout << "\t\t ERROR - Unable to send a double" << endl;
 			return false;
 		}
 		return true;
@@ -78,7 +78,7 @@
 		
 		sent_number = send (socket, data.c_str(), size, MSG_WAITALL);
 		if (sent_number == -1 || sent_number < size) {
-			cout << "\t\t  ERROR - Unable to send a string" << endl;
+			cout << "\t\t ERROR - Unable to send a string" << endl;
 			return false;
 		}
 		return true;
@@ -90,7 +90,7 @@
 		
 		sent_number = send (socket, data->pointer, size, MSG_WAITALL);
 		if (sent_number == -1 || sent_number < size) {
-			cout << "\t\t  ERROR - Unable to send a buffer" <<endl;
+			cout << "\t\t ERROR - Unable to send a buffer" <<endl;
 			return false;
 		}
 		return true;
@@ -114,7 +114,7 @@
 	int receive_int (int socket) {
 		int data = 2000, received = recv (socket, &data, sizeof(data), 0);
 		if (received == -1 || received < (int) sizeof(data)) {
-			cout << "\t\t  ERROR - Unable to receive an integer" << endl;
+			cout << "\t\t ERROR - Unable to receive an integer" << endl;
 			return -1;
 		}
 		return data;
@@ -122,15 +122,15 @@
 	
 	string receive_string (int socket) {
 		int size = receive_int (socket);
-		if (size == -1) return NULL;
+		if (size == -1) return "";
 		
 		char* received_string = (char*) malloc (size+1); 
 		memset(received_string, '\0', size+1);
 		int received = recv (socket, received_string, size, MSG_WAITALL);
 		
 		if (received == -1 || received < size) {
-			cout << "\t\t  ERROR - Unable to receive a string" << endl;
-			return NULL;
+			cout << "\t\t ERROR - Unable to receive a string" << endl;
+			return "";
 		}
 		received_string[size] = '\0';
 		return string(received_string);
@@ -140,7 +140,7 @@
 		double data;
 		int received = recv (socket, &data, sizeof(data), 0);
 		if (received == -1 || received < (int) sizeof(data)) {
-			cout << "\t\t  ERROR - Unable to receive a double" << endl;
+			cout << "\t\t ERROR - Unable to receive a double" << endl;
 			return -1;
 		}
 		return data;
@@ -154,7 +154,7 @@
 		
 		int received = recv (socket, data->pointer, data->size, MSG_WAITALL);
 		if (received == -1 || received < data->size) {
-			cout << "\t\t  ERROR - Unable to receive a buffer" << endl;
+			cout << "\t\t ERROR - Unable to receive a buffer" << endl;
 			return NULL;
 		}
 		return data;

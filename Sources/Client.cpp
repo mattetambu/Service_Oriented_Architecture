@@ -21,7 +21,7 @@ int main (int n_args, char ** args) {
 		string image_path, image_name = (required_service_name == "rotate_image")? "rotated_" : "flipped_";
 		
 		vector<Parameter> parameters;
-		int service_socket;
+		int service_socket, degrees = rand() % 360;
 
 		cout << endl << endl;
 		sleep(1);
@@ -125,7 +125,9 @@ int main (int n_args, char ** args) {
 		
 		
 		//************************************ LOOKING FOR CHOOSED SERVICE *********************************************
-		cout <<"#CLIENT > Requiring service " << required_service_name << endl;
+		cout <<"#CLIENT > Requiring service " << required_service_name;
+		if (required_service_name == "rotate_image") cout <<" (" << degrees << "°) " << endl;
+		else cout << endl;
 		cout << "#CLIENT > " << SPACER << " Looking for a " << required_service_name << " service" << endl;
 		Service* required_service = service_request (required_service_name);			
 		if(required_service == NULL) {
@@ -140,7 +142,7 @@ int main (int n_args, char ** args) {
 		if (required_service_name == "rotate_image") { 
 			parameters.resize(2);
 			parameters[index].type = Integer;
-			parameters[index].data.Integer = rand() % 360;
+			parameters[index].data.Integer = degrees;
 			index++;
 		}
 		else if (required_service_name == "horizontal_flip_image") parameters.resize(1);
@@ -161,6 +163,9 @@ int main (int n_args, char ** args) {
 		
 		//************************************** REQUIRING CHOOSED SERVICE ***********************************************
 		cout << "#CLIENT > " << SPACER << " Sending request for service " << required_service_name << " to service provider" << endl;
+		
+		//print_service_description(required_service->get_description());
+		
 		if(!required_service->send_service_request(&service_socket)) {
 			cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Unable to send the service request" << endl;
 				continue;	
@@ -220,7 +225,10 @@ int main (int n_args, char ** args) {
 		}
 		cout << "#CLIENT > " << SPACER << " Service store_image successfully completed" << endl;
 
+		
 		//************************************** REQUEST COMPLETED ***********************************************
 		delete required_service;
 	}
+	cout << endl << "**********************";
+	exit(0);
 }

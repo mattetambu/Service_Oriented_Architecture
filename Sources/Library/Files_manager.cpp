@@ -26,7 +26,20 @@
 			cerr << "#SERVER > " SPACER << " ERROR - No image to store (image buffer is empty)" << endl;
 			return false;
 		}
-		FILE* image = fopen (image_path.c_str(), "w");
+		FILE* image;
+		/*image = fopen(image_path.c_str(), "r");
+		if (image != 0) {
+			fclose (image);
+			char response;
+			cout << "\t\tThe file " << image_path.substr(image_path.find_last_of("/")+1) << " already exists.\n\t\tOverwrite [Y/N]? ";
+			while (response != 'Y' && response != 'N' && response != 'S') {
+				cin >> response;
+				response = toupper(response);
+			}
+			if (response == 'N') return false;
+		}*/
+		
+		image = fopen (image_path.c_str(), "w");
 		int result = fwrite (image_buffer->pointer, 1, image_buffer->size, image);
 		if(result != image_buffer->size) {
 			cerr << "#SERVER > " SPACER << " ERROR - Can't create the image " << image_path << " correctly" << endl;

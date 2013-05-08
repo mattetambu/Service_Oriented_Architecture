@@ -86,24 +86,24 @@
 		return new Service_description(s_description);
 	}
 	
-	bool Service::send_service_request(int* socket) {
+	bool Service::send_service_request (int* socket) {
 		if (!socket_initialization_client (socket, s_description.address, s_description.port)) return false;
 		if (*socket == -1) {
-			cerr << SPACER << SPACER << "ERROR - Can't create the socket" << endl;
+			cerr << "\t\tERROR - Can't create the socket" << endl;
 			return false;
 		}
 		
 		send_string (*socket, s_description.name);	// ASYMMETRIC COMPARED TO RECEIVE
 		send_int (*socket, parameters.size());
 		if (!receive_int (*socket)) {
-			cerr << SPACER << SPACER << "ERROR - Wrong parameters number" << endl;
+			cerr << "\t\tERROR - Wrong parameters number" << endl;
 			return false;
 		}
 		
 		for (int i = 0; i < (int) parameters.size(); i++) {
 			if (!send_int (*socket, (int) parameters[i].type)) return false;
 			if (!receive_int (*socket)) {
-				cerr << SPACER << SPACER << "ERROR - Wrong parameters type" << endl;
+				cerr << "\t\tERROR - Wrong parameters type" << endl;
 				return false;
 			}
 			
@@ -133,7 +133,7 @@
 			if (parameters[i].type == Integer) parameters[i].data.Integer = receive_int (socket);
 			else if (parameters[i].type == Double) parameters[i].data.Double = receive_double (socket);
 			else if (parameters[i].type == String) parameters[i].data.String = receive_string (socket);
-			else parameters[i].data.Buffer = *(receive_buffer (socket)); // TO BE TESTED		
+			else parameters[i].data.Buffer = *(receive_buffer (socket));		
 		}
 		
 		return true;
@@ -153,7 +153,7 @@
 	
 	bool Service::responce_decode (string folder_path) {
 		Parameter responce_parameter;
-		if (!responce.get_parameter(0, &responce_parameter)) return false;
+		if (!responce.get_parameter (0, &responce_parameter)) return false;
 		if (!make_image_from_buffer (folder_path, &responce_parameter.data.Buffer)) return false;
 		
 		free(parameters[0].data.Buffer.pointer);
@@ -171,7 +171,7 @@
 		result = strtok(image_list, "\n");
 		for (int i = 0; result != NULL; i++) {
 			(*file_list).push_back(result);
-			result = strtok(NULL, "\n");
+			result = strtok (NULL, "\n");
 		}
 		return true;
 	}

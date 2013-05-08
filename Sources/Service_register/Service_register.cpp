@@ -40,19 +40,19 @@
 		pthread_mutex_unlock (&mutex_2);
 	}
 	
-	void Service_register::add_service_provider (string address, string port) {
-		readers_prologue();	
-		// return (already_registered)? false : true;	// TO BE IMPLEMENTED
-		readers_epilogue();		
-	}
+	void Service_register::add_service_provider (string address, string port) {}
 	
 	void Service_register::remove_service_provider (string address, string port) {
-		writers_prologue();
+		readers_prologue();
 		
 		map<string, list<Service_description*> >::iterator map_it;
-		for (map_it = service_register.begin(); map_it != service_register.end(); map_it++) remove_service((*map_it).first, address, port);
+		for (map_it = service_register.begin(); map_it != service_register.end(); map_it++) {
+			readers_epilogue();	
+			remove_service((*map_it).first, address, port);
+			readers_prologue();
+		}
 		
-		writers_epilogue();
+		readers_epilogue();
 	}
 
 	void Service_register::add_service (string name, Service_description* s_description) {
@@ -87,7 +87,6 @@
 		
 		list<Service_description*>::iterator list_it = service_register[required_service_name].begin();
 		if ((*list_it) != service_register[required_service_name].back()) {
-			cout << "Se leggi questo c'è un error";
 			service_register[required_service_name].push_back((*list_it));
 			service_register[required_service_name].pop_front();
 		}

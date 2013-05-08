@@ -4,9 +4,13 @@
 #define Horizontal_flip_image_H_
 
 #include "../Library/Service.h"
-//#include <Magick++.h>
+//#include <X11/Xlib.h>
+//#include "../Library/CImg.h"
 
-//using namespace Magick;
+//using namespace cimg_library;
+
+#include <Magick++.h>
+using namespace Magick;
 
 #define FLIP_IMAGE_DIRECTORY "./Files/Servers/Image_manipulation_server/Horizontal_flip_image/"	
 

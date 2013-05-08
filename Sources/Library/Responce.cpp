@@ -57,7 +57,7 @@
 			else if (parameters[i].type == String && !send_string (socket, parameters[i].data.String)) return false;
 			else if (parameters[i].type == Buffer && !send_buffer (socket, &parameters[i].data.Buffer)) return false;
 		}
-		
+				
 		return true;
 	}	
 	
@@ -65,7 +65,7 @@
 		if (receive_int (socket) == (int) parameters.size()) send_int (socket, (int) true);
 		else {
 			send_int (socket, (int) false);
-			cerr << SPACER << SPACER << "ERROR - Wrong parameters number for receiving the responce" << endl;
+			cerr << "\t\t ERROR - Wrong parameters number for receiving the responce" << endl;
 			return false;
 		}
 				
@@ -73,7 +73,7 @@
 			if(receive_int (socket) == (int) parameters[i].type ) send_int (socket, (int) true);
 			else {
 				send_int (socket, (int) false);
-				cerr << SPACER << SPACER << "ERROR - Wrong parameters type for receiving the responce" << endl;
+				cerr << "\t\t ERROR - Wrong parameters type for receiving the responce" << endl;
 				return false;
 			}
 			

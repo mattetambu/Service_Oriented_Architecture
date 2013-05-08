@@ -4,6 +4,7 @@ extern Rotate_image* rotate_image;
 extern Horizontal_flip_image* horizontal_flip_image;
 extern Threads thread[N_THREADS], control_thread;
 extern string SP_address, SR_address, SP_port, SR_port;
+extern int listen_socket;
 
 bool check_server_arguments (int n_args, char** args) { // Checking arguments
 	sockaddr_in server_address;
@@ -76,11 +77,11 @@ void *thread_body (void* thread_ID) {
 	return 0;
 }
 
-void *control_thread_body (void* args) {
-	bool result = false;
+void *control_thread_body (void*) {
+	cin.get();
 	
 	while (control_thread.is_active()) {
-		result = false;
+		bool result = false;
 		string command = "", operand = "";
 		
 		cout << "#SERVER > (Insert a command) ";
@@ -93,27 +94,27 @@ void *control_thread_body (void* args) {
 		else if (command == "register_service") {
 			if (operand == "rotate_image") result = register_service (rotate_image);
 			else if (operand == "horizontal_flip_image") result = register_service (horizontal_flip_image);
-			else cout << "#SERVER > Service " << operand.c_str() << " unknown";
+			else cout << "#SERVER > Service " << operand.c_str() << " unknown\n" << endl;
 		}
 		else if (command == "unregister_service") {
 			if (operand == "rotate_image") result = unregister_service (rotate_image->get_description());
 			else if (operand == "horizontal_flip_image") result = unregister_service (horizontal_flip_image->get_description());
-			else cout << "#SERVER > Service " << operand.c_str() << " unknown";
+			else cout << "#SERVER > Service " << operand.c_str() << " unknown\n" << endl;
 		}
 		else if (command == "help" && operand == "") result = Image_manipulation_server_help ();
 		else if (command == "quit" && operand == "") {
-			unregister_service_provider (SP_address, SP_port);
 			control_thread.thread_exit();
+			shutdown(listen_socket, SHUT_RDWR);
+			result = true;
 		}
 		else {
 			// TO BE IMPLEMENTED
-			cout << "#SERVER > Unknown command" << endl;
+			cout << "#SERVER > Unknown command\n" << endl;
 			continue;
 		}
 		
 		if (result) cout << "#SERVER > Command executed\n" << endl;
 		else cout << "#SERVER > Command not executed\n" << endl;
-		cout << endl;
 	}
 	return 0;
 }

@@ -4,10 +4,9 @@ extern Store_image* store_image;
 extern Get_image* get_image;
 extern Get_list* get_list;
 extern Threads thread[N_THREADS], control_thread;
-extern string SP_address, SR_address, SP_port, SR_port;
-
 extern pthread_mutex_t mutex_1, mutex_2;
-extern int readers_count;
+extern string SP_address, SR_address, SP_port, SR_port;
+extern int readers_count, listen_socket;
 
 
 bool check_server_arguments (int n_args, char** args) { // Checking arguments
@@ -115,11 +114,11 @@ void *thread_body (void* thread_ID) {
 	return 0;
 }
 
-void *control_thread_body (void* args) {
-	bool result = false;
+void *control_thread_body (void*) {
+	cin.get();
 	
 	while (control_thread.is_active()) {
-		result = false;
+		bool result = false;
 		string command = "", operand = "";
 		
 		cout << "#SERVER > (Insert a command) ";
@@ -133,28 +132,27 @@ void *control_thread_body (void* args) {
 			if (operand == "get_image") result = register_service (get_image);
 			else if (operand == "store_image") result = register_service (store_image);
 			else if (operand == "get_list") result = register_service (get_list);
-			else cout << "#SERVER > Service " << operand.c_str() << " unknown";
+			else cout << "#SERVER > Service " << operand.c_str() << " unknown\n" << endl;
 		}
 		else if (command == "unregister_service") {
 			if (operand == "get_image") result = unregister_service (get_image->get_description());
 			else if (operand == "store_image") result = unregister_service (store_image->get_description());
 			else if (operand == "get_list") result = unregister_service (get_list->get_description());
-			else cout << "#SERVER > Service " << operand.c_str() << " unknown";
+			else cout << "#SERVER > Service " << operand.c_str() << " unknown\n" << endl;
 		}
 		else if (command == "help" && operand == "") result = Image_storage_server_help ();
 		else if (command == "quit" && operand == "") {
-			// TO BE IMPLEMENTED
-			unregister_service_provider (SP_address, SP_port);
 			control_thread.thread_exit();
+			shutdown(listen_socket, SHUT_RDWR);
+			result = true;
 		}
 		else {
-			cout << "#SERVER > Unknown command" << endl;
+			cout << "#SERVER > Unknown command\n" << endl;
 			continue;
 		}
 		
 		if (result) cout << "#SERVER > Command executed\n" << endl;
 		else cout << "#SERVER > Command not executed\n" << endl;
-		cout << endl;
 	}
 	return 0;
 }
