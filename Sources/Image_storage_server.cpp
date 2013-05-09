@@ -31,16 +31,16 @@ int main (int n_args, char ** args) {
 	get_list = new Get_list ("get_list", SP_address, SP_port);
 	
 	cout << "#SERVER > Registering image_storage server" << endl;
-	if (!register_service_provider (SP_address, SP_port)) cerr << "#SERVER > ERROR - Unable to register the server" << endl;
+	if (!register_service_provider (SP_address, SP_port)) cerr << "#SERVER > " << SPACER << "ERROR - Unable to register the server" << endl;
 	else {
 		cout << "#SERVER > Registering store_image service" << endl;
-		if (!register_service (store_image)) cerr << "#SERVER > ERROR - Unable to register the store_image service" << endl;
+		if (!register_service (store_image)) cerr << "#SERVER > " << SPACER << "ERROR - Unable to register the store_image service" << endl;
 		
 		cout << "#SERVER > Registering get_image service" << endl;
-		if (!register_service (get_image)) cerr << "#SERVER > ERROR - Unable to register the get_image service" << endl;
+		if (!register_service (get_image)) cerr << "#SERVER > " << SPACER << "ERROR - Unable to register the get_image service" << endl;
 	
 		cout << "#SERVER > Registering get_list service" << endl;
-		if (!register_service (get_list)) cerr << "#SERVER > ERROR - Unable to register the get_list service" << endl;
+		if (!register_service (get_list)) cerr << "#SERVER > " << SPACER << "ERROR - Unable to register the get_list service" << endl;
 	}
 	
 	// Initializing mutex
@@ -98,18 +98,18 @@ int main (int n_args, char ** args) {
 	close(listen_socket);
 	
 	
-	// Unregistering services
+	// Unregistering services - Only unregister_service_provider is needed
 	cout << "#SERVER > Unregistering store_image service" << endl;
-	if (!unregister_service (store_image->get_description())) cerr << "#SERVER > ERROR - Unable to unregister the store_image service" << endl;
+	if (!unregister_service (store_image->get_description())) cerr << "#SERVER > " << SPACER << "ERROR - Unable to unregister the store_image service" << endl;
 	
 	cout << "#SERVER > Unregistering get_image service" << endl;
-	if (!unregister_service (get_image->get_description())) cerr << "#SERVER > ERROR - Unable to unregister the get_image service" << endl;
+	if (!unregister_service (get_image->get_description())) cerr << "#SERVER > " << SPACER << "ERROR - Unable to unregister the get_image service" << endl;
 				
 	cout << "#SERVER > Unregistering get_list service" << endl;
-	if (!unregister_service (get_list->get_description())) cerr << "#SERVER > ERROR - Unable to unregister the get_list service" << endl;
+	if (!unregister_service (get_list->get_description())) cerr << "#SERVER > " << SPACER << "ERROR - Unable to unregister the get_list service" << endl;
 	
 	cout << "#SERVER > Unregistering image_storage server" << endl;
-	if (!unregister_service_provider (SP_address, SP_port)) cerr << "#SERVER > ERROR - Unable to unregister the server" << endl;
+	if (!unregister_service_provider (SP_address, SP_port)) cerr << "#SERVER > " << SPACER << "ERROR - Unable to unregister the server" << endl;
 	
 	
 	cout << endl << "#SERVER > Server closed" << endl;

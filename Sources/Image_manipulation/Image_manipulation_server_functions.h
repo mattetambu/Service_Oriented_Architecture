@@ -21,6 +21,7 @@
 	#include "../Library/Socket_io.h"
 	
 	#define N_THREADS 5
+	#define REQUEST_NOT_ACCEPTED 0
 
 	using namespace std;
 	

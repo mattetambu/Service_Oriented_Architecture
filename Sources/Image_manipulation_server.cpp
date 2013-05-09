@@ -28,13 +28,13 @@ int main (int n_args, char ** args) {
 	rotate_image = new Rotate_image ("rotate_image", SP_address, SP_port);
 		
 	cout << "#SERVER > Registering image_manipulation server" << endl;
-	if (!register_service_provider (SP_address, SP_port)) cerr << "#SERVER > ERROR - Unable to register the server" << endl;
+	if (!register_service_provider (SP_address, SP_port)) cerr << "#SERVER > " << SPACER << " ERROR - Unable to register the server" << endl;
 	else {
 		cout << "#SERVER > Registering horizontal_flip_image service" << endl;
-		if (!register_service (horizontal_flip_image)) cerr << "#SERVER > ERROR - Unable to register the horizontal_hlip_image service" << endl;
+		if (!register_service (horizontal_flip_image)) cerr << "#SERVER > " << SPACER << " ERROR - Unable to register the horizontal_hlip_image service" << endl;
 	
 		cout << "#SERVER > Registering rotate_image service" << endl;
-		if (!register_service (rotate_image)) cerr << "#SERVER > ERROR - Unable to register the rotate_image service" << endl;
+		if (!register_service (rotate_image)) cerr << "#SERVER > " << SPACER << " ERROR - Unable to register the rotate_image service" << endl;
 	}
 	
 	// Creating threads
@@ -87,15 +87,15 @@ int main (int n_args, char ** args) {
 	close(listen_socket);
 	
 	
-	// Unregistering services
+	// Unregistering services - Only unregister_service_provider is needed
 	cout << "#SERVER > Unregistering horizontal_flip_image service" << endl;
-	if (!unregister_service (horizontal_flip_image->get_description())) cerr << "#SERVER > ERROR - Unable to unregister the horizontal_hlip_image service" << endl;
+	if (!unregister_service (horizontal_flip_image->get_description())) cerr << "#SERVER > " << SPACER << " ERROR - Unable to unregister the horizontal_hlip_image service" << endl;
 				
 	cout << "#SERVER > Unregistering rotate_image service" << endl;
-	if (!unregister_service (rotate_image->get_description())) cerr << "#SERVER > ERROR - Unable to unregister the rotate_image service" << endl;
+	if (!unregister_service (rotate_image->get_description())) cerr << "#SERVER > " << SPACER << " ERROR - Unable to unregister the rotate_image service" << endl;
 	
 	cout << "#SERVER > Unregistering image_manipulation server" << endl;
-	if (!unregister_service_provider (SP_address, SP_port)) cerr << "#SERVER > ERROR - Unable to unregister the server" << endl;
+	if (!unregister_service_provider (SP_address, SP_port)) cerr << "#SERVER > " << SPACER << " ERROR - Unable to unregister the server" << endl;
 	
 	
 	cout << endl << "#SERVER > Server closed" << endl;

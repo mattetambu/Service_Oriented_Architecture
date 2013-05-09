@@ -15,6 +15,7 @@
 #include <utility>
 #include <pthread.h>
 
+
 using namespace std;
 
 class Service_register {
@@ -32,14 +33,16 @@ class Service_register {
 	void writers_prologue();
 	void writers_epilogue();
 	
-	void add_service_provider (string address, string port);
-	void remove_service_provider (string address, string port);
 	
-	void add_service (string name, Service_description* s_description);
-	void remove_service (string name, string address, string port);
+	bool add_service_provider (string address, string port);
+	bool remove_service_provider (string address, string port);
+	
+	bool add_service (string name, Service_description* s_description);
+	bool remove_service (string name, string address, string port);
 	
 	Service_description* get_service (string required_service_name);
-	void print_register();
+	bool find_service (string name, string address, string port);
+	bool print_register();
 };
 
 #endif

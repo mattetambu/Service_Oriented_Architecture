@@ -20,6 +20,8 @@
 	#include "Service_register.h"
 	
 	#define N_THREADS 5
+	#define REQUEST_ACCEPTED 1
+	#define REQUEST_NOT_ACCEPTED 0
 
 	using namespace std;
 	

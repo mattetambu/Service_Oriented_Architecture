@@ -94,6 +94,11 @@
 		}
 		
 		send_string (*socket, s_description.name);	// ASYMMETRIC COMPARED TO RECEIVE
+		if (receive_int (*socket) == (int) REQUEST_NOT_ACCEPTED) {	// REQUEST NOT ACCEPTED
+			cerr << "\t\tERROR - Wrong service name" << endl;
+			return false;
+		}
+		
 		send_int (*socket, parameters.size());
 		if (!receive_int (*socket)) {
 			cerr << "\t\tERROR - Wrong parameters number" << endl;
@@ -117,6 +122,7 @@
 	}
 	
 	bool Service::receive_service_request (int socket) {
+		send_int (socket, (int) REQUEST_ACCEPTED);	// REQUEST ACCEPTED
 		if (receive_int (socket) == (int) parameters.size()) send_int (socket, (int) true);
 		else {
 			send_int (socket, (int) false);

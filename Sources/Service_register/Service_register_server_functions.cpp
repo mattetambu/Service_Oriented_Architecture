@@ -27,64 +27,69 @@ bool Service_register_server_help () {
 
 void *thread_body (void* thread_ID) {
 	int ID = ((int) thread_ID);
+	bool service_result;
 	string request, name, address, port;
 	Service_description* s_description;
 	
 	while (thread[ID].is_active()) {
 		thread[ID].wait_start();
 		if (!thread[ID].is_active()) break;
-		cout << "#SERVER > Client connetted" << endl;
+		service_result = false;
 		
+		cout << "#SERVER > Client connetted" << endl;
 		request = receive_string (thread[ID].get_socket());
 		cout << "#SERVER > Service request: " << request << endl;
 		
 		if (request == "add_service_provider") {
-			address = receive_string (thread[ID].get_socket());
-			port = receive_string (thread[ID].get_socket());
-			
-			service_register->add_service_provider (address, port);
-			
-			cout << "#SERVER > Request for service add_service_provider served" << endl;
+			if (send_int (thread[ID].get_socket(), (int) REQUEST_ACCEPTED) && 
+				(address = receive_string (thread[ID].get_socket())) != "" && 
+				(port = receive_string (thread[ID].get_socket())) != "") {
+					if (!(service_result = service_register->add_service_provider (address, port)))
+						cout << "#SERVER > Server already registered" << endl;
+					else cout << "#SERVER > Request for service add_service_provider served" << endl;
+			}
 		}
 		else if (request == "remove_service_provider") {
-			address = receive_string (thread[ID].get_socket());
-			port = receive_string (thread[ID].get_socket());
-			
-			service_register->remove_service_provider (address, port);
-			
-			cout << "#SERVER > Request for service remove_service_provider served" << endl;
+			if (send_int (thread[ID].get_socket(), (int) REQUEST_ACCEPTED) && 
+				(address = receive_string (thread[ID].get_socket())) != "" && 
+				(port = receive_string (thread[ID].get_socket())) != "") {
+					
+					if (!(service_result = service_register->remove_service_provider (address, port)))
+						cout << "#SERVER > Service provider not registered" << endl;
+					else cout << "#SERVER > Request for service remove_service_provider served" << endl;
+			}
 		}
 		else if (request == "add_service") {
-			name = receive_string (thread[ID].get_socket());
-			s_description = receive_service_description (thread[ID].get_socket());
-			
-			service_register->add_service(name, s_description);
-			
-			cout << "#SERVER > Request for adding service " << name << " served" << endl;
+			if (send_int (thread[ID].get_socket(), (int) REQUEST_ACCEPTED) && 
+				(name = receive_string (thread[ID].get_socket())) != "" &&
+				(s_description = receive_service_description (thread[ID].get_socket())) != NULL) {
+					if (!(service_result = service_register->add_service(name, s_description)))
+						cout << "#SERVER > Service " << name << " already registered" << endl;
+					else cout << "#SERVER > Request for adding service " << name << " served" << endl;
+			}
 		}
 		else if (request == "remove_service") {
-			name = receive_string (thread[ID].get_socket());
-			address = receive_string (thread[ID].get_socket());
-			port = receive_string (thread[ID].get_socket());
-			
-			service_register->remove_service(name, address, port);
-			
-			cout << "#SERVER > Request for removing service " << name << " served" << endl;			
+			if (send_int (thread[ID].get_socket(), (int) REQUEST_ACCEPTED) && 
+				(name = receive_string (thread[ID].get_socket())) != "" && 
+				(address = receive_string (thread[ID].get_socket())) != "" && 
+				(port = receive_string (thread[ID].get_socket())) != "") {
+					if (!(service_result = service_register->remove_service(name, address, port)))
+						cout << "#SERVER > Service " << name << " not registered" << endl;
+					else cout << "#SERVER > Request for removing service " << name << " served" << endl;
+			}
 		}
 		else if (request == "get_service") {
-			name = receive_string (thread[ID].get_socket());
-			s_description = service_register->get_service(name);
-						
-			//if (s_description == NULL) do_something
-			send_service_description (thread[ID].get_socket(), s_description);
-					
-			cout << "#SERVER > Request for getting service " << name << " served" << endl;
+			if (send_int (thread[ID].get_socket(), (int) REQUEST_ACCEPTED) && 
+				(name = receive_string (thread[ID].get_socket())) != "") {
+					s_description = service_register->get_service(name);
+					if (s_description == NULL) cout << "#SERVER > Service " << name << " not registered" << endl;
+					if ((service_result = send_service_description (thread[ID].get_socket(), s_description)))
+						cout << "#SERVER > Request for getting service " << name << " served" << endl;
+			}
 		}
-		else {
-			// TO BE IMPLEMENTED
-			cout << "#SERVER > Request unknown" << endl;
-		}
+		else send_int (thread[ID].get_socket(), (int) REQUEST_NOT_ACCEPTED);
 		
+		if (!service_result) cout << "#SERVER > Unable to serve the " << request << " request" << endl;
 		close(thread[ID].get_socket());
 		thread[ID].set_free();
 	}
@@ -93,11 +98,10 @@ void *thread_body (void* thread_ID) {
 
 
 void *control_thread_body (void*) {
-	cin.get();
-	
 	while (control_thread.is_active()) {
 		bool result = false;
 		string command = "", operand = "";
+		cin.get();
 		
 		cout << "#SERVER > (Insert a command) ";
 		getline(cin, command);
@@ -105,13 +109,14 @@ void *control_thread_body (void*) {
 		command = command.substr(0, command.find_first_of(' '));
 
 		if (command == "help" && operand == "") result = Service_register_server_help ();
+		else if (command == "print_register" && operand == "") result = service_register->print_register();
 		else if (command == "quit" && operand == "") {
 			control_thread.thread_exit();
 			shutdown(listen_socket, SHUT_RDWR);
 			result = true;
 		}
 		else {
-			cout << "#SERVER > Unknown command\n" << endl;
+			cout << "#SERVER >  Can't execute the command - Command unknown\n" << endl;
 			continue;
 		}
 		

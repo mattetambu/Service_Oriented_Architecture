@@ -8,6 +8,8 @@
 #include "Files_manager.h"
 #include "Responce.h"
 
+#define REQUEST_ACCEPTED 1
+#define REQUEST_NOT_ACCEPTED 0
 
 class Service {
 	protected:

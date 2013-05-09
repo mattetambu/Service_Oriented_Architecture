@@ -24,6 +24,7 @@
 	
 	#define IMAGES_STORAGE_DIRECTORY "./Files/Servers/Image_storage_server/"	
 	#define N_THREADS 5
+	#define REQUEST_NOT_ACCEPTED 0
 
 	using namespace std;
 	

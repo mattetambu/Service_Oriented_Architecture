@@ -37,7 +37,7 @@ bool check_server_arguments (int n_args, char** args) { // Checking arguments
 }
 	
 
-bool Image_manipulation_server_help () {
+bool Image_manipulation_server_help () { // TO BE IMPLEMENTED
 	return true;
 }
 
@@ -67,8 +67,8 @@ void *thread_body (void* thread_ID) {
 			cout << "#SERVER > Request for service horizontal_flip_image served" << endl;
 		}
 		else {
-			// TO BE IMPLEMENTED
-			cout << "#SERVER > Request unknown" << endl;
+			send_int (thread[ID].get_socket(), (int) REQUEST_NOT_ACCEPTED);	// REQUEST NOT ACCEPTED
+			cout << "#SERVER > Unable to serve the request - Service " << service << " unknown" << endl;
 		}
 		
 		close(thread[ID].get_socket());
@@ -78,11 +78,10 @@ void *thread_body (void* thread_ID) {
 }
 
 void *control_thread_body (void*) {
-	cin.get();
-	
 	while (control_thread.is_active()) {
 		bool result = false;
 		string command = "", operand = "";
+		cin.get();
 		
 		cout << "#SERVER > (Insert a command) ";
 		getline(cin, command);
@@ -94,12 +93,12 @@ void *control_thread_body (void*) {
 		else if (command == "register_service") {
 			if (operand == "rotate_image") result = register_service (rotate_image);
 			else if (operand == "horizontal_flip_image") result = register_service (horizontal_flip_image);
-			else cout << "#SERVER > Service " << operand.c_str() << " unknown\n" << endl;
+			else cout << "#SERVER > Can't register the service - Service " << operand.c_str() << " unknown\n" << endl;
 		}
 		else if (command == "unregister_service") {
 			if (operand == "rotate_image") result = unregister_service (rotate_image->get_description());
 			else if (operand == "horizontal_flip_image") result = unregister_service (horizontal_flip_image->get_description());
-			else cout << "#SERVER > Service " << operand.c_str() << " unknown\n" << endl;
+			else cout << "#SERVER > Can't unregister the service - Service " << operand.c_str() << " unknown\n" << endl;
 		}
 		else if (command == "help" && operand == "") result = Image_manipulation_server_help ();
 		else if (command == "quit" && operand == "") {
@@ -108,8 +107,7 @@ void *control_thread_body (void*) {
 			result = true;
 		}
 		else {
-			// TO BE IMPLEMENTED
-			cout << "#SERVER > Unknown command\n" << endl;
+			cout << "#SERVER > Can't execute the command - Command unknown\n" << endl;
 			continue;
 		}
 		
