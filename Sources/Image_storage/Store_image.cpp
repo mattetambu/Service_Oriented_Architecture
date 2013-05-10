@@ -35,10 +35,5 @@
 	}
 
 	bool Store_image::execute () {
-		if (!make_image_from_buffer ((path + parameters[0].data.String), &parameters[1].data.Buffer)) return false;
-		
-		free(parameters[1].data.Buffer.pointer);
-		parameters[1].data.Buffer.pointer = NULL;
-		parameters[1].data.Buffer.size = 0;
-		return true;
+		return make_image_from_buffer ((path + parameters[0].data.String), &parameters[1].data.Buffer);
 	}

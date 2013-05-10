@@ -36,10 +36,10 @@
 	}
 
 	bool Rotate_image::execute () {
-		static int image_count = 0;
-		stringstream ss; ss << image_count++;
-		string source_path = path + "rotate_source_" + ss.str() + ".jpg";
-		string result_path = path + "rotated_" + ss.str() + ".jpg";
+		static int count = 0;
+		stringstream image_count; image_count << count++;
+		string source_path = path + "rotate_source_" + image_count.str() + ".jpg";
+		string result_path = path + "rotated_" + image_count.str() + ".jpg";
 
 		if (!make_image_from_buffer (source_path, &parameters[1].data.Buffer)) return false;
 		
@@ -54,8 +54,9 @@
 		if (!get_buffer_from_image (result_path, &parameter->data.Buffer)) return false;
 		if (!responce.set_parameter(0, parameter)) return false;
 		
-		bool remove_images = true;
-		if (remove_images && (remove(source_path.c_str()) || remove(result_path.c_str()))) cerr << "\t\tCan't remove temporany files" << endl;
+		if (REMOVE_IMAGES && (remove(source_path.c_str()) || remove(result_path.c_str()))) cerr << "\t\tCan't remove temporany files" << endl;
 		
+		//free(parameter->data.Buffer.pointer);
+		//delete parameter;
 		return true;
 	}

@@ -39,11 +39,10 @@
 		Parameter *parameter = new Parameter;
 		parameter->type = Buffer;
 		
-		if (!get_buffer_from_image (image_path, &parameter->data.Buffer)) {
-			parameter->data.Buffer.size = 0;
-			parameter->data.Buffer.pointer = NULL;
-			return false;
-		}		
-		responce.set_parameter(0, parameter);
+		if (!get_buffer_from_image (image_path, &parameter->data.Buffer)) return false;		
+		if (!responce.set_parameter(0, parameter)) return false;
+		
+		//free(parameter->data.Buffer.pointer);
+		//delete parameter;
 		return true;
 	}

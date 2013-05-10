@@ -1,36 +1,41 @@
 	URGENTE:
-		Realizza tutti gli help
-		Fai le atexit();
-		Rimuovi le librerie aggiunte in eccesso
-		Controlla continue e return e exit nei vari stati di errore nel client
-		Ricerca tutta la memoria da liberare tramite free e delete
-			Controlla tutti i distruttori delle classi
-		Controlla tutti gli attributi delle classi e verifica quali possono diventari privati
-		Controlla tutti i metodi delle classi e verifica quali possono diventari privati
+		Fai un commit
+		Ricerca errore che fa piantare i client
+		Riguarda il random
+		
+		Rendi response non istanziabile
+		Crea i commenti per Doxygen
 		
 		
 	NECESSARIO:
-		//Aggiungi degli ack nelle funzioni di registrazioni di Interface.cpp
+		//Controlla tutti i distruttori delle classi
+		//Realizza tutti gli help
+		//Controlla continue e return e exit nei vari stati di errore nel client
+		//Controlla tutti gli attributi delle classi e verifica quali possono diventari privati
+		//Controlla tutti i metodi delle classi e verifica quali possono diventari privati
+		//Rimuovi le librerie aggiunte in eccesso
+		//Fai le atexit() sul client;
+			//Suddividi ambiente di più client
+		
+		//Cerca tutti i path e trasformali in variabili di ambiente
 		
 		?//Rendi bool le funzioni void che lo meritano
 			//Rendi bool le funzioni in service_register
 		
-		//Trasforma le set_parameter in responce in una sola funzione
-		?//Cerca tutti i path e trasformali in variabili di ambiente
-		
 		?//Riorganizza le funzioni nei giusti file e i file nelle giuste cartelle
 			//Crea un file per la gestione delle immagini nelle directory e la creazione di immagine da buffer
-		
-		//Aggiusta i printout dei vari server e client
-		//Riabilita i control_thread
-			//Realizza gli else nei thread_body (comando non riconosciuto)
 		
 		Rimuovi la print_service_description
 	
 	OPTIONALE:
 		//Non sovrascrivere i file in storing
-		Crea una classe per la comunicazione
+		Fai le atexit() sul server (ignora a possibilità di più servers attivi)
+		Crea una classe per la comunicazione (che contenga le funzioni di Socket_io)
+		Suddividi l'ambiente di più server (nell'ipotesi di più server uguali che girano)
 		Separa gli spazi dei clients sullo storage_server
-		Suddividi ambiente di più client
-		Suddividi l'ambiente di più server
 			Correggi errore client che richiede la get_list su un server e la get_image su un altro se 2 server_storage sono attivi
+		
+		Aggiungi interattività sul client:	
+			Scelta dell'immagine
+			Scelta del servizio
+			Scelta dell'angolo in rotate

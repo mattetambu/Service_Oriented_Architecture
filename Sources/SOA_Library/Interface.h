@@ -1,29 +1,11 @@
 #ifndef Interface_H_
 #define Interface_H_
 
-#include "Service.h"
-#include "Responce.h"
-#include "Socket_io.h"
+	#include "Service.h"
+	#include <dirent.h>
 
-#include <dirent.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <time.h>
-#include <vector>
-#include <string>
-#include <netinet/in.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-#include <sstream>
-#include <pthread.h>
 
-	
-using namespace std;
-
-extern string SR_address, SR_port;
+	extern string SR_address, SR_port;
 
 	bool register_service_provider (string address, string port);
 	bool unregister_service_provider (string address, string port);

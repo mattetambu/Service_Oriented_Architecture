@@ -1,19 +1,38 @@
 #include "Files_manager.h"
 
 	
+	string make_working_directory (string path) {
+		DIR* directory = opendir(path.c_str());
+		dirent* directory_info;
+		struct stat file_info;
+		int index = 0;
+		
+		if (!directory) return "";
+		while ((directory_info = readdir(directory))) {
+			if (directory_info->d_name[0] == '.' || stat((path + directory_info->d_name).c_str(), &file_info) != 0) continue;
+			if (S_ISDIR(file_info.st_mode)) index = (atoi(directory_info->d_name) > index)? atoi(directory_info->d_name) : index;
+		}
+		
+		stringstream client_number; client_number << ++index;
+		string command = "mkdir -p " + path + client_number.str() + "/";
+		if (system(command.c_str())) return "";
+		
+		return client_number.str();
+	}
+	
 	bool make_file_list (string path, vector<string> *file_list) {
 		DIR* directory = opendir(path.c_str());
 		dirent* directory_info;
 		struct stat file_info;
 		
 		if (!directory) {
-			cerr << "#CLIENT > ERROR - Can't open the image_storage folder" << endl;
+			cerr << "#CLIENT > ERROR - Can't open the image_storage directory" << endl;
 			return false;
 		}
 		while ((directory_info = readdir(directory))) {
-			if (directory_info->d_name[0] == '.') continue;
-			if (stat((path + directory_info->d_name).c_str(), &file_info)) continue;
-			if (S_ISDIR(file_info.st_mode)) continue;
+			if (directory_info->d_name[0] == '.' ||
+				stat((path + directory_info->d_name).c_str(), &file_info) != 0 ||
+				S_ISDIR(file_info.st_mode)) continue;
 			
 			(*file_list).push_back(directory_info->d_name);
 		}
@@ -41,7 +60,7 @@
 		
 		image = fopen (image_path.c_str(), "w");
 		int result = fwrite (image_buffer->pointer, 1, image_buffer->size, image);
-		if(result != image_buffer->size) {
+		if (result != image_buffer->size) {
 			cerr << "#SERVER > " SPACER << " ERROR - Can't create the image " << image_path << " correctly" << endl;
 			return false;
 		}
@@ -54,16 +73,18 @@
 		stat(image_path.c_str(), &file_info);
 		
 		FILE* file = fopen(image_path.c_str(), "r");
-		if(file == NULL) {
+		if (file == NULL) {
 			cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Choosed file " << image_path << " not found" << endl;
 			return false;
 		}
 		image_buffer->size = file_info.st_size;
-		image_buffer->pointer = malloc(image_buffer->size);
+		image_buffer->pointer = (void*) malloc(image_buffer->size);
 		
-		if(fread(image_buffer->pointer, 1, image_buffer->size, file) != (unsigned) image_buffer->size || image_buffer->size == 0) {
+		if (fread(image_buffer->pointer, 1, image_buffer->size, file) != (unsigned) image_buffer->size || image_buffer->size == 0) {
 			cerr <<"#CLIENT > " << SPACER << SPACER << " ERROR - Cannot open correctly the image " << image_path << endl;
 			free (image_buffer->pointer);
+			image_buffer->pointer = NULL;
+			image_buffer->size = 0;
 			return false;
 		}
 		fclose(file);

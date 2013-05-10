@@ -1,16 +1,17 @@
 #ifndef Types_H_
 #define Types_H_
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <sys/stat.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#define SPACER "   "
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <vector>
 
 using namespace std;
+
+
+#define SPACER "   "
 
 	
 	enum Type {

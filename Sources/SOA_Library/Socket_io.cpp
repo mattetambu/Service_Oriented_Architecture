@@ -35,6 +35,22 @@
 		return true;
 	}
 	
+	int accept_client_connection (int listen_socket) {
+		int client_address_lenght;
+		sockaddr_in client_address;
+			
+		client_address_lenght = sizeof(client_address);
+		memset (&client_address, 0, client_address_lenght);
+		return accept (listen_socket, (sockaddr *) &client_address, (socklen_t*) &client_address_lenght);
+	}
+	
+	bool check_address (string address) {
+		sockaddr_in server_address;
+		memset (&server_address, 0, sizeof (server_address));
+
+		return inet_pton (AF_INET, (const char*) address.c_str(), &server_address.sin_addr);
+	}
+	
 	string get_my_ip () {
 		int i = 0;
 		char host_name [100];
@@ -56,7 +72,7 @@
 	bool send_int (int socket, int data) {
 		int sent = send (socket, &data, sizeof(data), 0);
 		if (sent == -1 || sent < (int) sizeof(data)) {
-			cerr << "\t\t ERROR - Unable to send an integer" << endl;
+			cerr << "\t\t ERROR - Can't send an integer" << endl;
 			return false;
 		}
 		return true;	
@@ -65,7 +81,7 @@
 	bool send_double (int socket, double data) {
 		int sent = send (socket, &data, sizeof(data), 0);
 		if (sent == -1 || sent < (int) sizeof(data)) {
-			cerr << "\t\t ERROR - Unable to send a double" << endl;
+			cerr << "\t\t ERROR - Can't send a double" << endl;
 			return false;
 		}
 		return true;
@@ -77,7 +93,7 @@
 		
 		sent_number = send (socket, data.c_str(), size, MSG_WAITALL);
 		if (sent_number == -1 || sent_number < size) {
-			cerr << "\t\t ERROR - Unable to send a string" << endl;
+			cerr << "\t\t ERROR - Can't send a string" << endl;
 			return false;
 		}
 		return true;
@@ -89,7 +105,7 @@
 		
 		sent_number = send (socket, data->pointer, size, MSG_WAITALL);
 		if (sent_number == -1 || sent_number < size) {
-			cerr << "\t\t ERROR - Unable to send a buffer" <<endl;
+			cerr << "\t\t ERROR - Can't send a buffer" <<endl;
 			return false;
 		}
 		return true;
@@ -116,7 +132,7 @@
 	int receive_int (int socket) {
 		int data, received = recv (socket, &data, sizeof(data), 0);
 		if (received == -1 || received < (int) sizeof(data)) {
-			cerr << "\t\t ERROR - Unable to receive an integer" << endl;
+			cerr << "\t\t ERROR - Can't receive an integer" << endl;
 			return -1;
 		}
 		return data;
@@ -126,14 +142,18 @@
 		int size = receive_int (socket);
 		if (size == -1) return "";
 		
-		char* received_string = (char*) malloc (size+1); 
+		char* received_string = new char [size+1];
 		memset(received_string, '\0', size+1);
 		int received = recv (socket, received_string, size, MSG_WAITALL);
 		if (received == -1 || received < size) {
-			cerr << "\t\t ERROR - Unable to receive a string" << endl;
+			cerr << "\t\t ERROR - Can't receive a string" << endl;
 			return "";
 		}
 		received_string[size] = '\0';
+		
+		/*string return_string (received_string);
+		delete received_string;
+		return return_string;*/
 		return string(received_string);
 	}
 	
@@ -141,7 +161,7 @@
 		double data;
 		int received = recv (socket, &data, sizeof(data), 0);
 		if (received == -1 || received < (int) sizeof(data)) {
-			cerr << "\t\t ERROR - Unable to receive a double" << endl;
+			cerr << "\t\t ERROR - Can't receive a double" << endl;
 			return -1;
 		}
 		return data;
@@ -154,7 +174,7 @@
 		
 		int received = recv (socket, data->pointer, data->size, MSG_WAITALL);
 		if (received == -1 || received < data->size) {
-			cerr << "\t\t ERROR - Unable to receive a buffer" << endl;
+			cerr << "\t\t ERROR - Can't receive a buffer" << endl;
 			return NULL;
 		}
 		return data;

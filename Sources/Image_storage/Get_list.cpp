@@ -40,12 +40,13 @@
 		parameter->data.String = "";
 		
 		if (!make_file_list (path, &server_image_list)) return false;
-		
 		if ((int) server_image_list.size() > 0) {
 			parameter->data.String = server_image_list[0];
 			for (int i = 1; i < (int) server_image_list.size(); i++) parameter->data.String += "\n" + server_image_list[i];
 		}
 		
-		responce.set_parameter(0, parameter);
+		if (!responce.set_parameter(0, parameter)) return false;
+		
+		//delete parameter;
 		return true;
 	}

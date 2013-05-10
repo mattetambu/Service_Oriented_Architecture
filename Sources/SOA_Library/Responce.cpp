@@ -9,10 +9,8 @@
 	
 	Responce::~Responce () {
 		for (int i = 0; i < (int) parameters.size(); i++)
-			if ((parameters[i].type == Buffer) && parameters[i].data.Buffer.size != 0) {
-				free (parameters[i].data.Buffer.pointer);
-				parameters[i].data.Buffer.size = 0;
-			}
+			if ((parameters[i].type == Buffer) && parameters[i].data.Buffer.size != 0) free (parameters[i].data.Buffer.pointer);
+		
 		parameters.clear();
 	}
 	
@@ -80,7 +78,7 @@
 			if (parameters[i].type == Integer) parameters[i].data.Integer = receive_int (socket);
 			else if (parameters[i].type == Double) parameters[i].data.Double = receive_double (socket);
 			else if (parameters[i].type == String) parameters[i].data.String = receive_string (socket);
-			else parameters[i].data.Buffer = *(receive_buffer (socket));
+			else if (parameters[i].type == Buffer) parameters[i].data.Buffer = *(receive_buffer (socket));
 		}
 		return true;
 	}

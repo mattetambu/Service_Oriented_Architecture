@@ -3,12 +3,6 @@
 #include "./Service_register/Service_register_server_functions.h"
 
 
-Service_register* service_register = new Service_register();
-Threads thread[N_THREADS], control_thread;
-string SR_address, SR_port;
-int listen_socket;
-
-
 int main (int n_args, char ** args) {
 	cout << "******* Service register server *******" << endl << endl;
 	
@@ -41,13 +35,7 @@ int main (int n_args, char ** args) {
 	
 	cout << "#SERVER > Waiting for connections" << endl;
 	while (control_thread.is_active()) {
-		int client_address_lenght, client_socket;
-		sockaddr_in client_address;
-		cout << endl;
-			
-		client_address_lenght = sizeof(client_address);
-		memset (&client_address, 0, client_address_lenght);
-		client_socket = accept(listen_socket, (sockaddr *) &client_address, (socklen_t*) &client_address_lenght);
+		int client_socket = accept_client_connection (listen_socket);
 		if (client_socket == -1)  {
 			if (control_thread.is_active()) cout << "#SERVER > ERROR - Can't accept the connection with the client" << endl;
 			continue;
@@ -74,6 +62,7 @@ int main (int n_args, char ** args) {
 	close(listen_socket);
 	
 	
+	delete service_register;
 	cout << "#SERVER > Server closed" << endl;
 	exit(0);
 }
