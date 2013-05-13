@@ -104,7 +104,7 @@
 		}
 		
 		for (int i = 0; i < (int) parameters.size(); i++) {
-			if (!send_int (*socket, (int) parameters[i].type)) return false;
+			send_int (*socket, (int) parameters[i].type);
 			if (!receive_int (*socket)) {
 				cerr << "\t\tERROR - Wrong parameters type" << endl;
 				return false;
@@ -148,10 +148,7 @@
 	}
 	
 	bool Service::receive_service_responce (int socket) {
-		bool result = responce.receive_service_responce (socket);
-		
-		close (socket);
-		return result;		
+		return responce.receive_service_responce (socket);		
 	}
 
 	
@@ -176,6 +173,6 @@
 			result = strtok (NULL, "\n");
 		}
 		
-		//delete image_list;
+		delete image_list;
 		return true;
 	}

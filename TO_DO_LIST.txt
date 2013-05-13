@@ -1,41 +1,15 @@
 	URGENTE:
-		Fai un commit
-		Ricerca errore che fa piantare i client
-		Riguarda il random
-		
-		Rendi response non istanziabile
+		//Correggi errore che fa piantare i client (Il main accetta la connect ma non ci sono thread disponibili per fornire il servizio)
+		//Riguarda il random
 		Crea i commenti per Doxygen
 		
+		Fai un commit
 		
 	NECESSARIO:
-		//Controlla tutti i distruttori delle classi
-		//Realizza tutti gli help
-		//Controlla continue e return e exit nei vari stati di errore nel client
-		//Controlla tutti gli attributi delle classi e verifica quali possono diventari privati
-		//Controlla tutti i metodi delle classi e verifica quali possono diventari privati
-		//Rimuovi le librerie aggiunte in eccesso
-		//Fai le atexit() sul client;
-			//Suddividi ambiente di più client
 		
-		//Cerca tutti i path e trasformali in variabili di ambiente
-		
-		?//Rendi bool le funzioni void che lo meritano
-			//Rendi bool le funzioni in service_register
-		
-		?//Riorganizza le funzioni nei giusti file e i file nelle giuste cartelle
-			//Crea un file per la gestione delle immagini nelle directory e la creazione di immagine da buffer
-		
-		Rimuovi la print_service_description
-	
 	OPTIONALE:
 		//Non sovrascrivere i file in storing
+		Rendi response non istanziabile
 		Fai le atexit() sul server (ignora a possibilità di più servers attivi)
 		Crea una classe per la comunicazione (che contenga le funzioni di Socket_io)
 		Suddividi l'ambiente di più server (nell'ipotesi di più server uguali che girano)
-		Separa gli spazi dei clients sullo storage_server
-			Correggi errore client che richiede la get_list su un server e la get_image su un altro se 2 server_storage sono attivi
-		
-		Aggiungi interattività sul client:	
-			Scelta dell'immagine
-			Scelta del servizio
-			Scelta dell'angolo in rotate

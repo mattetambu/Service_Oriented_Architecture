@@ -1,7 +1,7 @@
 #ifndef Interface_H_
 #define Interface_H_
 
-	#include "Service.h"
+	#include "./Service.h"
 	#include <dirent.h>
 
 
@@ -14,7 +14,5 @@
 	bool unregister_service (Service_description* s_description);
 	
 	Service* service_request (string service);
-
-	void print_service_description (Service_description* s_description); // TO BE REMOVED
 
 #endif

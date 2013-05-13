@@ -1,19 +1,20 @@
 #ifndef Clients_functions_H_
 #define Clients_functions_H_ 
 
-	#include "../SOA_Library/Interface.h"
-	#include "../SOA_Library/Threads.h"
+	#include "../../SOA_Library/Interface.h"
+	#include "../../SOA_Library/Threads.h"
 	#include <time.h>
 
-	#define IMAGES_DIRECTORY "Images/"
+	#define IMAGES_DIRECTORY "./Images/"
 	#define CLIENT_DIRECTORY "./Work_directories/Clients/"
 	#define REMOVE_DIRECTORY true
 	
 	int iteration_number;
-	string SR_address, SR_port, client_number;
+	string SR_address, SR_port, client_number = "";
 
 	bool check_client_arguments (int n_args, char** args){ // Checking arguments
 		char* error = '\0';
+		if (n_args < 4) cout << endl << endl;
 		if (n_args < 2) {
 			cout << "#CLIENT > Set iterations number of the client: ";
 			cin >> iteration_number;
@@ -22,7 +23,7 @@
 		if (iteration_number < 1) return false;
 		
 		if (n_args < 3) {
-			cout << "#CLIENT > Set Service_Register address: ";
+			cout << "#CLIENT > Set Service_register_server address: ";
 			cin >> SR_address;
 		}
 		else SR_address = args[2];
@@ -30,7 +31,7 @@
 		
 		error = '\0';
 		if (n_args < 4) {
-			cout << "#CLIENT > Set Service_Register port [1024-65535]: ";
+			cout << "#CLIENT > Set Service_register_server port [1024-65535]: ";
 			cin >> SR_port;
 		}
 		else SR_port = args[3];
@@ -40,14 +41,15 @@
 	}
 	
 	string choose_random_file (vector<string> folder_files) { // Choose random file from list
+		srand(time(NULL));
 		if ((int) folder_files.size() == 0) return "";
-		int random_choice = rand() % ((int) folder_files.size());
 		
-		return folder_files[random_choice];
+		return folder_files[rand() % ((int) folder_files.size())];
 	}
 
 	void remove_working_directory () {
-		if (!REMOVE_DIRECTORY) return;
+		if (!REMOVE_DIRECTORY || client_number == "") return;
+		
 		string command = "rm -rf " + string(CLIENT_DIRECTORY) + client_number + "/";
 		if (system(command.c_str())) cerr << "#CLIENT > ERROR - Can't remove the working directory" << endl;
 	}

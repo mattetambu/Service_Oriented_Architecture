@@ -2,17 +2,25 @@
 Compile_command = @g++ `Magick++-config --cxxflags --cppflags` -Wall -Werror -O2 -lm -lpthread -pthread SOA_Library/*.cpp
 
 # Editable enviroment
+Interactive							:= "false"
 Service_register_server_address		:= "127.0.0.1"
 Service_register_server_port		:= "23456"
 Image_manipulation_server_port		:= "34567"
 Image_storage_server_port			:= "45678"
-Client_iteretions					:= "100"
+Client_iteretions					:= "1"
 
 # Setting up enviroment
+ifeq (${Interactive}, "false")
 Image_manipulation_server_command 	:= "Image_manipulation_server ${Image_manipulation_server_port} ${Service_register_server_address} ${Service_register_server_port}"
 Image_storage_server_command 		:= "Image_storage_server ${Image_storage_server_port} ${Service_register_server_address} ${Service_register_server_port}"
 Service_register_server_command 	:= "Service_register_server ${Service_register_server_port}"
 Client_command						:= "Client ${Client_iteretions} ${Service_register_server_address} ${Service_register_server_port}"
+else
+Image_manipulation_server_command 	:= "Image_manipulation_server"
+Image_storage_server_command 		:= "Image_storage_server"
+Service_register_server_command 	:= "Service_register_server"
+Client_command						:= "Client"
+endif
 
 # Setting up Xterm enviroment
 XtermCommand = @xterm -hold -leftbar -geometry
@@ -37,19 +45,19 @@ Compile:
 	@echo "   Compiling process complete."
 	@echo ""
 
-Service_register_server: SOA_Library/*.cpp Service_register/*.cpp Service_register_server.cpp
+Service_register_server: SOA_Library/*.cpp Application/Service_register_server/*.h Application/Service_register_server/*.cpp Service_register_server.cpp
 	@echo "   Compiling Service Register"
-	${Compile_command} Service_register_server.cpp Service_register/*.cpp -o Service_register_server
+	${Compile_command} Service_register_server.cpp Application/Service_register_server/*.cpp -o Service_register_server
 
-Image_manipulation_server: SOA_Library/*.cpp Image_manipulation/*.cpp Image_manipulation_server.cpp
+Image_manipulation_server: SOA_Library/*.cpp Application/Image_manipulation_server/*.h Application/Image_manipulation_server/*.cpp Image_manipulation_server.cpp
 	@echo "   Compiling Image Manipulation Server"
-	${Compile_command} Image_manipulation_server.cpp Image_manipulation/*.cpp `Magick++-config --ldflags --libs` -o Image_manipulation_server
+	${Compile_command} Image_manipulation_server.cpp Application/Image_manipulation_server/*.cpp `Magick++-config --ldflags --libs` -o Image_manipulation_server
 
-Image_storage_server: SOA_Library/*.cpp Image_storage/*.cpp Image_storage_server.cpp
+Image_storage_server: SOA_Library/*.cpp Application/Image_storage_server/*.h Application/Image_storage_server/*.cpp Image_storage_server.cpp
 	@echo "   Compiling Image Storage Server"
-	${Compile_command} Image_storage_server.cpp Image_storage/*.cpp -o Image_storage_server
+	${Compile_command} Image_storage_server.cpp Application/Image_storage_server/*.cpp -o Image_storage_server
 
-Client: SOA_Library/*.cpp Client.cpp
+Client: SOA_Library/*.cpp Application/Clients/*.h Client.cpp
 	@echo "   Compiling Client"
 	${Compile_command} Client.cpp -o Client
 

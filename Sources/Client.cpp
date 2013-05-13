@@ -1,6 +1,6 @@
 //USAGE: Client ${Client_iteretions} ${Service_register_server_address} ${Service_register_server_port}
 
-#include "./Clients/Clients_functions.h"
+#include "./Application/Clients/Clients_functions.h"
 
 
 int main (int n_args, char ** args) {
@@ -23,13 +23,11 @@ int main (int n_args, char ** args) {
 		sleep(1);
 		//cin.get();
 		
-		cout << "******* Iteration numeber " << i << " *******" << endl;
-		
 		string required_service_name = (rand() % 2)? "rotate_image" : "horizontal_flip_image";
 		string file_choice = (rand() % 2)? "from_disk" : "from_server";
+		int service_socket, degrees = rand() % 360;
 		string disk_image_name, server_image_name, result_image_path = CLIENT_DIRECTORY + client_number + "/";
 		string image_path, image_name = (required_service_name == "rotate_image")? "rotated_" : "flipped_";
-		int service_socket, degrees = rand() % 360;
 		vector<Parameter> parameters;
 
 		if (file_choice == "from_server"){	//******************************** GETTING IMAGE FROM STORAGE SERVER ***************************************
@@ -56,17 +54,20 @@ int main (int n_args, char ** args) {
 			}
 			
 			vector<string> server_image_list;
-			get_list_service->responce_decode (&server_image_list);
+			if (!get_list_service->responce_decode (&server_image_list)) {
+				cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Can't decode the responce of service get_list" << endl;
+				continue;
+			}
 			if ((int) server_image_list.size() == 0) {
 				cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - No image stored in the server" << endl;
 				continue;
 			}
 			else server_image_name = choose_random_file(server_image_list);		
-			//delete get_list_service;
 			
 			cout << "#CLIENT > " << SPACER << " Service get_list successfully completed" << endl;
 			cout << "#CLIENT > " << SPACER << " Choosed image: " << server_image_name << endl;
 			
+			delete get_list_service;
 			
 			
 			//************************************ LOOKING FOR GET_IMAGE SERVICE *********************************************
@@ -103,12 +104,15 @@ int main (int n_args, char ** args) {
 			}
 						
 			image_path = CLIENT_DIRECTORY + client_number + "/" + server_image_name;
-			get_image_service->responce_decode (image_path);
+			if (!get_image_service->responce_decode (image_path)) {
+				cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Can't decode the responce of service get_image" << endl;
+				continue;
+			}
 			image_name += server_image_name;
 
 			cout << "#CLIENT > " << SPACER << " Service get_image successfully completed" << endl;
 			
-			//delete get_image_service;
+			delete get_image_service;
 		}
 		else {	//************************************** GETTING IMAGE FROM DISK ***********************************************
 			cout << "#CLIENT > Choosing an image from disk" << endl;
@@ -174,10 +178,13 @@ int main (int n_args, char ** args) {
 			exit(-1);	
 		}
 				
-		required_service->responce_decode (result_image_path);
-		//delete required_service;
-		
+		if (!required_service->responce_decode (result_image_path)) {
+			cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - Can't decode the responce of service " << required_service_name << endl;
+			continue;
+		}
 		cout << "#CLIENT > " << SPACER << " Service " << required_service_name << " successfully completed" << endl;
+		
+		delete required_service;
 		
 		
 		
@@ -217,12 +224,14 @@ int main (int n_args, char ** args) {
 			exit(-1);	
 		}
 		cout << "#CLIENT > " << SPACER << " Service store_image successfully completed" << endl;
+		
+		delete store_image_service;
 
 		
 		//************************************** REQUEST COMPLETED ***********************************************
-		//delete store_image_service;
 		parameters.clear();
 	}
+	
 	cout << endl << "**********************" << endl;
 	exit(0);
 }

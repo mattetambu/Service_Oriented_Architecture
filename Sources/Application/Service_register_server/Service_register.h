@@ -3,7 +3,7 @@
 #ifndef Service_register_H_
 #define Service_register_H_
 
-	#include "../SOA_Library/Types.h"
+	#include "../../SOA_Library/Types.h"
 
 	#include <map>
 	#include <list>

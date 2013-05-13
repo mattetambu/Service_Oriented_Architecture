@@ -1,19 +1,19 @@
 #ifndef Types_H_
 #define Types_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <string>
-#include <string.h>
-#include <vector>
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <iostream>
+	#include <string>
+	#include <string.h>
+	#include <vector>
 
-using namespace std;
+	using namespace std;
 
 
-#define SPACER "   "
+	#define SPACER "   "
 
-	
+		
 	enum Type {
 		Integer,
 		Double,

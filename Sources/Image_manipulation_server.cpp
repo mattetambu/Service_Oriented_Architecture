@@ -1,6 +1,6 @@
 //USAGE: Image_manipulation_server ${Image_manipulation_server_port} ${Service_register_server_address} ${Service_register_server_port}
 
-#include "./Image_manipulation/Image_manipulation_server_functions.h"
+#include "./Application/Image_manipulation_server/Image_manipulation_server_functions.h"
 
 
 int main (int n_args, char ** args) {
@@ -10,7 +10,7 @@ int main (int n_args, char ** args) {
 		cerr << "#SERVER > ERROR - Invalid argument" << endl;
 		exit(-1);
 	}
-	if (!socket_initialization_server (&listen_socket, SP_port, (int)N_THREADS)) {
+	if (!socket_initialization_server (&listen_socket, SP_port, (int) BACKLOG_QUEUE)) {
 		cerr << "#SERVER > ERROR - Can't create a listen socket correctly" << endl;
 		exit(-1);
 	}
@@ -55,12 +55,7 @@ int main (int n_args, char ** args) {
 			continue;
 		}
 		
-		for (int i = 0; i < N_THREADS; i++)
-			if (thread[i].test_and_set_busy()) {
-				thread[i].set_socket(client_socket);
-				thread[i].thread_start();
-				break;
-			}
+		while (!assign_execution_thread (client_socket)) pthread_cond_wait (&cond_thread_free, &mutex_thread_free);
 	}
 
 
@@ -89,5 +84,6 @@ int main (int n_args, char ** args) {
 	
 	
 	cout << endl << "#SERVER > Server closed" << endl;
+	cout << endl << "***********************" << endl;
 	exit(0);
 }

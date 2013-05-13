@@ -3,9 +3,9 @@
 #ifndef Service_H_
 #define Service_H_
 
-	#include "Socket_io.h"
-	#include "Responce.h"
-	#include "Files_manager.h"
+	#include "./Socket_io.h"
+	#include "./Responce.h"
+	#include "./Files_manager.h"
 
 	#define REQUEST_ACCEPTED 1
 	#define REQUEST_NOT_ACCEPTED 0

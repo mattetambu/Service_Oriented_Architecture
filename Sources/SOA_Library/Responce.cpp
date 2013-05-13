@@ -44,7 +44,7 @@
 		}
 		
 		for (int i = 0; i < (int) parameters.size(); i++) {
-			if (!send_int (socket, (int) parameters[i].type)) return false;
+			send_int (socket, (int) parameters[i].type);
 			if (!receive_int (socket)) {
 				cerr << SPACER << SPACER << "ERROR - Wrong parameters type in the responce request" << endl;
 				return false;

@@ -47,6 +47,6 @@
 		
 		if (!responce.set_parameter(0, parameter)) return false;
 		
-		//delete parameter;
+		delete parameter;
 		return true;
 	}

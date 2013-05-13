@@ -1,6 +1,6 @@
 //USAGE: Service_register_server ${Service_register_server_port}
 
-#include "./Service_register/Service_register_server_functions.h"
+#include "./Application/Service_register_server/Service_register_server_functions.h"
 
 
 int main (int n_args, char ** args) {
@@ -10,7 +10,7 @@ int main (int n_args, char ** args) {
 		cout << "#SERVER > ERROR - Invalid argument" << endl;
 		exit(-1);
 	}
-	if (!socket_initialization_server (&listen_socket, SR_port, (int)N_THREADS)) {
+	if (!socket_initialization_server (&listen_socket, SR_port, (int) BACKLOG_QUEUE)) {
 		cout << "#SERVER > ERROR - Can't create a listen socket correctly" << endl;
 		exit(-1);
 	}
@@ -41,13 +41,7 @@ int main (int n_args, char ** args) {
 			continue;
 		}
 		
-		for (int i = 0; i < N_THREADS; i++) {
-			if (thread[i].test_and_set_busy()) {
-				thread[i].set_socket(client_socket);
-				thread[i].thread_start();
-				break;
-			}
-		}
+		while (!assign_execution_thread (client_socket)) pthread_cond_wait (&cond_thread_free, &mutex_thread_free);
 	}
 	
 	
@@ -61,8 +55,10 @@ int main (int n_args, char ** args) {
 	shutdown(listen_socket, SHUT_RDWR);
 	close(listen_socket);
 	
-	
 	delete service_register;
-	cout << "#SERVER > Server closed" << endl;
+	
+	
+	cout << endl << "#SERVER > Server closed" << endl;
+	cout << endl << "***********************" << endl;
 	exit(0);
 }

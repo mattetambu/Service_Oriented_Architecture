@@ -42,7 +42,6 @@
 		if (!get_buffer_from_image (image_path, &parameter->data.Buffer)) return false;		
 		if (!responce.set_parameter(0, parameter)) return false;
 		
-		//free(parameter->data.Buffer.pointer);
-		//delete parameter;
+		delete parameter;
 		return true;
 	}

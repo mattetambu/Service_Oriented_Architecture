@@ -55,7 +55,6 @@
 		
 		if (REMOVE_IMAGES && (remove(source_path.c_str()) || remove(result_path.c_str()))) cerr << "\t\tCan't remove temporany files" << endl;
 		
-		//free(parameter->data.Buffer.pointer);
-		//delete parameter;
+		delete parameter;
 		return true;
 	}

@@ -1,33 +1,51 @@
 #ifndef Service_register_server_functions_H_
 #define Service_register_server_functions_H_ 
 
-	#include "../SOA_Library/Interface.h"
-	#include "../SOA_Library/Threads.h"
-	#include "Service_register.h"
+	#include "../../SOA_Library/Interface.h"
+	#include "../../SOA_Library/Threads.h"
+	#include "./Service_register.h"
 	
 	#define REQUEST_NOT_ACCEPTED 0
 	#define REQUEST_ACCEPTED 1
 	#define N_THREADS 5
+	#define BACKLOG_QUEUE 5
 	
 	Service_register* service_register = new Service_register();
+	
 	Threads thread[N_THREADS], control_thread;
+	pthread_mutex_t mutex_thread_free;
+	pthread_cond_t cond_thread_free;
+	
 	string SR_address, SR_port;
 	int listen_socket;
 	
 	
 	bool check_server_arguments (int n_args, char** args) { // Checking arguments
 		if (n_args < 2) {
-			cout << "#SERVER > Set Service_Register Server port [1024-65535]: ";
-			cin >> SR_port;
+			cout << "#SERVER > Set Service_register_server port [1024-65535]: ";
+			getline(cin, SR_port);
 		}
 		else SR_port = args[1];
 		if (atoi(SR_port.c_str()) < 1023 ||  atoi(SR_port.c_str()) > 65535 ) return false;
 		
 		SR_address = get_my_ip();
-		cout << "#SERVER > Service_Register Server running on  " << SR_address << ":" << SR_port << endl;
+		cout << "#SERVER > Service_register_server running on  " << SR_address << ":" << SR_port << endl;
 		return true;
 	}
 
+	bool assign_execution_thread (int client_socket) {
+		int i = 0;
+		while (i < N_THREADS)
+			if (thread[i].test_and_set_busy()) {
+				thread[i].set_socket(client_socket);
+				thread[i].thread_start();
+				break;
+			}
+			else i++;
+		
+		return (i != N_THREADS);
+	}
+	
 	bool Service_register_server_help () {
 		cout << SPACER << "Command format:" << endl;
 		cout << SPACER << SPACER << "command" << endl;
@@ -46,10 +64,11 @@
 		Service_description* s_description;
 		
 		while (thread[ID].is_active()) {
+			pthread_cond_signal(&cond_thread_free);
 			thread[ID].wait_start();
 			if (!thread[ID].is_active()) break;
-			service_result = false;
 			
+			service_result = false;
 			cout << endl << "#SERVER > Client connetted" << endl;
 			request = receive_string (thread[ID].get_socket());
 			cout << "#SERVER > Service request: " << request << endl;

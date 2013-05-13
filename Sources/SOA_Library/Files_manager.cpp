@@ -52,7 +52,7 @@
 			char response;
 			cout << "\t\tThe file " << image_path.substr(image_path.find_last_of("/")+1) << " already exists.\n\t\tOverwrite [Y/N]? ";
 			while (response != 'Y' && response != 'N' && response != 'S') {
-				cin >> response;
+				getline(cin, response);
 				response = toupper(response);
 			}
 			if (response == 'N') return false;

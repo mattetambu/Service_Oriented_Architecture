@@ -70,7 +70,7 @@
 	
 	
 	bool send_int (int socket, int data) {
-		int sent = send (socket, &data, sizeof(data), 0);
+		int sent = send (socket, &data, sizeof(data), MSG_WAITALL);
 		if (sent == -1 || sent < (int) sizeof(data)) {
 			cerr << "\t\t ERROR - Can't send an integer" << endl;
 			return false;
@@ -79,7 +79,7 @@
 	}
 	
 	bool send_double (int socket, double data) {
-		int sent = send (socket, &data, sizeof(data), 0);
+		int sent = send (socket, &data, sizeof(data), MSG_WAITALL);
 		if (sent == -1 || sent < (int) sizeof(data)) {
 			cerr << "\t\t ERROR - Can't send a double" << endl;
 			return false;
@@ -130,7 +130,7 @@
 
 	
 	int receive_int (int socket) {
-		int data, received = recv (socket, &data, sizeof(data), 0);
+		int data, received = recv (socket, &data, sizeof(data), MSG_WAITALL);
 		if (received == -1 || received < (int) sizeof(data)) {
 			cerr << "\t\t ERROR - Can't receive an integer" << endl;
 			return -1;
@@ -151,15 +151,12 @@
 		}
 		received_string[size] = '\0';
 		
-		/*string return_string (received_string);
-		delete received_string;
-		return return_string;*/
 		return string(received_string);
 	}
 	
 	double receive_double (int socket) {
 		double data;
-		int received = recv (socket, &data, sizeof(data), 0);
+		int received = recv (socket, &data, sizeof(data), MSG_WAITALL);
 		if (received == -1 || received < (int) sizeof(data)) {
 			cerr << "\t\t ERROR - Can't receive a double" << endl;
 			return -1;

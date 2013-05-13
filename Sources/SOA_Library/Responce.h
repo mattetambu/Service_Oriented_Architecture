@@ -3,11 +3,12 @@
 #ifndef Responce_H_
 #define Responce_H_
 
-	#include "Socket_io.h"
+	#include "./Socket_io.h"
 
 
 	class Responce {
-		vector<Parameter> parameters;
+		private:
+			vector<Parameter> parameters;
 
 		public:
 			Responce () {}

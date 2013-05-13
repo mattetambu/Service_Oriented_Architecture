@@ -71,18 +71,3 @@
 		close(socket);
 		return (s_description == NULL) ? NULL : new Service (s_description);
 	}
-	
-	
-	void print_service_description (Service_description* s_description) { // TO BE REMOVED
-		cout << "\n\n Printing service_description:" << endl;
-		cout << "s_description->name:" << s_description->name << endl;
-		cout << "s_description->address:" << s_description->address << endl;
-		cout << "s_description->port:" << s_description->port << endl;
-		
-		cout << "s_description->p_description.size():" << s_description->p_description.size() << endl;
-		cout << "Parameters description:" << endl;
-		for(int i = 0; i < (int) s_description->p_description.size(); i++) {
-			cout << SPACER << "s_description->p_description[" << i << "].direction:" << s_description->p_description[i].direction << endl;
-			cout << SPACER << "s_description->p_description[" << i << "].type:" << s_description->p_description[i].type << endl;
-		}
-	}

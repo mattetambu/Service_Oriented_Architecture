@@ -1,8 +1,8 @@
 #ifndef Image_storage_server_functions_H_
 #define Image_storage_server_functions_H_ 
 
-	#include "../SOA_Library/Interface.h"
-	#include "../SOA_Library/Threads.h"
+	#include "../../SOA_Library/Interface.h"
+	#include "../../SOA_Library/Threads.h"
 	#include "./Store_image.h"
 	#include "./Get_image.h"
 	#include "./Get_list.h"
@@ -10,41 +10,44 @@
 	#define IMAGES_STORAGE_DIRECTORY "./Work_directories/Servers/Image_storage_server/"	
 	#define REQUEST_NOT_ACCEPTED 0
 	#define N_THREADS 5
+	#define BACKLOG_QUEUE 5
 
 	Store_image* store_image;
 	Get_image* get_image;
 	Get_list* get_list;
+	
 	Threads thread[N_THREADS], control_thread;
-	string SP_address, SR_address, SP_port, SR_port;
+	pthread_mutex_t mutex_1, mutex_2, mutex_thread_free;
+	pthread_cond_t cond_thread_free;
 
-	pthread_mutex_t mutex_1, mutex_2;
+	string SP_address, SR_address, SP_port, SR_port;
 	int listen_socket, readers_count = 0;
 
 	
 	bool check_server_arguments (int n_args, char** args) { // Checking arguments
 		if (n_args < 2) {
-			cout << "#SERVER > Set Image_Storage Server port [1024-65535]: ";
-			cin >> SP_port;
+			cout << "#SERVER > Set Image_storage_server port [1024-65535]: ";
+			getline(cin, SP_port);
 		}
 		else SP_port = args[1];
 		if (atoi(SP_port.c_str()) < 1023 ||  atoi(SP_port.c_str()) > 65535 ) return false;
 		
 		if (n_args < 3) {
-			cout << "#SERVER > Set Service_Register address: ";
-			cin >> SR_address;
+			cout << "#SERVER > Set Service_register_server address: ";
+			getline(cin, SR_address);
 		}
 		else SR_address = args[2];
 		if (!check_address (SR_address)) return false;
 		
 		if (n_args < 4) {
-			cout << "#SERVER > Set Service_Register port [1024-65535]: ";
-			cin >> SR_port;
+			cout << "#SERVER > Set Service_register_server port [1024-65535]: ";
+			getline(cin, SR_port);
 		}
 		else SR_port = args[3];
 		if (atoi(SR_port.c_str()) < 1023 ||  atoi(SR_port.c_str()) > 65535 ) return false;
 		
 		SP_address = get_my_ip();
-		cout << "#SERVER > Image_Storage Server running on  " << SP_address << ":" << SP_port << endl;
+		cout << "#SERVER > Image_storage_server running on  " << SP_address << ":" << SP_port << endl;
 		return true;
 	}
 
@@ -64,7 +67,20 @@
 	void writers_epilogue() {
 		pthread_mutex_unlock (&mutex_2);
 	}
+	
+	bool assign_execution_thread (int client_socket) {
+		int i = 0;
+		while (i < N_THREADS)
+			if (thread[i].test_and_set_busy()) {
+				thread[i].set_socket(client_socket);
+				thread[i].thread_start();
+				break;
+			}
+			else i++;
 		
+		return (i != N_THREADS);
+	}
+	
 	bool Image_storage_server_help () {
 		cout << SPACER << "Command format:" << endl;
 		cout << SPACER << SPACER << "command [operand]" << endl;
@@ -87,10 +103,11 @@
 		int ID = (int) thread_ID;
 
 		while (thread[ID].is_active()) {
+			pthread_cond_signal(&cond_thread_free);
 			thread[ID].wait_start();
 			if (!thread[ID].is_active()) break;
-			cout << endl << "#SERVER > Client connetted" << endl;
 			
+			cout << endl << "#SERVER > Client connetted" << endl;
 			string service = receive_string(thread[ID].get_socket());
 			cout << "#SERVER > Service request: " << service << endl;
 			
