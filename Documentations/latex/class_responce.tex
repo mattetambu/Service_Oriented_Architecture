@@ -1,0 +1,200 @@
+\hypertarget{class_responce}{\section{Riferimenti per la classe Responce}
+\label{class_responce}\index{Responce@{Responce}}
+}
+
+
+Classe che contiene i parametri di risposta di un servizio (se presenti).  
+
+
+
+
+{\ttfamily \#include $<$Responce.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_responce_aede5b4767eab4d3902b1986165bbc21a}{\hyperlink{class_responce_aede5b4767eab4d3902b1986165bbc21a}{Responce} ()}\label{class_responce_aede5b4767eab4d3902b1986165bbc21a}
+
+\begin{DoxyCompactList}\small\item\em Costruttore di default della classe {\ttfamily \hyperlink{class_responce}{Responce}}. \end{DoxyCompactList}\item 
+\hyperlink{class_responce_ad9b379c74a0a348bba1de5f57ea5bec4}{Responce} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$s\-\_\-description)
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe {\ttfamily \hyperlink{class_responce}{Responce}} con le informazioni ottenute dalla descrizione del servizio. \end{DoxyCompactList}\item 
+\hypertarget{class_responce_a1397a92089fe6cd640ff85f4c3f02e71}{virtual \hyperlink{class_responce_a1397a92089fe6cd640ff85f4c3f02e71}{$\sim$\-Responce} ()}\label{class_responce_a1397a92089fe6cd640ff85f4c3f02e71}
+
+\begin{DoxyCompactList}\small\item\em Distruttore della classe {\ttfamily \hyperlink{class_responce}{Responce}}. \end{DoxyCompactList}\item 
+void \hyperlink{class_responce_a3e017879279c806c8464ce5b80fbc2bb}{add\-\_\-parameter} (\hyperlink{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7}{Type} type)
+\begin{DoxyCompactList}\small\item\em Aggiunge un parametro di tipo {\itshape type} alla lista dei parametri di risposta del servizio. \end{DoxyCompactList}\item 
+bool \hyperlink{class_responce_a4aae649830ede3a72a3a51b80127e0a7}{set\-\_\-parameter} (int index, \hyperlink{struct_parameter}{Parameter} $\ast$parameter)
+\begin{DoxyCompactList}\small\item\em Setta il parametro di indice {\ttfamily index} al valore del parametro {\ttfamily parameter}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_responce_a194e896972517e27a18c5177e553612d}{get\-\_\-parameter} (int index, \hyperlink{struct_parameter}{Parameter} $\ast$parameter)
+\begin{DoxyCompactList}\small\item\em Ritorna al chiamante il parametro di risposta del servizio di indice {\ttfamily index}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_responce_a9c9b1966b01d4bbb57ec2cd4973e9d03}{send\-\_\-service\-\_\-responce} (int socket)
+\begin{DoxyCompactList}\small\item\em Invia sul {\itshape Socket} i parametri di risposta di un servizio. \end{DoxyCompactList}\item 
+bool \hyperlink{class_responce_aafc0e0434609dc7a030315b7a7acfa81}{receive\-\_\-service\-\_\-responce} (int socket)
+\begin{DoxyCompactList}\small\item\em Riceve sul {\itshape Socket} i parametri di risposta di un servizio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_responce_a88a6551a0ad7e26e18621e4f25f5ffb2}{vector$<$ \hyperlink{struct_parameter}{Parameter} $>$ \hyperlink{class_responce_a88a6551a0ad7e26e18621e4f25f5ffb2}{parameters}}\label{class_responce_a88a6551a0ad7e26e18621e4f25f5ffb2}
+
+\begin{DoxyCompactList}\small\item\em Vettore di tipo {\ttfamily \hyperlink{struct_parameter}{Parameter}} che contiene i parametri di risposta del servizio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Classe che contiene i parametri di risposta di un servizio (se presenti). 
+
+Definizione alla linea 85 del file Responce.\-h.
+
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{class_responce_ad9b379c74a0a348bba1de5f57ea5bec4}{\index{Responce@{Responce}!Responce@{Responce}}
+\index{Responce@{Responce}!Responce@{Responce}}
+\subsubsection[{Responce}]{\setlength{\rightskip}{0pt plus 5cm}Responce\-::\-Responce (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{class_responce_ad9b379c74a0a348bba1de5f57ea5bec4}
+
+
+Costruttore che inizializza la classe {\ttfamily \hyperlink{class_responce}{Responce}} con le informazioni ottenute dalla descrizione del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 5 del file Responce.\-cpp.
+
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{class_responce_a3e017879279c806c8464ce5b80fbc2bb}{\index{Responce@{Responce}!add\-\_\-parameter@{add\-\_\-parameter}}
+\index{add\-\_\-parameter@{add\-\_\-parameter}!Responce@{Responce}}
+\subsubsection[{add\-\_\-parameter}]{\setlength{\rightskip}{0pt plus 5cm}void Responce\-::add\-\_\-parameter (
+\begin{DoxyParamCaption}
+\item[{{\bf Type}}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_responce_a3e017879279c806c8464ce5b80fbc2bb}
+
+
+Aggiunge un parametro di tipo {\itshape type} alla lista dei parametri di risposta del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em type} & Tipo del parametro di risposta da aggiungere al servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 18 del file Responce.\-cpp.
+
+\hypertarget{class_responce_a194e896972517e27a18c5177e553612d}{\index{Responce@{Responce}!get\-\_\-parameter@{get\-\_\-parameter}}
+\index{get\-\_\-parameter@{get\-\_\-parameter}!Responce@{Responce}}
+\subsubsection[{get\-\_\-parameter}]{\setlength{\rightskip}{0pt plus 5cm}bool Responce\-::get\-\_\-parameter (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{{\bf Parameter} $\ast$}]{parameter}
+\end{DoxyParamCaption}
+)}}\label{class_responce_a194e896972517e27a18c5177e553612d}
+
+
+Ritorna al chiamante il parametro di risposta del servizio di indice {\ttfamily index}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em index} & Indice del parametro di risposta da ritornare al chiamante. \\
+\hline
+\mbox{\tt out}  & {\em parameter} & Parametro da ritornare al chiamante. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 32 del file Responce.\-cpp.
+
+\hypertarget{class_responce_aafc0e0434609dc7a030315b7a7acfa81}{\index{Responce@{Responce}!receive\-\_\-service\-\_\-responce@{receive\-\_\-service\-\_\-responce}}
+\index{receive\-\_\-service\-\_\-responce@{receive\-\_\-service\-\_\-responce}!Responce@{Responce}}
+\subsubsection[{receive\-\_\-service\-\_\-responce}]{\setlength{\rightskip}{0pt plus 5cm}bool Responce\-::receive\-\_\-service\-\_\-responce (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{class_responce_aafc0e0434609dc7a030315b7a7acfa81}
+
+
+Riceve sul {\itshape Socket} i parametri di risposta di un servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} sul quale ricevere i parametri di risposta del servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricezione della risposta, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. La ricezione dei parametri di risposta del servizio avviene nel seguente modo\-: \begin{DoxyItemize}
+\item riceve il numero di parametri di risposta del servizio e se corrispondono con quelli attesi invia la conferma \item per ogni parametro riceve il tipo e lo confronta con quello atteso (e invia il risultato del confronto) \item per ogni parametro riceve il valore effettivo del parametro \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 62 del file Responce.\-cpp.
+
+\hypertarget{class_responce_a9c9b1966b01d4bbb57ec2cd4973e9d03}{\index{Responce@{Responce}!send\-\_\-service\-\_\-responce@{send\-\_\-service\-\_\-responce}}
+\index{send\-\_\-service\-\_\-responce@{send\-\_\-service\-\_\-responce}!Responce@{Responce}}
+\subsubsection[{send\-\_\-service\-\_\-responce}]{\setlength{\rightskip}{0pt plus 5cm}bool Responce\-::send\-\_\-service\-\_\-responce (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{class_responce_a9c9b1966b01d4bbb57ec2cd4973e9d03}
+
+
+Invia sul {\itshape Socket} i parametri di risposta di un servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} sul quale inviare i parametri di risposta del servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'invio della risposta, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. L'invio dei parametri di risposta del servizio avviene nel seguente modo\-: \begin{DoxyItemize}
+\item invia il numero di parametri di risposta del servizio e si pone in attesa della conferma \item per ogni parametro invia il tipo e si pone in attesa della conferma \item per ogni parametro invia il valore effettivo del parametro \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 39 del file Responce.\-cpp.
+
+\hypertarget{class_responce_a4aae649830ede3a72a3a51b80127e0a7}{\index{Responce@{Responce}!set\-\_\-parameter@{set\-\_\-parameter}}
+\index{set\-\_\-parameter@{set\-\_\-parameter}!Responce@{Responce}}
+\subsubsection[{set\-\_\-parameter}]{\setlength{\rightskip}{0pt plus 5cm}bool Responce\-::set\-\_\-parameter (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{{\bf Parameter} $\ast$}]{parameter}
+\end{DoxyParamCaption}
+)}}\label{class_responce_a4aae649830ede3a72a3a51b80127e0a7}
+
+
+Setta il parametro di indice {\ttfamily index} al valore del parametro {\ttfamily parameter}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em index} & Indice del parametro di risposta da settare. \\
+\hline
+\mbox{\tt in}  & {\em parameter} & Parametro con cui settare il parametro della risposta. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 25 del file Responce.\-cpp.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\hyperlink{_responce_8h}{Responce.\-h}\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/Responce.\-cpp\end{DoxyCompactItemize}

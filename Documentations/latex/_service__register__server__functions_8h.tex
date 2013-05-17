@@ -1,0 +1,60 @@
+\hypertarget{_service__register__server__functions_8h}{\section{Riferimenti per il file C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Service\-\_\-register\-\_\-server/\-Service\-\_\-register\-\_\-server\-\_\-functions.h}
+\label{_service__register__server__functions_8h}\index{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Service\-\_\-register\-\_\-server/\-Service\-\_\-register\-\_\-server\-\_\-functions.\-h@{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Service\-\_\-register\-\_\-server/\-Service\-\_\-register\-\_\-server\-\_\-functions.\-h}}
+}
+{\ttfamily \#include \char`\"{}../../\-S\-O\-A\-\_\-\-Library/\-Interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../../\-S\-O\-A\-\_\-\-Library/\-Threads.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}./\-Service\-\_\-register.\-h\char`\"{}}\\*
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_service__register__server__functions_8h_ab60b5074c740fd36061f48f90d1a0b21}{\#define \hyperlink{_service__register__server__functions_8h_ab60b5074c740fd36061f48f90d1a0b21}{N\-\_\-\-T\-H\-R\-E\-A\-D\-S}~5}\label{_service__register__server__functions_8h_ab60b5074c740fd36061f48f90d1a0b21}
+
+\begin{DoxyCompactList}\small\item\em Numero di {\itshape threads} di servizio da avviare. \end{DoxyCompactList}\item 
+\hypertarget{_service__register__server__functions_8h_a0e06fd5133b564b00c6cf5179b0c7dae}{\#define \hyperlink{_service__register__server__functions_8h_a0e06fd5133b564b00c6cf5179b0c7dae}{B\-A\-C\-K\-L\-O\-G\-\_\-\-Q\-U\-E\-U\-E}~5}\label{_service__register__server__functions_8h_a0e06fd5133b564b00c6cf5179b0c7dae}
+
+\begin{DoxyCompactList}\small\item\em Dimensione della {\itshape backlog} {\itshape queue} associatta al {\itshape listen\-\_\-socket}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_service__register__server__functions_8h_a925117a2338469d636cae90df0071bca}{bool {\bfseries check\-\_\-server\-\_\-arguments} (int n\-\_\-args, char $\ast$$\ast$args)}\label{_service__register__server__functions_8h_a925117a2338469d636cae90df0071bca}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_a906def4577c8de63bd7e69ab67544b25}{bool {\bfseries assign\-\_\-execution\-\_\-thread} (int client\-\_\-socket)}\label{_service__register__server__functions_8h_a906def4577c8de63bd7e69ab67544b25}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_aaf8bc61fa2ce7a323870c122834c2fbc}{bool \hyperlink{_service__register__server__functions_8h_aaf8bc61fa2ce7a323870c122834c2fbc}{Service\-\_\-register\-\_\-server\-\_\-help} ()}\label{_service__register__server__functions_8h_aaf8bc61fa2ce7a323870c122834c2fbc}
+
+\begin{DoxyCompactList}\small\item\em Fornisce l'elenco dei comandi accettati dal {\itshape Server}. \end{DoxyCompactList}\item 
+\hypertarget{_service__register__server__functions_8h_ac4398e0b3dfc60215e7e66059d0cc3b8}{void $\ast$ {\bfseries thread\-\_\-body} (void $\ast$thread\-\_\-\-I\-D)}\label{_service__register__server__functions_8h_ac4398e0b3dfc60215e7e66059d0cc3b8}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_ac158e4ccedf3add20952c9028e337631}{void $\ast$ {\bfseries control\-\_\-thread\-\_\-body} (void $\ast$)}\label{_service__register__server__functions_8h_ac158e4ccedf3add20952c9028e337631}
+
+\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_service__register__server__functions_8h_abe67addcb34733b89b2cca51e0ef5df7}{\hyperlink{class_service__register}{Service\-\_\-register} $\ast$ {\bfseries service\-\_\-register} = new \hyperlink{class_service__register}{Service\-\_\-register}()}\label{_service__register__server__functions_8h_abe67addcb34733b89b2cca51e0ef5df7}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_a0ed034ec7ce91872d20ac23938717979}{\hyperlink{class_threads}{Threads} {\bfseries thread} \mbox{[}\hyperlink{_service__register__server__functions_8h_ab60b5074c740fd36061f48f90d1a0b21}{N\-\_\-\-T\-H\-R\-E\-A\-D\-S}\mbox{]}}\label{_service__register__server__functions_8h_a0ed034ec7ce91872d20ac23938717979}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_abfdf383881624687ed194172e80bcf24}{\hyperlink{class_threads}{Threads} {\bfseries control\-\_\-thread}}\label{_service__register__server__functions_8h_abfdf383881624687ed194172e80bcf24}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_a559eb01bc152bcd6033e52d64f6e7c41}{pthread\-\_\-mutex\-\_\-t {\bfseries mutex\-\_\-thread\-\_\-free}}\label{_service__register__server__functions_8h_a559eb01bc152bcd6033e52d64f6e7c41}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_a8b905b65075946d1d9fcaa813c86b9b3}{pthread\-\_\-cond\-\_\-t {\bfseries cond\-\_\-thread\-\_\-free}}\label{_service__register__server__functions_8h_a8b905b65075946d1d9fcaa813c86b9b3}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_a6bc5fae6d25ed705c56d65ef46151964}{string {\bfseries S\-R\-\_\-address}}\label{_service__register__server__functions_8h_a6bc5fae6d25ed705c56d65ef46151964}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_a1f02378765d968db00d5126f213e9038}{string {\bfseries S\-R\-\_\-port}}\label{_service__register__server__functions_8h_a1f02378765d968db00d5126f213e9038}
+
+\item 
+\hypertarget{_service__register__server__functions_8h_a28ab6dd809db802c37f5e6ab8a95db79}{int {\bfseries listen\-\_\-socket}}\label{_service__register__server__functions_8h_a28ab6dd809db802c37f5e6ab8a95db79}
+
+\end{DoxyCompactItemize}

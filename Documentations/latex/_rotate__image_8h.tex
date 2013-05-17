@@ -1,0 +1,20 @@
+\hypertarget{_rotate__image_8h}{\section{Riferimenti per il file C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-manipulation\-\_\-server/\-Rotate\-\_\-image.h}
+\label{_rotate__image_8h}\index{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-manipulation\-\_\-server/\-Rotate\-\_\-image.\-h@{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-manipulation\-\_\-server/\-Rotate\-\_\-image.\-h}}
+}
+{\ttfamily \#include \char`\"{}../../\-S\-O\-A\-\_\-\-Library/\-Service.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$Magick++.\-h$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+\subsection*{Composti}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_rotate__image}{Rotate\-\_\-image}
+\begin{DoxyCompactList}\small\item\em Classe che fornisce il servizio di rotazione di un immagine. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_rotate__image_8h_a9954c3d0f9edeca7510d876320149261}{\#define \hyperlink{_rotate__image_8h_a9954c3d0f9edeca7510d876320149261}{R\-O\-T\-A\-T\-E\-\_\-\-I\-M\-A\-G\-E\-\_\-\-D\-I\-R\-E\-C\-T\-O\-R\-Y}~\char`\"{}./Work\-\_\-directories/Servers/Image\-\_\-manipulation\-\_\-server/\hyperlink{class_rotate__image}{Rotate\-\_\-image}/\char`\"{}}\label{_rotate__image_8h_a9954c3d0f9edeca7510d876320149261}
+
+\begin{DoxyCompactList}\small\item\em Directory di lavoro di default dove salvare i files temporanei (immagine sorgente e risultato della rotazione). \end{DoxyCompactList}\item 
+\hypertarget{_rotate__image_8h_ad1680bda7ed4b6871b29ee99d7f3347b}{\#define \hyperlink{_rotate__image_8h_ad1680bda7ed4b6871b29ee99d7f3347b}{R\-E\-M\-O\-V\-E\-\_\-\-I\-M\-A\-G\-E\-S}~true}\label{_rotate__image_8h_ad1680bda7ed4b6871b29ee99d7f3347b}
+
+\begin{DoxyCompactList}\small\item\em Se impostata a {\ttfamily true} provoca la rimozione dei files temporanei (immagine sorgente e risultato della rotazione) del {\itshape Server}. \end{DoxyCompactList}\end{DoxyCompactItemize}

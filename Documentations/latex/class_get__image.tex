@@ -1,0 +1,224 @@
+\hypertarget{class_get__image}{\section{Riferimenti per la classe Get\-\_\-image}
+\label{class_get__image}\index{Get\-\_\-image@{Get\-\_\-image}}
+}
+
+
+Classe che fornisce al richiedente un'immagine presente sul server remoto. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}.  
+
+
+
+
+{\ttfamily \#include $<$Get\-\_\-image.\-h$>$}
+
+Diagramma delle classi per Get\-\_\-image\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_get__image}
+\end{center}
+\end{figure}
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_get__image_a5517f5f85b538ebb63431448140a788a}{Get\-\_\-image} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default della classe \hyperlink{class_get__image}{Get\-\_\-image}. \end{DoxyCompactList}\item 
+\hyperlink{class_get__image_a1baaf0f15469480c90ed2c90a6a8b0dc}{Get\-\_\-image} (string name, string address, string port)
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_get__image_a1e55c68de9f17dce123cb5bf1f6a9c6b}{Get\-\_\-image} (string name, string address, string port, string \hyperlink{class_get__image_a5a2f7a3384d879568383e61151f2bf11}{path})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_get__image_af742c8d21028f545c2d03afe3a468501}{Get\-\_\-image} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_get__image}{Get\-\_\-image} con le informazioni ottenute dalla descrizione del servizio. \end{DoxyCompactList}\item 
+\hyperlink{class_get__image_ae1ca342b78c3df79faef72321c5728fa}{Get\-\_\-image} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description}, string \hyperlink{class_get__image_a5a2f7a3384d879568383e61151f2bf11}{path})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_get__image}{Get\-\_\-image} con le informazioni ottenute dalla descrizione del servizio e imposta la directory di lavoro con il path fornito in ingresso. \end{DoxyCompactList}\item 
+\hypertarget{class_get__image_a51a6a5acc16df05b182da40729e90cde}{virtual \hyperlink{class_get__image_a51a6a5acc16df05b182da40729e90cde}{$\sim$\-Get\-\_\-image} ()}\label{class_get__image_a51a6a5acc16df05b182da40729e90cde}
+
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \hyperlink{class_get__image}{Get\-\_\-image}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_get__image_ab133500614b9a2e7a1215a55f8729a6b}{execute} ()
+\begin{DoxyCompactList}\small\item\em Compila il parametro di uscita del servizio con l'immagine richiesta dal chiamante (se presente). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_get__image_a01517b99c0d3c7ac9a7daaf3fa7fe4fd}{inizialize\-\_\-parameters} (string \hyperlink{class_get__image_a5a2f7a3384d879568383e61151f2bf11}{path})
+\begin{DoxyCompactList}\small\item\em Inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} (è chiamata da ogni costruttore). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_get__image_a5a2f7a3384d879568383e61151f2bf11}{string \hyperlink{class_get__image_a5a2f7a3384d879568383e61151f2bf11}{path}}\label{class_get__image_a5a2f7a3384d879568383e61151f2bf11}
+
+\begin{DoxyCompactList}\small\item\em Directory di lavoro dello {\itshape Storage\-\_\-server} dove ricercare le immagini da fornire ai {\itshape Clients}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Altri membri ereditati}
+
+
+\subsection{Descrizione dettagliata}
+Classe che fornisce al richiedente un'immagine presente sul server remoto. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}. 
+
+Definizione alla linea 97 del file Get\-\_\-image.\-h.
+
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{class_get__image_a5517f5f85b538ebb63431448140a788a}{\index{Get\-\_\-image@{Get\-\_\-image}!Get\-\_\-image@{Get\-\_\-image}}
+\index{Get\-\_\-image@{Get\-\_\-image}!Get_image@{Get\-\_\-image}}
+\subsubsection[{Get\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-image\-::\-Get\-\_\-image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_get__image_a5517f5f85b538ebb63431448140a788a}
+
+
+Costruttore di default della classe \hyperlink{class_get__image}{Get\-\_\-image}. 
+
+Costruttore di default della classe \hyperlink{class_get__image}{Get\-\_\-image}. Provoca l'inizializzazione dei parametri di ingresso e uscita del servizio e setta la directory di lavoro sulla directory default. 
+
+Definizione alla linea 5 del file Get\-\_\-image.\-cpp.
+
+\hypertarget{class_get__image_a1baaf0f15469480c90ed2c90a6a8b0dc}{\index{Get\-\_\-image@{Get\-\_\-image}!Get\-\_\-image@{Get\-\_\-image}}
+\index{Get\-\_\-image@{Get\-\_\-image}!Get_image@{Get\-\_\-image}}
+\subsubsection[{Get\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-image\-::\-Get\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_get__image_a1baaf0f15469480c90ed2c90a6a8b0dc}
+
+
+Costruttore che inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome da assegnare al servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. Costruttore che inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} con nome, indirizzo e porta forniti in ingresso, inizializza i parametri di ingresso e uscita del servizio e setta la directory di lavoro sulla directory default. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 9 del file Get\-\_\-image.\-cpp.
+
+\hypertarget{class_get__image_a1e55c68de9f17dce123cb5bf1f6a9c6b}{\index{Get\-\_\-image@{Get\-\_\-image}!Get\-\_\-image@{Get\-\_\-image}}
+\index{Get\-\_\-image@{Get\-\_\-image}!Get_image@{Get\-\_\-image}}
+\subsubsection[{Get\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-image\-::\-Get\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_get__image_a1e55c68de9f17dce123cb5bf1f6a9c6b}
+
+
+Costruttore che inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome da assegnare al servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em path} & Directory di lavoro dove ricercare i files per creare la lista. Costruttore che inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} con nome, indirizzo e porta forniti in ingresso, inizializza i parametri di ingresso e uscita del servizio e imposta la directory di lavoro con il path fornito in ingresso. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 12 del file Get\-\_\-image.\-cpp.
+
+\hypertarget{class_get__image_af742c8d21028f545c2d03afe3a468501}{\index{Get\-\_\-image@{Get\-\_\-image}!Get\-\_\-image@{Get\-\_\-image}}
+\index{Get\-\_\-image@{Get\-\_\-image}!Get_image@{Get\-\_\-image}}
+\subsubsection[{Get\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-image\-::\-Get\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{class_get__image_af742c8d21028f545c2d03afe3a468501}
+
+
+Costruttore che inizializza la classe \hyperlink{class_get__image}{Get\-\_\-image} con le informazioni ottenute dalla descrizione del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 15 del file Get\-\_\-image.\-cpp.
+
+\hypertarget{class_get__image_ae1ca342b78c3df79faef72321c5728fa}{\index{Get\-\_\-image@{Get\-\_\-image}!Get\-\_\-image@{Get\-\_\-image}}
+\index{Get\-\_\-image@{Get\-\_\-image}!Get_image@{Get\-\_\-image}}
+\subsubsection[{Get\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-image\-::\-Get\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_get__image_ae1ca342b78c3df79faef72321c5728fa}
+
+
+Costruttore che inizializza la classe \hyperlink{class_get__image}{Get\-\_\-image} con le informazioni ottenute dalla descrizione del servizio e imposta la directory di lavoro con il path fornito in ingresso. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\mbox{\tt in}  & {\em path} & Directory di lavoro dove ricercare i files per creare la lista. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 21 del file Get\-\_\-image.\-cpp.
+
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{class_get__image_ab133500614b9a2e7a1215a55f8729a6b}{\index{Get\-\_\-image@{Get\-\_\-image}!execute@{execute}}
+\index{execute@{execute}!Get_image@{Get\-\_\-image}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool Get\-\_\-image\-::execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_get__image_ab133500614b9a2e7a1215a55f8729a6b}
+
+
+Compila il parametro di uscita del servizio con l'immagine richiesta dal chiamante (se presente). 
+
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Reimplementa \hyperlink{class_service}{Service}.
+
+
+
+Definizione alla linea 39 del file Get\-\_\-image.\-cpp.
+
+\hypertarget{class_get__image_a01517b99c0d3c7ac9a7daaf3fa7fe4fd}{\index{Get\-\_\-image@{Get\-\_\-image}!inizialize\-\_\-parameters@{inizialize\-\_\-parameters}}
+\index{inizialize\-\_\-parameters@{inizialize\-\_\-parameters}!Get_image@{Get\-\_\-image}}
+\subsubsection[{inizialize\-\_\-parameters}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-image\-::inizialize\-\_\-parameters (
+\begin{DoxyParamCaption}
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_get__image_a01517b99c0d3c7ac9a7daaf3fa7fe4fd}
+
+
+Inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} (è chiamata da ogni costruttore). 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em path} & Directory di lavoro dove ricercare i files per creare la lista. Inizializza l'istanza della classe \hyperlink{class_get__image}{Get\-\_\-image} come segue\-: \begin{DoxyItemize}
+\item genera un parametro in ingresso di tipo {\ttfamily string} che conterrà il nome dell'immagine da richiedere al server remoto \item genera un parametro in uscita di tipo {\itshape buffer} per l'immagine da inviare al {\itshape Client} \item crea la directory di lavoro del servizio se questa non esiste \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 30 del file Get\-\_\-image.\-cpp.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-storage\-\_\-server/\hyperlink{_get__image_8h}{Get\-\_\-image.\-h}\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-storage\-\_\-server/Get\-\_\-image.\-cpp\end{DoxyCompactItemize}

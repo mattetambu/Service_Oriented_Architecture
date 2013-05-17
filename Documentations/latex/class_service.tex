@@ -1,0 +1,461 @@
+\hypertarget{class_service}{\section{Riferimenti per la classe Service}
+\label{class_service}\index{Service@{Service}}
+}
+
+
+Classe che contiene la descrizione del servizio, l'elenco dei parametri di ingresso e un'istanza della classe {\ttfamily \hyperlink{class_responce}{Responce}}.  
+
+
+
+
+{\ttfamily \#include $<$Service.\-h$>$}
+
+Diagramma delle classi per Service\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.588652cm]{class_service}
+\end{center}
+\end{figure}
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_service_acc246c9f7ed3c51e2d91d10fe257513f}{\hyperlink{class_service_acc246c9f7ed3c51e2d91d10fe257513f}{Service} ()}\label{class_service_acc246c9f7ed3c51e2d91d10fe257513f}
+
+\begin{DoxyCompactList}\small\item\em Costruttore di default della classe \hyperlink{class_service}{Service}. \end{DoxyCompactList}\item 
+\hyperlink{class_service_aaf16ba3725a4a48487650ed907999bfc}{Service} (string name, string address, string port)
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_service}{Service} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_service_ad838a974b007483f2c43cf66b578fccc}{Service} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_service}{Service} con le informazioni ottenute dalla descrizione del servizio. \end{DoxyCompactList}\item 
+\hypertarget{class_service_af6c3577b59652ac817d1d76aaccee904}{virtual \hyperlink{class_service_af6c3577b59652ac817d1d76aaccee904}{$\sim$\-Service} ()}\label{class_service_af6c3577b59652ac817d1d76aaccee904}
+
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \hyperlink{class_service}{Service}. \end{DoxyCompactList}\item 
+void \hyperlink{class_service_a3905da32f595397967e7aada8300ec6c}{add\-\_\-parameter} (\hyperlink{_types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} direction, \hyperlink{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7}{Type} type)
+\begin{DoxyCompactList}\small\item\em Aggiunge un parametro di tipo {\itshape type} alla lista dei parametri (di ingresso o uscita) del servizio. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service_ab475411bca62ebf3cbbcf338285f4975}{set\-\_\-input\-\_\-parameters} (vector$<$ \hyperlink{struct_parameter}{Parameter} $>$ \hyperlink{class_service_a92a0bf45e91da701d22152651d3c7907}{parameters})
+\begin{DoxyCompactList}\small\item\em Setta i parametri di ingresso del servizio con il valore dei parametri forniti. \end{DoxyCompactList}\item 
+void \hyperlink{class_service_a091d68c0751de158de2c2f64aeb9cdc8}{set\-\_\-name} (string name)
+\begin{DoxyCompactList}\small\item\em Setta il nome del servizio con il valore passato come parametro. \end{DoxyCompactList}\item 
+void \hyperlink{class_service_a69f551db5d32632d9558df9de84f023c}{set\-\_\-port} (string port)
+\begin{DoxyCompactList}\small\item\em Setta la porta associata al servizio con il valore passato come parametro. \end{DoxyCompactList}\item 
+void \hyperlink{class_service_abee2b18fa2bb31c31915c2cda525355b}{set\-\_\-address} (string address)
+\begin{DoxyCompactList}\small\item\em Setta l'indirizzo associato al servizio con il valore passato come parametro. \end{DoxyCompactList}\item 
+string \hyperlink{class_service_af7450cf76dd2c06d556b55c8555670f5}{get\-\_\-name} ()
+\begin{DoxyCompactList}\small\item\em Ritorna al chiamante il nome del servizio. \end{DoxyCompactList}\item 
+string \hyperlink{class_service_acc2d27605b7e2e45d28c6c18c117ee48}{get\-\_\-port} ()
+\begin{DoxyCompactList}\small\item\em Ritorna al chiamante la porta associata al servizio. \end{DoxyCompactList}\item 
+string \hyperlink{class_service_a4255bff226f0c507ed997d8474426cff}{get\-\_\-address} ()
+\begin{DoxyCompactList}\small\item\em Ritorna al chiamante l'indirizzo associato al servizio. \end{DoxyCompactList}\item 
+\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$ \hyperlink{class_service_aa3b79916f4e6f1be8e8189fc1a6b02ad}{get\-\_\-description} ()
+\begin{DoxyCompactList}\small\item\em Ritorna al chiamante la descrizione completa del servizio. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service_a4952a5f82a2c49a83fe5548c3865458b}{send\-\_\-service\-\_\-request} (int $\ast$socket)
+\begin{DoxyCompactList}\small\item\em Invia sul {\itshape Socket} la richiesta di servizio al service provider che lo fornisce. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service_a67f01dff03c913cd0ba77cf073e829fd}{receive\-\_\-service\-\_\-request} (int socket)
+\begin{DoxyCompactList}\small\item\em Riceve sul {\itshape Socket} la richiesta di servizio da parte del {\itshape Client}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service_a4efee47181b839b6e03146a439f924db}{send\-\_\-service\-\_\-responce} (int socket)
+\begin{DoxyCompactList}\small\item\em Invia sul {\itshape Socket} i parametri di risposta di un servizio chiamando l'omonimo servizio della classe {\ttfamily \hyperlink{class_responce}{Responce}}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service_a3e86a7b9b19d5ff72c952f980b61e3d8}{receive\-\_\-service\-\_\-responce} (int socket)
+\begin{DoxyCompactList}\small\item\em Riceve sul {\itshape Socket} i parametri di risposta di un servizio chiamando l'omonimo servizio della classe {\ttfamily \hyperlink{class_responce}{Responce}}. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_service_a4aed56f17af847cab41a911c1555ac2a}{responce\-\_\-decode} (string folder\-\_\-path)
+\begin{DoxyCompactList}\small\item\em Crea un file al path specificato a partire dal parametro di risposta del servizio. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_service_af6bbad3f7fa3d4ee685a97f8022752e5}{responce\-\_\-decode} (vector$<$ string $>$ $\ast$file\-\_\-list)
+\begin{DoxyCompactList}\small\item\em Crea la lista dei file presenti sul server di storage (in forma vettoriale) a partire dal parametro di risposta del servizio (tipo stringa). \end{DoxyCompactList}\item 
+\hypertarget{class_service_aef1e4cf743a29f48b3708915f2bb2f37}{virtual bool {\bfseries execute} ()}\label{class_service_aef1e4cf743a29f48b3708915f2bb2f37}
+
+\end{DoxyCompactItemize}
+\subsection*{Attributi protetti}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_service_a55e991ff18c0dceca202388a771283dc}{\hyperlink{struct_service__description}{Service\-\_\-description} \hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description}}\label{class_service_a55e991ff18c0dceca202388a771283dc}
+
+\begin{DoxyCompactList}\small\item\em Descrizione del servizio. \end{DoxyCompactList}\item 
+\hypertarget{class_service_a92a0bf45e91da701d22152651d3c7907}{vector$<$ \hyperlink{struct_parameter}{Parameter} $>$ \hyperlink{class_service_a92a0bf45e91da701d22152651d3c7907}{parameters}}\label{class_service_a92a0bf45e91da701d22152651d3c7907}
+
+\begin{DoxyCompactList}\small\item\em Vettore di tipo {\ttfamily \hyperlink{struct_parameter}{Parameter}} che contiene i parametri di ingresso del servizio. \end{DoxyCompactList}\item 
+\hypertarget{class_service_af32489d66225d9cc691e68d1af386e9e}{\hyperlink{class_responce}{Responce} \hyperlink{class_service_af32489d66225d9cc691e68d1af386e9e}{responce}}\label{class_service_af32489d66225d9cc691e68d1af386e9e}
+
+\begin{DoxyCompactList}\small\item\em Istanza della classe {\itshape \hyperlink{class_responce}{Responce}} associata al servizio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Classe che contiene la descrizione del servizio, l'elenco dei parametri di ingresso e un'istanza della classe {\ttfamily \hyperlink{class_responce}{Responce}}. 
+
+Definizione alla linea 165 del file Service.\-h.
+
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{class_service_aaf16ba3725a4a48487650ed907999bfc}{\index{Service@{Service}!Service@{Service}}
+\index{Service@{Service}!Service@{Service}}
+\subsubsection[{Service}]{\setlength{\rightskip}{0pt plus 5cm}Service\-::\-Service (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_service_aaf16ba3725a4a48487650ed907999bfc}
+
+
+Costruttore che inizializza la classe \hyperlink{class_service}{Service} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome del servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 5 del file Service.\-cpp.
+
+\hypertarget{class_service_ad838a974b007483f2c43cf66b578fccc}{\index{Service@{Service}!Service@{Service}}
+\index{Service@{Service}!Service@{Service}}
+\subsubsection[{Service}]{\setlength{\rightskip}{0pt plus 5cm}Service\-::\-Service (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{class_service_ad838a974b007483f2c43cf66b578fccc}
+
+
+Costruttore che inizializza la classe \hyperlink{class_service}{Service} con le informazioni ottenute dalla descrizione del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 11 del file Service.\-cpp.
+
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{class_service_a3905da32f595397967e7aada8300ec6c}{\index{Service@{Service}!add\-\_\-parameter@{add\-\_\-parameter}}
+\index{add\-\_\-parameter@{add\-\_\-parameter}!Service@{Service}}
+\subsubsection[{add\-\_\-parameter}]{\setlength{\rightskip}{0pt plus 5cm}void Service\-::add\-\_\-parameter (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{direction, }
+\item[{{\bf Type}}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_service_a3905da32f595397967e7aada8300ec6c}
+
+
+Aggiunge un parametro di tipo {\itshape type} alla lista dei parametri (di ingresso o uscita) del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em direction} & Direzione del parametro da aggiungere al servizio. \\
+\hline
+\mbox{\tt in}  & {\em type} & Tipo del parametro da aggiungere al servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 28 del file Service.\-cpp.
+
+\hypertarget{class_service_a4255bff226f0c507ed997d8474426cff}{\index{Service@{Service}!get\-\_\-address@{get\-\_\-address}}
+\index{get\-\_\-address@{get\-\_\-address}!Service@{Service}}
+\subsubsection[{get\-\_\-address}]{\setlength{\rightskip}{0pt plus 5cm}string Service\-::get\-\_\-address (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_service_a4255bff226f0c507ed997d8474426cff}
+
+
+Ritorna al chiamante l'indirizzo associato al servizio. 
+
+\begin{DoxyReturn}{Restituisce}
+Indirizzo del service provider che fornisce il servizio. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 79 del file Service.\-cpp.
+
+\hypertarget{class_service_aa3b79916f4e6f1be8e8189fc1a6b02ad}{\index{Service@{Service}!get\-\_\-description@{get\-\_\-description}}
+\index{get\-\_\-description@{get\-\_\-description}!Service@{Service}}
+\subsubsection[{get\-\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Service\-\_\-description} $\ast$ Service\-::get\-\_\-description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_service_aa3b79916f4e6f1be8e8189fc1a6b02ad}
+
+
+Ritorna al chiamante la descrizione completa del servizio. 
+
+\begin{DoxyReturn}{Restituisce}
+Descrizione completa del servizio. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 83 del file Service.\-cpp.
+
+\hypertarget{class_service_af7450cf76dd2c06d556b55c8555670f5}{\index{Service@{Service}!get\-\_\-name@{get\-\_\-name}}
+\index{get\-\_\-name@{get\-\_\-name}!Service@{Service}}
+\subsubsection[{get\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}string Service\-::get\-\_\-name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_service_af7450cf76dd2c06d556b55c8555670f5}
+
+
+Ritorna al chiamante il nome del servizio. 
+
+\begin{DoxyReturn}{Restituisce}
+Nome del servizio. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 71 del file Service.\-cpp.
+
+\hypertarget{class_service_acc2d27605b7e2e45d28c6c18c117ee48}{\index{Service@{Service}!get\-\_\-port@{get\-\_\-port}}
+\index{get\-\_\-port@{get\-\_\-port}!Service@{Service}}
+\subsubsection[{get\-\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}string Service\-::get\-\_\-port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_service_acc2d27605b7e2e45d28c6c18c117ee48}
+
+
+Ritorna al chiamante la porta associata al servizio. 
+
+\begin{DoxyReturn}{Restituisce}
+Porta di ascolto del service provider che fornisce il servizio. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 75 del file Service.\-cpp.
+
+\hypertarget{class_service_a67f01dff03c913cd0ba77cf073e829fd}{\index{Service@{Service}!receive\-\_\-service\-\_\-request@{receive\-\_\-service\-\_\-request}}
+\index{receive\-\_\-service\-\_\-request@{receive\-\_\-service\-\_\-request}!Service@{Service}}
+\subsubsection[{receive\-\_\-service\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-::receive\-\_\-service\-\_\-request (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{class_service_a67f01dff03c913cd0ba77cf073e829fd}
+
+
+Riceve sul {\itshape Socket} la richiesta di servizio da parte del {\itshape Client}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} sul quale ricevere la richiesta di servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricezione della richiesta, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. La ricezione delle richiesta di servizio avviene nel seguente modo\-: \begin{DoxyItemize}
+\item riceve il nome del servizio richiesto e rifiuta la richiesta se il servizio non viene riconosciuto dal service provider \item riceve il numero di parametri del servizio richiesto e rifiuta la richiesta se il numero non coincide con quello atteso \item per ogni parametro riceve il tipo e rifiuta la richiesta se il tipo non coincide con quello atteso \item per ogni parametro riceve il valore effettivo del parametro \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 122 del file Service.\-cpp.
+
+\hypertarget{class_service_a3e86a7b9b19d5ff72c952f980b61e3d8}{\index{Service@{Service}!receive\-\_\-service\-\_\-responce@{receive\-\_\-service\-\_\-responce}}
+\index{receive\-\_\-service\-\_\-responce@{receive\-\_\-service\-\_\-responce}!Service@{Service}}
+\subsubsection[{receive\-\_\-service\-\_\-responce}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-::receive\-\_\-service\-\_\-responce (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{class_service_a3e86a7b9b19d5ff72c952f980b61e3d8}
+
+
+Riceve sul {\itshape Socket} i parametri di risposta di un servizio chiamando l'omonimo servizio della classe {\ttfamily \hyperlink{class_responce}{Responce}}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} sul quale ricevere i parametri di risposta del servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricezione della risposta, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 150 del file Service.\-cpp.
+
+\hypertarget{class_service_a4aed56f17af847cab41a911c1555ac2a}{\index{Service@{Service}!responce\-\_\-decode@{responce\-\_\-decode}}
+\index{responce\-\_\-decode@{responce\-\_\-decode}!Service@{Service}}
+\subsubsection[{responce\-\_\-decode}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-::responce\-\_\-decode (
+\begin{DoxyParamCaption}
+\item[{string}]{image\-\_\-path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_service_a4aed56f17af847cab41a911c1555ac2a}
+
+
+Crea un file al path specificato a partire dal parametro di risposta del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em image\-\_\-path} & Path relativo all'immagine da realizzare (comprensivo di nome ed estensione del file). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della creazione del file, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 155 del file Service.\-cpp.
+
+\hypertarget{class_service_af6bbad3f7fa3d4ee685a97f8022752e5}{\index{Service@{Service}!responce\-\_\-decode@{responce\-\_\-decode}}
+\index{responce\-\_\-decode@{responce\-\_\-decode}!Service@{Service}}
+\subsubsection[{responce\-\_\-decode}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-::responce\-\_\-decode (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$ $\ast$}]{file\-\_\-list}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_service_af6bbad3f7fa3d4ee685a97f8022752e5}
+
+
+Crea la lista dei file presenti sul server di storage (in forma vettoriale) a partire dal parametro di risposta del servizio (tipo stringa). 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em file\-\_\-list} & Lista di file presenti sul server di storage di immagini. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricezione della risposta, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 163 del file Service.\-cpp.
+
+\hypertarget{class_service_a4952a5f82a2c49a83fe5548c3865458b}{\index{Service@{Service}!send\-\_\-service\-\_\-request@{send\-\_\-service\-\_\-request}}
+\index{send\-\_\-service\-\_\-request@{send\-\_\-service\-\_\-request}!Service@{Service}}
+\subsubsection[{send\-\_\-service\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-::send\-\_\-service\-\_\-request (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{socket}
+\end{DoxyParamCaption}
+)}}\label{class_service_a4952a5f82a2c49a83fe5548c3865458b}
+
+
+Invia sul {\itshape Socket} la richiesta di servizio al service provider che lo fornisce. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em socket} & {\itshape Socket} sul quale inviare la richiesta di servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'invio della richiesta, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. L'invio delle richiesta di servizio avviene nel seguente modo\-: \begin{DoxyItemize}
+\item invia il nome del servizio e si pone in attesa dell'accettazione della richiesta \item invia il numero di parametri del servizio e si pone in attesa della conferma \item per ogni parametro invia il tipo e si pone in attesa della conferma \item per ogni parametro invia il valore effettivo del parametro \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 87 del file Service.\-cpp.
+
+\hypertarget{class_service_a4efee47181b839b6e03146a439f924db}{\index{Service@{Service}!send\-\_\-service\-\_\-responce@{send\-\_\-service\-\_\-responce}}
+\index{send\-\_\-service\-\_\-responce@{send\-\_\-service\-\_\-responce}!Service@{Service}}
+\subsubsection[{send\-\_\-service\-\_\-responce}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-::send\-\_\-service\-\_\-responce (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{class_service_a4efee47181b839b6e03146a439f924db}
+
+
+Invia sul {\itshape Socket} i parametri di risposta di un servizio chiamando l'omonimo servizio della classe {\ttfamily \hyperlink{class_responce}{Responce}}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} sul quale inviare i parametri di risposta del servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'invio della risposta, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 146 del file Service.\-cpp.
+
+\hypertarget{class_service_abee2b18fa2bb31c31915c2cda525355b}{\index{Service@{Service}!set\-\_\-address@{set\-\_\-address}}
+\index{set\-\_\-address@{set\-\_\-address}!Service@{Service}}
+\subsubsection[{set\-\_\-address}]{\setlength{\rightskip}{0pt plus 5cm}void Service\-::set\-\_\-address (
+\begin{DoxyParamCaption}
+\item[{string}]{address}
+\end{DoxyParamCaption}
+)}}\label{class_service_abee2b18fa2bb31c31915c2cda525355b}
+
+
+Setta l'indirizzo associato al servizio con il valore passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em address} & Indirizzo del service provider che fornisce il servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 67 del file Service.\-cpp.
+
+\hypertarget{class_service_ab475411bca62ebf3cbbcf338285f4975}{\index{Service@{Service}!set\-\_\-input\-\_\-parameters@{set\-\_\-input\-\_\-parameters}}
+\index{set\-\_\-input\-\_\-parameters@{set\-\_\-input\-\_\-parameters}!Service@{Service}}
+\subsubsection[{set\-\_\-input\-\_\-parameters}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-::set\-\_\-input\-\_\-parameters (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf Parameter} $>$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{class_service_ab475411bca62ebf3cbbcf338285f4975}
+
+
+Setta i parametri di ingresso del servizio con il valore dei parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em parameters} & Vettore di parametri con cui settare i parametri di ingresso del servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 42 del file Service.\-cpp.
+
+\hypertarget{class_service_a091d68c0751de158de2c2f64aeb9cdc8}{\index{Service@{Service}!set\-\_\-name@{set\-\_\-name}}
+\index{set\-\_\-name@{set\-\_\-name}!Service@{Service}}
+\subsubsection[{set\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}void Service\-::set\-\_\-name (
+\begin{DoxyParamCaption}
+\item[{string}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_service_a091d68c0751de158de2c2f64aeb9cdc8}
+
+
+Setta il nome del servizio con il valore passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome del servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 59 del file Service.\-cpp.
+
+\hypertarget{class_service_a69f551db5d32632d9558df9de84f023c}{\index{Service@{Service}!set\-\_\-port@{set\-\_\-port}}
+\index{set\-\_\-port@{set\-\_\-port}!Service@{Service}}
+\subsubsection[{set\-\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}void Service\-::set\-\_\-port (
+\begin{DoxyParamCaption}
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_service_a69f551db5d32632d9558df9de84f023c}
+
+
+Setta la porta associata al servizio con il valore passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em port} & Porta su cui è in ascolto il service provider che fornisce il servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 63 del file Service.\-cpp.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\hyperlink{_service_8h}{Service.\-h}\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/Service.\-cpp\end{DoxyCompactItemize}

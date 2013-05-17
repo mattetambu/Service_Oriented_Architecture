@@ -1,0 +1,122 @@
+\hypertarget{_files__manager_8h}{\section{Riferimenti per il file C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Files\-\_\-manager.h}
+\label{_files__manager_8h}\index{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Files\-\_\-manager.\-h@{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Files\-\_\-manager.\-h}}
+}
+{\ttfamily \#include \char`\"{}Types.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$dirent.\-h$>$}\\*
+{\ttfamily \#include $<$sys/stat.\-h$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{_files__manager_8h_ab928e3f4581e827eef587ce75513837f}{make\-\_\-client\-\_\-working\-\_\-directory} (string path)
+\begin{DoxyCompactList}\small\item\em Creazione della directory privata del {\itshape Client}. \end{DoxyCompactList}\item 
+bool \hyperlink{_files__manager_8h_a8f124bfa05f27b19ac6c18911f7675bb}{make\-\_\-file\-\_\-list} (string path, vector$<$ string $>$ $\ast$file\-\_\-list)
+\begin{DoxyCompactList}\small\item\em Crea una lista dei files presenti nella cartella specificata (tralasciando sottocartelle e files nascosti). \end{DoxyCompactList}\item 
+bool \hyperlink{_files__manager_8h_a875101f39b6c8689c42787721893083c}{make\-\_\-image\-\_\-from\-\_\-buffer} (string image\-\_\-path, \hyperlink{structbuffer}{buffer} $\ast$image\-\_\-buffer)
+\begin{DoxyCompactList}\small\item\em Crea un file al path specificato a partire dal buffer passato come parametro. \end{DoxyCompactList}\item 
+bool \hyperlink{_files__manager_8h_af5f86e4f5008dadde00a35bfc0fd9e82}{get\-\_\-buffer\-\_\-from\-\_\-image} (string image\-\_\-path, \hyperlink{structbuffer}{buffer} $\ast$image\-\_\-buffer)
+\begin{DoxyCompactList}\small\item\em Realizza un buffer a partire dal corpo di un file il cui path è passato come parametro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{_files__manager_8h_af5f86e4f5008dadde00a35bfc0fd9e82}{\index{Files\-\_\-manager.\-h@{Files\-\_\-manager.\-h}!get\-\_\-buffer\-\_\-from\-\_\-image@{get\-\_\-buffer\-\_\-from\-\_\-image}}
+\index{get\-\_\-buffer\-\_\-from\-\_\-image@{get\-\_\-buffer\-\_\-from\-\_\-image}!Files_manager.h@{Files\-\_\-manager.\-h}}
+\subsubsection[{get\-\_\-buffer\-\_\-from\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}bool get\-\_\-buffer\-\_\-from\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{string}]{image\-\_\-path, }
+\item[{{\bf buffer} $\ast$}]{image\-\_\-buffer}
+\end{DoxyParamCaption}
+)}}\label{_files__manager_8h_af5f86e4f5008dadde00a35bfc0fd9e82}
+
+
+Realizza un buffer a partire dal corpo di un file il cui path è passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em image\-\_\-path} & Path relativo all'immagine da analizzare (comprensivo di nome ed estensione del file). \\
+\hline
+\mbox{\tt out}  & {\em image\-\_\-buffer} & Buffer che dovrà contenere il corpo del file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della lettura del file, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. I dati relativi alla lettura del file il cui path (che contiene anche il nome e l'estensione del file) è passato come parametro sono inseriti all'interno del buffer specificato dal chiamante. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 68 del file Files\-\_\-manager.\-cpp.
+
+\hypertarget{_files__manager_8h_ab928e3f4581e827eef587ce75513837f}{\index{Files\-\_\-manager.\-h@{Files\-\_\-manager.\-h}!make\-\_\-client\-\_\-working\-\_\-directory@{make\-\_\-client\-\_\-working\-\_\-directory}}
+\index{make\-\_\-client\-\_\-working\-\_\-directory@{make\-\_\-client\-\_\-working\-\_\-directory}!Files_manager.h@{Files\-\_\-manager.\-h}}
+\subsubsection[{make\-\_\-client\-\_\-working\-\_\-directory}]{\setlength{\rightskip}{0pt plus 5cm}string make\-\_\-client\-\_\-working\-\_\-directory (
+\begin{DoxyParamCaption}
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{_files__manager_8h_ab928e3f4581e827eef587ce75513837f}
+
+
+Creazione della directory privata del {\itshape Client}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em path} & Directory di lavoro dei {\itshape Clients} all'interno della deve essere creata la directory privata. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Indice identificativo del {\itshape Client} in caso di successo e una stringa vuota altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 4 del file Files\-\_\-manager.\-cpp.
+
+\hypertarget{_files__manager_8h_a8f124bfa05f27b19ac6c18911f7675bb}{\index{Files\-\_\-manager.\-h@{Files\-\_\-manager.\-h}!make\-\_\-file\-\_\-list@{make\-\_\-file\-\_\-list}}
+\index{make\-\_\-file\-\_\-list@{make\-\_\-file\-\_\-list}!Files_manager.h@{Files\-\_\-manager.\-h}}
+\subsubsection[{make\-\_\-file\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}bool make\-\_\-file\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{string}]{path, }
+\item[{vector$<$ string $>$ $\ast$}]{file\-\_\-list}
+\end{DoxyParamCaption}
+)}}\label{_files__manager_8h_a8f124bfa05f27b19ac6c18911f7675bb}
+
+
+Crea una lista dei files presenti nella cartella specificata (tralasciando sottocartelle e files nascosti). 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em path} & Directory di cui si richiede la lista di files. \\
+\hline
+\mbox{\tt out}  & {\em file\-\_\-list} & Vettore in cui inserire la lista di files. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 23 del file Files\-\_\-manager.\-cpp.
+
+\hypertarget{_files__manager_8h_a875101f39b6c8689c42787721893083c}{\index{Files\-\_\-manager.\-h@{Files\-\_\-manager.\-h}!make\-\_\-image\-\_\-from\-\_\-buffer@{make\-\_\-image\-\_\-from\-\_\-buffer}}
+\index{make\-\_\-image\-\_\-from\-\_\-buffer@{make\-\_\-image\-\_\-from\-\_\-buffer}!Files_manager.h@{Files\-\_\-manager.\-h}}
+\subsubsection[{make\-\_\-image\-\_\-from\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}bool make\-\_\-image\-\_\-from\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{string}]{image\-\_\-path, }
+\item[{{\bf buffer} $\ast$}]{image\-\_\-buffer}
+\end{DoxyParamCaption}
+)}}\label{_files__manager_8h_a875101f39b6c8689c42787721893083c}
+
+
+Crea un file al path specificato a partire dal buffer passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em image\-\_\-path} & Path relativo all'immagine da realizzare (comprensivo di nome ed estensione del file). \\
+\hline
+\mbox{\tt in}  & {\em image\-\_\-buffer} & Buffer contenente i dati dell'immagine da realizzare. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della creazione del file, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. Il buffer passato come parametro è utilizzato per dar corpo al file da realizzare che viene creato nella directory specificata dall'attributo path (che contiene anche il nome e l'estensione del file da creare) 
+\end{DoxyReturn}
+
+
+Definizione alla linea 40 del file Files\-\_\-manager.\-cpp.
+

@@ -1,0 +1,82 @@
+\hypertarget{_client_8cpp}{\section{Riferimenti per il file C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Client.cpp}
+\label{_client_8cpp}\index{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Client.\-cpp@{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Client.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}./\-Application/\-Clients/\-Clients\-\_\-functions.\-h\char`\"{}}\\*
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{_client_8cpp_a22577c6525b3f2fefecc0c741ba46a9a}{main} (int n\-\_\-args, char $\ast$$\ast$args)
+\begin{DoxyCompactList}\small\item\em Corpo del {\itshape Client}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{_client_8cpp_a22577c6525b3f2fefecc0c741ba46a9a}{\index{Client.\-cpp@{Client.\-cpp}!main@{main}}
+\index{main@{main}!Client.cpp@{Client.\-cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{n\-\_\-args, }
+\item[{char $\ast$$\ast$}]{args}
+\end{DoxyParamCaption}
+)}}\label{_client_8cpp_a22577c6525b3f2fefecc0c741ba46a9a}
+
+
+Corpo del {\itshape Client}. 
+
+Corpo del {\itshape Service\-\_\-register\-\_\-server}.
+
+Corpo dell' {\itshape Image\-\_\-storage\-\_\-server}.
+
+Corpo dell' {\itshape Image\-\_\-manipulation\-\_\-server}.
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em n\-\_\-args} & Numero di argomenti in ingresso al {\itshape Client}. \\
+\hline
+\mbox{\tt in}  & {\em args} & Array di argomenti in ingresso al {\itshape Client}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily 0} in caso di successo e {\ttfamily -\/1} altrimenti. Il {\itshape Client} ciclicamente esegue le seguenti operazioni\-: \begin{DoxyItemize}
+\item sceglie a caso un'immagine da disco o la richiede al service provider \item sceglie a caso un servizio di manipolazione da applicare all'immagine (rotazione o riflessione) e lo richiede al server \item invia il risultato della manipolazione al service provider per il salvataggio.\end{DoxyItemize}
+
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em n\-\_\-args} & Numero di argomenti in ingresso. \\
+\hline
+\mbox{\tt in}  & {\em args} & Array di argomenti in ingresso. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily 0} in caso di successo e {\ttfamily -\/1} altrimenti. L' {\itshape Image\-\_\-manipulation\-\_\-server} esegue le seguenti operazioni\-: \begin{DoxyItemize}
+\item inizializza e crea un {\itshape socket} sul quale attendere le richieste di servizio \item registra i servizi offerti al {\itshape Service\-\_\-register\-\_\-server} \item inizializza e crea un insieme di {\itshape threads} di servizio che si occuperanno dell'esecuzione dei servizi richiesti \item inizializza e crea un {\itshape thread} di controllo che permette la gestione manuale del server attraverso appositi comandi \item ciclicamente si pone in attesa di richieste di servizio che, una volta accettate, assegna ad uno dei {\itshape threads} di servizio liberi \item ricevuto il comando di terminazione chiude le comunicazioni, deregistra i servizi e termina i threads precedentemente avviati, quindi termina a sua volta\end{DoxyItemize}
+
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em n\-\_\-args} & Numero di argomenti in ingresso. \\
+\hline
+\mbox{\tt in}  & {\em args} & Array di argomenti in ingresso. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily 0} in caso di successo e {\ttfamily -\/1} altrimenti. L' {\itshape Image\-\_\-storage\-\_\-server} esegue le seguenti operazioni\-: \begin{DoxyItemize}
+\item inizializza e crea un {\itshape socket} sul quale attendere le richieste di servizio \item registra i servizi offerti al {\itshape Service\-\_\-register\-\_\-server} \item inizializza e crea un insieme di {\itshape threads} di servizio che si occuperanno dell'esecuzione dei servizi richiesti \item inizializza e crea un {\itshape thread} di controllo che permette la gestione manuale del server attraverso appositi comandi \item ciclicamente si pone in attesa di richieste di servizio che, una volta accettate, assegna ad uno dei {\itshape threads} di servizio liberi \item ricevuto il comando di terminazione chiude le comunicazioni, deregistra i servizi e termina i threads precedentemente avviati, quindi termina a sua volta\end{DoxyItemize}
+
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em n\-\_\-args} & Numero di argomenti in ingresso. \\
+\hline
+\mbox{\tt in}  & {\em args} & Array di argomenti in ingresso. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily 0} in caso di successo e {\ttfamily -\/1} altrimenti. Il {\itshape Service\-\_\-register\-\_\-server} esegue le seguenti operazioni\-: \begin{DoxyItemize}
+\item inizializza e crea un {\itshape socket} sul quale attendere le richieste di servizio \item inizializza e crea un insieme di {\itshape threads} di servizio che si occuperanno dell'esecuzione dei servizi richiesti \item inizializza e crea un {\itshape thread} di controllo che permette la gestione manuale del server attraverso appositi comandi \item ciclicamente si pone in attesa di richieste di servizio che, una volta accettate, assegna ad uno dei {\itshape threads} di servizio liberi \item ricevuto il comando di terminazione chiude le comunicazioni e termina i threads precedentemente avviati, quindi termina a sua volta \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 27 del file Client.\-cpp.
+

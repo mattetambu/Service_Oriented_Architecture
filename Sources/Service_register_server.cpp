@@ -1,4 +1,28 @@
-//USAGE: Service_register_server ${Service_register_server_port}
+/**
+ \file		Service_register_server.cpp
+ \dir		/Source/
+ \date		15/05/2013
+ \author	Tamburini Matteo <mattetambu@gmail.com>
+ \brief		\e Server che fornisce il servizio di \e registro per i servizi offerti dai vari service providers.
+*/
+
+/**
+ \fn		int main (int n_args, char ** args)
+ \param	[in]	n_args	Numero di argomenti in ingresso.
+ \param	[in]	args	Array di argomenti in ingresso.
+ \return	Risultato dell'esecuzione, \c 0 in caso di successo e \c -1 altrimenti.
+ \brief		Corpo del \e Service_register_server.
+ 
+ Il \e Service_register_server esegue le seguenti operazioni:
+ \li	inizializza e crea un \e socket sul quale attendere le richieste di servizio
+ \li	inizializza e crea un insieme di \e threads di servizio che si occuperanno dell'esecuzione dei servizi richiesti 
+ \li	inizializza e crea un \e thread di controllo che permette la gestione manuale del server attraverso appositi comandi
+ \li	ciclicamente si pone in attesa di richieste di servizio che, una volta accettate, assegna ad uno dei \e threads di servizio liberi
+ \li	ricevuto il comando di terminazione chiude le comunicazioni e termina i threads precedentemente avviati, quindi termina a sua volta	
+*/
+
+
+//USAGE: Service_register_server [Service_register_server_port]
 
 #include "./Application/Service_register_server/Service_register_server_functions.h"
 
@@ -22,13 +46,13 @@ int main (int n_args, char ** args) {
 	for (int i = 0; i < N_THREADS; i++) {
 		if (pthread_create(&thread_ID, NULL, thread_body, (void *) i) != 0) {
 			cout << "#SERVER > ERROR - Can't create a service thread" << endl;
-			exit(-1);			
+			exit(-1);
 		}
 		thread[i].set_ID (thread_ID);
 	}
 	if (pthread_create(&thread_ID, NULL, control_thread_body, NULL) != 0)  {
 		cout << "#SERVER > ERROR - Can't create the control thread" << endl;
-		exit(-1);			
+		exit(-1);
 	}
 	control_thread.set_ID (thread_ID);
 	

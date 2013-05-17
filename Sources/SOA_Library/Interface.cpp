@@ -4,7 +4,9 @@
 	bool register_service_provider (string address, string port) {
 		int socket;
 		bool result = false;
-		if (!socket_initialization_client (&socket, SR_address, SR_port)) return false;
+		if (!check_address (address) ||
+			atoi(port.c_str()) < 1023 ||  atoi(port.c_str()) > 65535 ||
+			!socket_initialization_client (&socket, SR_address, SR_port)) return false;
 		
 		if (send_string (socket, "add_service_provider") &&
 			receive_int (socket) != -1 &&
@@ -18,7 +20,9 @@
 	bool unregister_service_provider (string address, string port) {
 		int socket;
 		bool result = false;
-		if (!socket_initialization_client (&socket, SR_address, SR_port)) return false;
+		if (!check_address (address) ||
+			atoi(port.c_str()) < 1023 ||  atoi(port.c_str()) > 65535 ||
+			!socket_initialization_client (&socket, SR_address, SR_port)) return false;
 		
 		if (send_string (socket, "remove_service_provider") &&
 			receive_int (socket) != -1 &&
@@ -29,15 +33,15 @@
 		return result;
 	}
 	
-	bool register_service (Service* service) {
+	bool register_service (Service_description* s_description) {
 		int socket;
 		bool result = false;
-		if (!socket_initialization_client (&socket, SR_address, SR_port)) return false;
+		if (s_description == NULL ||
+			!socket_initialization_client (&socket, SR_address, SR_port)) return false;
 		
 		if (send_string (socket, "add_service") &&
 			receive_int (socket) != -1 &&
-			send_string (socket, service->get_name()) &&
-			send_service_description(socket, service->get_description())) result = true;
+			send_service_description(socket, s_description)) result = true;
 		
 		close(socket);
 		return result;
@@ -46,7 +50,8 @@
 	bool unregister_service (Service_description* s_description) {
 		int socket;
 		bool result = false;
-		if (!socket_initialization_client (&socket, SR_address, SR_port)) return false;
+		if (s_description == NULL ||
+			!socket_initialization_client (&socket, SR_address, SR_port)) return false;
 				
 		if (send_string (socket, "remove_service") &&
 			receive_int (socket) != -1 &&
@@ -62,7 +67,8 @@
 	Service* service_request (string service_name) {
 		int socket;
 		Service_description* s_description = NULL;
-		if (!socket_initialization_client (&socket, SR_address, SR_port)) return NULL;
+		if (service_name == "" ||
+			!socket_initialization_client (&socket, SR_address, SR_port)) return NULL;
 		
 		if (send_string (socket, "get_service") &&
 			receive_int (socket) != -1 &&

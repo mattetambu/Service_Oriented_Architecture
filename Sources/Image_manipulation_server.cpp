@@ -1,4 +1,33 @@
-//USAGE: Image_manipulation_server ${Image_manipulation_server_port} ${Service_register_server_address} ${Service_register_server_port}
+/**
+ \file		Image_manipulation_server.cpp
+ \dir		/Source/
+ \date		15/05/2013
+ \author	Tamburini Matteo <mattetambu@gmail.com>
+ \brief		\e Server che fornisce il servizio di \e manipolazione delle immagini.
+ 
+ Lo \e Image_manipulation_server fornisce il servizio di \e manipolazione delle immagini esportando i seguenti servizi:
+ \li	\e rotate_image: ruota l'immagine fornita dal \e Client e gli invia il risultato dell'elaborazione
+ \li	\e horizontal_flip_image: riflette l'immagine fornita dal \e Client e gli invia il risultato dell'elaborazione
+*/
+
+/**
+ \fn		int main (int n_args, char ** args)
+ \param	[in]	n_args	Numero di argomenti in ingresso.
+ \param	[in]	args	Array di argomenti in ingresso.
+ \return	Risultato dell'esecuzione, \c 0 in caso di successo e \c -1 altrimenti.
+ \brief		Corpo dell' \e Image_manipulation_server.
+ 
+ L' \e Image_manipulation_server esegue le seguenti operazioni:
+ \li	inizializza e crea un \e socket sul quale attendere le richieste di servizio
+ \li	registra i servizi offerti al \e Service_register_server
+ \li	inizializza e crea un insieme di \e threads di servizio che si occuperanno dell'esecuzione dei servizi richiesti 
+ \li	inizializza e crea un \e thread di controllo che permette la gestione manuale del server attraverso appositi comandi
+ \li	ciclicamente si pone in attesa di richieste di servizio che, una volta accettate, assegna ad uno dei \e threads di servizio liberi
+ \li	ricevuto il comando di terminazione chiude le comunicazioni, deregistra i servizi e termina i threads precedentemente avviati, quindi termina a sua volta	
+*/
+
+
+//USAGE: Image_manipulation_server [Image_manipulation_server_port] [Service_register_server_address] [Service_register_server_port]
 
 #include "./Application/Image_manipulation_server/Image_manipulation_server_functions.h"
 
@@ -24,10 +53,12 @@ int main (int n_args, char ** args) {
 	if (!register_service_provider (SP_address, SP_port)) cerr << "#SERVER > " << SPACER << " ERROR - Can't register the server" << endl;
 	else {
 		cout << "#SERVER > Registering horizontal_flip_image service" << endl;
-		if (!register_service (horizontal_flip_image)) cerr << "#SERVER > " << SPACER << " ERROR - Can't register the horizontal_flip_image service" << endl;
+		if (!register_service (horizontal_flip_image->get_description()))
+			cerr << "#SERVER > " << SPACER << " ERROR - Can't register the horizontal_flip_image service" << endl;
 	
 		cout << "#SERVER > Registering rotate_image service" << endl;
-		if (!register_service (rotate_image)) cerr << "#SERVER > " << SPACER << " ERROR - Can't register the rotate_image service" << endl;
+		if (!register_service (rotate_image->get_description()))
+			cerr << "#SERVER > " << SPACER << " ERROR - Can't register the rotate_image service" << endl;
 	}
 	
 	// Creating threads

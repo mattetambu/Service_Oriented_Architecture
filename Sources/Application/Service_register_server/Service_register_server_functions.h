@@ -1,3 +1,67 @@
+/**
+ \file		Service_register_server_functions.h
+ \dir		/Source/Application/Service_register_server/
+ \date		15/05/2013
+ \author	Tamburini Matteo <mattetambu@gmail.com>
+ \brief		Raccolta di funzioni utili per l'implementazione del \e Service_register_server.
+*/
+
+/**
+ \def		N_THREADS
+ \brief		Numero di \e threads di servizio da avviare.
+*/
+ 
+/**
+ \def		BACKLOG_QUEUE
+ \brief		Dimensione della \e backlog \e queue associatta al \e listen_socket.
+*/
+
+/**
+ \fn		bool check_server_arguments (int n_args, char** args)
+ \param	[in]	n_args	Numero di argomenti in ingresso al \e Server.
+ \param	[in]	args	Array di argomenti in ingresso al \e Server.
+ \return	Risultato della verifica, \c true in caso di successo e \c false altrimenti.
+ \brief		Controllo dei parametri della funzione main del \e Server.
+
+ Al \e Server è necessario un solo parametro per la corretta esecuzione e se viene invocato privo di argomenti
+ questa funzione ne richiede l'inserimento. Il parametro necessario al \e Server è un intero nell'intervallo [1024-65535]
+ e rappresenta la porta di ascolto del \e Service_register_server.
+*/
+
+/**
+ \fn		bool assign_execution_thread (int client_socket)
+ \return	\c true in caso di assegnamento eseguito con successo, \c false altrimenti (tutti i \e threads sono occupati).
+ \brief		Cerca fra i \e threads di servizio un \e thread libero e lo assegna all'esecuzione della richiesta
+*/
+
+/**
+ \fn		bool Service_register_server_help ()
+ \brief		Fornisce l'elenco dei comandi accettati dal \e Server.
+*/
+
+/**
+ \fn		void* thread_body (void* thread_ID)
+ \param	[in]	thread_ID	Intero che identifica il \e thread a cui è associata l'istanza della funzione.
+ \brief		Corpo di tutti i \e threads di servizio del \e Service_register_server.
+
+ Ogni \e thread di servizio, fino alla ricezione del comando di terminazione, esegue ciclicamente le seguenti operazioni:
+ \li	segnala la sua disponibilità a ricevere connessioni e si pone in attesa di essere attivato per servire un \e Client
+ \li	riceve il nome del servizio richiesto dal \e Client e se questo non corrisponde ad un servizio fornito rifiuta al richiesta
+ \li	se la richiesta del \e Client viene accettata riceve i parametri necessari per l'esecuzione del servizio
+ \li	richiama il servizio richiesto e, se necessario, invia al \e Client il risultato dell'esecuzione
+*/
+
+/**
+ \fn		void* control_thread_body (void*)
+ \brief		Corpo del \e thread di controllo del \e Service_register_server.
+
+ Il \e thread di controllo, fino alla ricezione del comando di terminazione, esegue ciclicamente le seguenti operazioni:
+ \li	si pone in attesa di essere attivato (manualmente) per eseguire un comando
+ \li	richiede l'inserimento del comando e verifica se è in grado di eseguirlo (altrimenti lo rifiuta)
+ \li	se il comando viene accettato esegue l'operazione corrispondente
+*/
+
+
 #ifndef Service_register_server_functions_H_
 #define Service_register_server_functions_H_ 
 
@@ -5,8 +69,6 @@
 	#include "../../SOA_Library/Threads.h"
 	#include "./Service_register.h"
 	
-	#define REQUEST_NOT_ACCEPTED 0
-	#define REQUEST_ACCEPTED 1
 	#define N_THREADS 5
 	#define BACKLOG_QUEUE 5
 	
@@ -57,7 +119,7 @@
 		return true;
 	}
 
-	void *thread_body (void* thread_ID) {
+	void* thread_body (void* thread_ID) {
 		int ID = ((int) thread_ID);
 		bool service_result;
 		string request, name, address, port;
@@ -94,9 +156,9 @@
 			}
 			else if (request == "add_service") {
 				if (send_int (thread[ID].get_socket(), (int) REQUEST_ACCEPTED) && 
-					(name = receive_string (thread[ID].get_socket())) != "" &&
-					(s_description = receive_service_description (thread[ID].get_socket())) != NULL) {
-						if (!(service_result = service_register->add_service(name, s_description)))
+				   (s_description = receive_service_description (thread[ID].get_socket())) != NULL &&
+					s_description->name != "") {
+						if (!(service_result = service_register->add_service(s_description)))
 							cout << "#SERVER > Service " << name << " already registered" << endl;
 						else cout << "#SERVER > Request for adding service " << name << " served" << endl;
 				}
@@ -129,7 +191,7 @@
 		return 0;
 	}
 
-	void *control_thread_body (void*) {
+	void* control_thread_body (void*) {
 		while (control_thread.is_active()) {
 			bool result = false;
 			string activate, command = "", operand = "";

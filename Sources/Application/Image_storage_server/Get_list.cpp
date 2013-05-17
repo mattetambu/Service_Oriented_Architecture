@@ -4,29 +4,31 @@
 
 	Get_list::Get_list () {
 		s_description.name = "get_list";
-		path = string(IMAGES_STORAGE_DIRECTORY);
-		inizialize_parameters (path);
+		inizialize_parameters (string(GET_LIST_DIRECTORY));
 	}
 	Get_list::Get_list (string name, string address, string port) : Service (name, address, port) {
-		path = string(IMAGES_STORAGE_DIRECTORY);
-		inizialize_parameters (path);
+		inizialize_parameters (string(GET_LIST_DIRECTORY));
 	}
 	Get_list::Get_list (string name, string address, string port, string path) : Service (name, address, port) {
-		(*this).path = path;
 		inizialize_parameters (path);
 	}
 	Get_list::Get_list (Service_description* s_description) : Service (s_description) {
-		path = string(IMAGES_STORAGE_DIRECTORY);
-		inizialize_parameters (path);
+		path = string(GET_LIST_DIRECTORY);
+		
+		string command = "mkdir -p " + path;
+		if (system(command.c_str())) cerr << "ERROR - Can't create the service directory" << endl;
 	}
 	Get_list::Get_list (Service_description* s_description, string path) : Service (s_description) {
 		(*this).path = path;
-		inizialize_parameters (path);
+		
+		string command = "mkdir -p " + path;
+		if (system(command.c_str())) cerr << "ERROR - Can't create the service directory" << endl;
 	}
 	
 	Get_list::~Get_list () {}
 
 	void Get_list::inizialize_parameters (string path) {
+		(*this).path = path;
 		add_parameter(OUT, String);
 		
 		string command = "mkdir -p " + path;

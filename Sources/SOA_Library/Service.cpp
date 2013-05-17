@@ -39,7 +39,7 @@
 		}
 	}
 	
-	bool Service::set_input_parameters(vector<Parameter> parameters) {
+	bool Service::set_input_parameters (vector<Parameter> parameters) {
 		if ((*this).parameters.size() != parameters.size()) return false;
 		
 		for(int i = 0; i < (int) parameters.size(); i++) {
@@ -47,7 +47,7 @@
 			if (parameters[i].type == Integer) (*this).parameters[i].data.Integer = parameters[i].data.Integer;
 			else if (parameters[i].type == Double) (*this).parameters[i].data.Double = parameters[i].data.Double;
 			else if (parameters[i].type == String) (*this).parameters[i].data.String = parameters[i].data.String;
-			else {
+			else if (parameters[i].type == Buffer) {
 				(*this).parameters[i].data.Buffer.size = parameters[i].data.Buffer.size;
 				(*this).parameters[i].data.Buffer.pointer = parameters[i].data.Buffer.pointer;
 			}
@@ -152,10 +152,10 @@
 	}
 
 	
-	bool Service::responce_decode (string folder_path) {
+	bool Service::responce_decode (string image_path) {
 		Parameter responce_parameter;
 		if (!responce.get_parameter (0, &responce_parameter)) return false;
-		if (!make_image_from_buffer (folder_path, &responce_parameter.data.Buffer)) return false;
+		if (!make_image_from_buffer (image_path, &responce_parameter.data.Buffer)) return false;
 		
 		return true;
 	}

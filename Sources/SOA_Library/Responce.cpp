@@ -14,15 +14,15 @@
 		parameters.clear();
 	}
 	
-		
-	void Responce::add_parameter(Type type) {
+	
+	void Responce::add_parameter (Type type) {
 		parameters.resize(parameters.size()+1);
 		parameters.back().type = type;
 		//if(type == Buffer)
 			parameters.back().data.Buffer.size = 0;
 	}
 	
-	bool Responce::set_parameter(int index, Parameter *parameter) {
+	bool Responce::set_parameter (int index, Parameter *parameter) {
 		if (parameter->type != parameters[index].type) return false;
 		parameters[index] = *parameter;
 		
@@ -68,7 +68,7 @@
 		}
 				
 		for (int i = 0; i < (int) parameters.size(); i++) {
-			if(receive_int (socket) == (int) parameters[i].type ) send_int (socket, (int) true);
+			if(receive_int (socket) == (int) parameters[i].type) send_int (socket, (int) true);
 			else {
 				send_int (socket, (int) false);
 				cerr << "\t\t ERROR - Wrong parameters type for receiving the responce" << endl;

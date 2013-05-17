@@ -1,0 +1,70 @@
+\hypertarget{index_SOA}{}\section{Service Oriented Architecture -\/ Realizzare un architettura Service Oriented.}\label{index_SOA}
+{\bfseries Autore\-:} Tamburini Matteo \href{mailto:mattetambu@gmail.com}{\tt mattetambu@gmail.\-com} \par
+ {\bfseries Data\-:} 15/05/2013 \par
+ {\bfseries Versione\-:} 1.\-0 \par
+ \par
+\hypertarget{index_Descrizione}{}\subsection{Descrizione dettagliata dell'applicazione}\label{index_Descrizione}
+Il progetto consite nella realizzazione di una architettura \hyperlink{class_service}{Service} Oriented. E' presente un server che implementa il registro dei servizi a cui i vari service provider registrano i servizi offerti, un insieme di due servers che offrono servizi e dei clients che richiedono tali servizi.
+
+Il registro dei servizi si occupa di registrare i servizi offerti dai vari service provider della rete identificando in modo univoco ogni servizio tramite il suo nome e l'endpoint (indirizzo I\-P e porta) del service provider che lo fornisce.
+
+Il server di manipolazioni delle immagini fornisce i seguenti servizi\-:
+\begin{DoxyItemize}
+\item rotazione\-: prende in ingresso un'immagine J\-P\-G e la ruota
+\item riflessione\-: prende in ingresso un'immagine J\-P\-G e la specchia sull'asse X \par
+ Una volta iscritti nel registro, tali servizi possono essere ottenuti dai client che ne fanno richiesta. \par
+
+\end{DoxyItemize}
+
+Il server di memorizzazione delle immagini fornisce i seguenti servizi\-:
+\begin{DoxyItemize}
+\item memorizza immagine\-: memorizza l'immagine fornita dal client
+\item fornisci immagine\-: restituisce l’immagine richiesta al client
+\item fornisci lista\-: restituisce al client la lista delle immagini memorizzate sul server \par
+ Una volta iscritti nel registro, tali servizi possono essere ottenuti dai client che ne fanno richiesta. \par
+
+\end{DoxyItemize}
+
+Ogni client esegue ciclicamente le seguenti operazioni\-:
+\begin{DoxyItemize}
+\item sceglie a caso un'immagine da disco o la richiede al service provider
+\item sceglie a caso un servizio di manipolazione da applicare all'immagine (rotazione o riflessione) e lo richiede al server
+\item invia il risultato della manipolazione al service provider per il salvataggio. \par
+ Per ottenere i servizi che gli necessitano per prima cosa richiede al server registro l'indirizzo I\-P e la porta dove è possibile trovare i servizi e successivamente contatta i service providers. \par
+ \par
+
+\end{DoxyItemize}\hypertarget{index_Compilazione}{}\subsection{Compilazione dell'applicazione}\label{index_Compilazione}
+Per la compilazione è presente un makefile quindi è sufficiente eseguire il comando \char`\"{}make\char`\"{}. \par
+ \par
+\hypertarget{index_Esecuzione}{}\subsection{Esecuzione dell'applicazione}\label{index_Esecuzione}
+Per lanciare l'applicazione Service\-\_\-\-Oriented\-\_\-\-Architecture è necessario eseguire i seguenti quattro file\-: \hypertarget{index_Service_register}{}\subsubsection{Service\-\_\-register}\label{index_Service_register}
+Server che fornisce il registro dei servizi. \par
+ {\itshape Comando} {\itshape di} {\itshape esecuzione\-:} Service\-\_\-register\-\_\-server \mbox{[}Service\-\_\-register\-\_\-server\-\_\-port\mbox{]} \par
+ {\itshape Parametri\-:} 
+\begin{DoxyItemize}
+\item Service\-\_\-register\-\_\-server\-\_\-port\-: porta su cui si mette in ascolto il server registro dei servizi
+\end{DoxyItemize}\hypertarget{index_Image_manipulation_server}{}\subsubsection{Image\-\_\-manipulation\-\_\-server}\label{index_Image_manipulation_server}
+Server per la manipolazione delle immagini. \par
+ {\itshape Comando} {\itshape di} {\itshape esecuzione\-:} Image\-\_\-manipulation\-\_\-server \mbox{[}Image\-\_\-manipulation\-\_\-server\-\_\-port\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-address\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-port\mbox{]} \par
+ {\itshape Parametri\-:} 
+\begin{DoxyItemize}
+\item Image\-\_\-manipulation\-\_\-server\-\_\-port\-: porta su cui si mette in ascolto il server di manipolazione delle immagini
+\item Service\-\_\-register\-\_\-server\-\_\-address\-: indirizzo I\-P del Service\-\_\-register\-\_\-server
+\item Service\-\_\-register\-\_\-server\-\_\-port\-: porta di ascolto del Service\-\_\-register\-\_\-server
+\end{DoxyItemize}\hypertarget{index_Image_storing_server}{}\subsubsection{Image\-\_\-storing\-\_\-server}\label{index_Image_storing_server}
+Server per la memorizzazione delle immagini. \par
+ {\itshape Comando} {\itshape di} {\itshape esecuzione\-:} Image\-\_\-storage\-\_\-server \mbox{[}Image\-\_\-storage\-\_\-server\-\_\-port\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-address\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-port\mbox{]} \par
+ {\itshape Parametri\-:} 
+\begin{DoxyItemize}
+\item Image\-\_\-storage\-\_\-server\-\_\-port\-: porta su cui si mette in ascolto il server di memorizzazione delle immagini
+\item Service\-\_\-register\-\_\-server\-\_\-address\-: indirizzo I\-P del Service\-\_\-register\-\_\-server
+\item Service\-\_\-register\-\_\-server\-\_\-port\-: porta di ascolto del Service\-\_\-register\-\_\-server
+\end{DoxyItemize}\hypertarget{index_Client}{}\subsubsection{Client}\label{index_Client}
+Client generico che usufruisce dei servizi. \par
+ {\itshape Comando} {\itshape di} {\itshape esecuzione\-:} Client \mbox{[}Client\-\_\-iteretions\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-address\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-port\mbox{]} \par
+ {\itshape Parametri\-:} 
+\begin{DoxyItemize}
+\item Client\-\_\-iteretions\-: numero di iterazioni che il Client effettua prima di terminare
+\item Service\-\_\-register\-\_\-server\-\_\-address\-: indirizzo I\-P del Service\-\_\-register\-\_\-server
+\item Service\-\_\-register\-\_\-server\-\_\-port\-: porta di ascolto del Service\-\_\-register\-\_\-server 
+\end{DoxyItemize}

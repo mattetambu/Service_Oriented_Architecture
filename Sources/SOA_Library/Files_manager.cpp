@@ -1,7 +1,7 @@
 #include "Files_manager.h"
 
 	
-	string make_working_directory (string path) {
+	string make_client_working_directory (string path) {
 		DIR* directory = opendir(path.c_str());
 		dirent* directory_info;
 		struct stat file_info;
@@ -26,16 +26,13 @@
 		struct stat file_info;
 		
 		if (!directory) {
-			cerr << "#CLIENT > ERROR - Can't open the image_storage directory" << endl;
+			cerr << "#CLIENT > ERROR - Can't open the selected directory" << endl;
 			return false;
 		}
-		while ((directory_info = readdir(directory))) {
-			if (directory_info->d_name[0] == '.' ||
-				stat((path + directory_info->d_name).c_str(), &file_info) != 0 ||
-				S_ISDIR(file_info.st_mode)) continue;
-			
-			(*file_list).push_back(directory_info->d_name);
-		}
+		while ((directory_info = readdir(directory)))
+			if (directory_info->d_name[0] != '.' &&
+				stat((path + directory_info->d_name).c_str(), &file_info) == 0 &&
+				!S_ISDIR(file_info.st_mode)) (*file_list).push_back(directory_info->d_name);
 		
 		return true;
 	}

@@ -1,0 +1,161 @@
+\hypertarget{_interface_8h}{\section{Riferimenti per il file C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Interface.h}
+\label{_interface_8h}\index{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Interface.\-h@{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Interface.\-h}}
+}
+{\ttfamily \#include \char`\"{}./\-Service.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$dirent.\-h$>$}\\*
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_interface_8h_a664f405058a7a05a7a88837566fbe36f}{register\-\_\-service\-\_\-provider} (string address, string port)
+\begin{DoxyCompactList}\small\item\em Registrazione del service provider nel registro del {\itshape Service\-\_\-register\-\_\-server}. \end{DoxyCompactList}\item 
+bool \hyperlink{_interface_8h_ac7e6cf7c8d896a9bde8f4e665cb2edca}{unregister\-\_\-service\-\_\-provider} (string address, string port)
+\begin{DoxyCompactList}\small\item\em Cancellazione del service provider dal registro del {\itshape Service\-\_\-register\-\_\-server}. \end{DoxyCompactList}\item 
+bool \hyperlink{_interface_8h_ad09364bb2eb542d1e0ffe6a75bba993a}{register\-\_\-service} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$s\-\_\-description)
+\begin{DoxyCompactList}\small\item\em Registrazione del servizio offerto dal service provider nel registro del {\itshape Service\-\_\-register\-\_\-server}. \end{DoxyCompactList}\item 
+bool \hyperlink{_interface_8h_ad3e4b9f56e03fa6d402e55042da3218b}{unregister\-\_\-service} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$s\-\_\-description)
+\begin{DoxyCompactList}\small\item\em Cancellazione del servizio dal registro del {\itshape Service\-\_\-register\-\_\-server}. \end{DoxyCompactList}\item 
+\hyperlink{class_service}{Service} $\ast$ \hyperlink{_interface_8h_aad7255d385e06e092ce9242a18faeddb}{service\-\_\-request} (string service)
+\begin{DoxyCompactList}\small\item\em Richiesta effettuata per ottenere le informazioni relative a un servizio registrato al {\itshape Service\-\_\-register\-\_\-server}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variabili}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_interface_8h_a6bc5fae6d25ed705c56d65ef46151964}{string {\bfseries S\-R\-\_\-address}}\label{_interface_8h_a6bc5fae6d25ed705c56d65ef46151964}
+
+\item 
+\hypertarget{_interface_8h_a1f02378765d968db00d5126f213e9038}{string {\bfseries S\-R\-\_\-port}}\label{_interface_8h_a1f02378765d968db00d5126f213e9038}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{_interface_8h_ad09364bb2eb542d1e0ffe6a75bba993a}{\index{Interface.\-h@{Interface.\-h}!register\-\_\-service@{register\-\_\-service}}
+\index{register\-\_\-service@{register\-\_\-service}!Interface.h@{Interface.\-h}}
+\subsubsection[{register\-\_\-service}]{\setlength{\rightskip}{0pt plus 5cm}bool register\-\_\-service (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{_interface_8h_ad09364bb2eb542d1e0ffe6a75bba993a}
+
+
+Registrazione del servizio offerto dal service provider nel registro del {\itshape Service\-\_\-register\-\_\-server}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio da registrare al {\itshape Service\-\_\-register\-\_\-server}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della registrazione del servizio, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. Le azioni intraprese per la registrazione del servizio offerto dal service provider al {\itshape Service\-\_\-register\-\_\-server} risultano\-: \begin{DoxyItemize}
+\item instaurare una connessione con il {\itshape Service\-\_\-register\-\_\-server} \item inviare la richiesta di registrazione e attendere la conferma dell'avvenuta accettazione della richiesta \item inviare la descrizione del servizio offerto da inserire nel registro del {\itshape Service\-\_\-register\-\_\-server} \item chiudere la connessione con il {\itshape Service\-\_\-register\-\_\-server} \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 36 del file Interface.\-cpp.
+
+\hypertarget{_interface_8h_a664f405058a7a05a7a88837566fbe36f}{\index{Interface.\-h@{Interface.\-h}!register\-\_\-service\-\_\-provider@{register\-\_\-service\-\_\-provider}}
+\index{register\-\_\-service\-\_\-provider@{register\-\_\-service\-\_\-provider}!Interface.h@{Interface.\-h}}
+\subsubsection[{register\-\_\-service\-\_\-provider}]{\setlength{\rightskip}{0pt plus 5cm}bool register\-\_\-service\-\_\-provider (
+\begin{DoxyParamCaption}
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{_interface_8h_a664f405058a7a05a7a88837566fbe36f}
+
+
+Registrazione del service provider nel registro del {\itshape Service\-\_\-register\-\_\-server}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del {\itshape Service\-\_\-register\-\_\-server}. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del {\itshape Service\-\_\-register\-\_\-server}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della registrazione del service provider, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. Le azioni intraprese dal service provider per la registrazione al {\itshape Service\-\_\-register\-\_\-server} risultano\-: \begin{DoxyItemize}
+\item instaurare una connessione con il {\itshape Service\-\_\-register\-\_\-server} \item inviare la richiesta di registrazione e attendere la conferma dell'avvenuta accettazione della richiesta \item inviare l'indirizzo I\-P e la porta di ascolto del service provider stesso \item chiudere la connessione con il {\itshape Service\-\_\-register\-\_\-server} \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 4 del file Interface.\-cpp.
+
+\hypertarget{_interface_8h_aad7255d385e06e092ce9242a18faeddb}{\index{Interface.\-h@{Interface.\-h}!service\-\_\-request@{service\-\_\-request}}
+\index{service\-\_\-request@{service\-\_\-request}!Interface.h@{Interface.\-h}}
+\subsubsection[{service\-\_\-request}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Service}$\ast$ service\-\_\-request (
+\begin{DoxyParamCaption}
+\item[{string}]{service\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{_interface_8h_aad7255d385e06e092ce9242a18faeddb}
+
+
+Richiesta effettuata per ottenere le informazioni relative a un servizio registrato al {\itshape Service\-\_\-register\-\_\-server}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em service} & Nome del servizio da richiedere al {\itshape Service\-\_\-register\-\_\-server}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Servizio inizializzato con la descrizione fornita dal registro del {\itshape Service\-\_\-register\-\_\-server} ( {\ttfamily N\-U\-L\-L} se il servizio non è presente nel registro). Le azioni intraprese dal {\itshape Client} per richiedere le informazioni relative a un servizio registrato al {\itshape Service\-\_\-register\-\_\-server} risultano\-: \begin{DoxyItemize}
+\item instaurare una connessione con il {\itshape Service\-\_\-register\-\_\-server} \item inviare la richiesta di informazioni relative al servizio e attendere la conferma dell'avvenuta accettazione della richiesta \item inviare il nome del servizio ricercato e ricevere la descrizione del servizio stesso \item chiudere la connessione con il {\itshape Service\-\_\-register\-\_\-server} \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 67 del file Interface.\-cpp.
+
+\hypertarget{_interface_8h_ad3e4b9f56e03fa6d402e55042da3218b}{\index{Interface.\-h@{Interface.\-h}!unregister\-\_\-service@{unregister\-\_\-service}}
+\index{unregister\-\_\-service@{unregister\-\_\-service}!Interface.h@{Interface.\-h}}
+\subsubsection[{unregister\-\_\-service}]{\setlength{\rightskip}{0pt plus 5cm}bool unregister\-\_\-service (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{_interface_8h_ad3e4b9f56e03fa6d402e55042da3218b}
+
+
+Cancellazione del servizio dal registro del {\itshape Service\-\_\-register\-\_\-server}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio da cancellare dal {\itshape Service\-\_\-register\-\_\-server}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della cancellazione del servizio, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. Le azioni intraprese per la cancellazione del servizio dal registro del {\itshape Service\-\_\-register\-\_\-server} risultano\-: \begin{DoxyItemize}
+\item instaurare una connessione con il {\itshape Service\-\_\-register\-\_\-server} \item inviare la richiesta di cancellazione e attendere la conferma dell'avvenuta accettazione della richiesta \item inviare la descrizione del servizio da cancellare dal registro del {\itshape Service\-\_\-register\-\_\-server} \item chiudere la connessione con il {\itshape Service\-\_\-register\-\_\-server} \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 50 del file Interface.\-cpp.
+
+\hypertarget{_interface_8h_ac7e6cf7c8d896a9bde8f4e665cb2edca}{\index{Interface.\-h@{Interface.\-h}!unregister\-\_\-service\-\_\-provider@{unregister\-\_\-service\-\_\-provider}}
+\index{unregister\-\_\-service\-\_\-provider@{unregister\-\_\-service\-\_\-provider}!Interface.h@{Interface.\-h}}
+\subsubsection[{unregister\-\_\-service\-\_\-provider}]{\setlength{\rightskip}{0pt plus 5cm}bool unregister\-\_\-service\-\_\-provider (
+\begin{DoxyParamCaption}
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{_interface_8h_ac7e6cf7c8d896a9bde8f4e665cb2edca}
+
+
+Cancellazione del service provider dal registro del {\itshape Service\-\_\-register\-\_\-server}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del {\itshape Service\-\_\-register\-\_\-server}. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del {\itshape Service\-\_\-register\-\_\-server}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della cancellazione del service provider, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. Le azioni intraprese dal service provider per la cancellazione dal registro del {\itshape Service\-\_\-register\-\_\-server} (che comporta la cancellazione dal registro dei servizi di tutti i servizi offerti dal service provider) risultano\-: \begin{DoxyItemize}
+\item instaurare una connessione con il {\itshape Service\-\_\-register\-\_\-server} \item inviare la richiesta di cancellazione e attendere la conferma dell'avvenuta accettazione della richiesta \item inviare l'indirizzo I\-P e la porta di ascolto del service provider stesso \item chiudere la connessione con il {\itshape Service\-\_\-register\-\_\-server} \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 20 del file Interface.\-cpp.
+

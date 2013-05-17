@@ -1,0 +1,41 @@
+============================= \section*{\hyperlink{class_service}{Service} oriented architecture}
+
+Progetto\-: \hyperlink{class_service}{Service} Oriented Architecture
+
+Autore\-: Tamburini Matteo \href{mailto:mattetambu@gmail.com}{\tt mattetambu@gmail.\-com}
+
+Descrizione\-: Realizzare un architettura \hyperlink{class_service}{Service} Oriented.
+
+Descrizione dettagliata\-: Il progetto consite nella realizzazione di una architettura \hyperlink{class_service}{Service} Oriented. E' presente un server che implementa il registro dei servizi a cui i vari service provider registrano i servizi offerti, un insieme di due servers che offrono servizi e dei clients che richiedono tali servizi.
+
+Il registro dei servizi si occupa di registrare i servizi offerti dai vari service provider della rete identificando in modo univoco ogni servizio tramite il suo nome e l'endpoint (indirizzo I\-P e porta) del service provider che lo fornisce.
+
+Il server di manipolazioni delle immagini fornisce i seguenti servizi\-:
+\begin{DoxyItemize}
+\item rotazione\-: prende in ingresso un'immagine J\-P\-G e la ruota
+\item riflessione\-: prende in ingresso un'immagine J\-P\-G e la specchia sull'asse X Una volta iscritti nel registro, tali servizi possono essere ottenuti dai client che ne fanno richiesta.
+\end{DoxyItemize}
+
+Il server di memorizzazione delle immagini fornisce i seguenti servizi\-:
+\begin{DoxyItemize}
+\item memorizza immagine\-: memorizza l'immagine fornita dal client
+\item fornisci immagine\-: restituisce l’immagine richiesta al client
+\item fornisci lista\-: restituisce al client la lista delle immagini memorizzate sul server Una volta iscritti nel registro, tali servizi possono essere ottenuti dai client che ne fanno richiesta.
+\end{DoxyItemize}
+
+Ogni client esegue ciclicamente le seguenti operazioni\-:
+\begin{DoxyItemize}
+\item sceglie a caso un'immagine da disco o la richiede al service provider
+\item sceglie a caso un servizio di manipolazione da applicare all'immagine (rotazione o riflessione) e lo richiede al server
+\item invia il risultato della manipolazione al service provider per il salvataggio. Per ottenere i servizi che gli necessitano per prima cosa richiede al server registro l'indirizzo I\-P e la porta dove è possibile trovare i servizi e successivamente contatta i service providers.
+\end{DoxyItemize}
+
+Compilazione dell'applicazione\-: Per la compilazione è presente un makefile quindi è sufficiente eseguire il comando \char`\"{}make\char`\"{}.
+
+Esecuzione dell'applicazione\-: Per lanciare l'applicazione Service\-\_\-\-Oriented\-\_\-\-Architecture è necessario eseguire i seguenti quattro file\-: \hyperlink{class_service__register}{Service\-\_\-register}\-: Server che fornisce il registro dei servizi Comando di esecuzione\-: Service\-\_\-register\-\_\-server \mbox{[}Service\-\_\-register\-\_\-server\-\_\-port\mbox{]} Parametri Service\-\_\-register\-\_\-server\-\_\-port\-: porta su cui si mette in ascolto il server registro dei servizi
+
+Image\-\_\-manipulation\-\_\-server\-: Server per la manipolazione delle immagini. Comando di esecuzione\-: Image\-\_\-manipulation\-\_\-server \mbox{[}Image\-\_\-manipulation\-\_\-server\-\_\-port\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-address\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-port\mbox{]} Parametri Image\-\_\-manipulation\-\_\-server\-\_\-port\-: porta su cui si mette in ascolto il server di manipolazione delle immagini Service\-\_\-register\-\_\-server\-\_\-address\-: indirizzo I\-P del Service\-\_\-register\-\_\-server Service\-\_\-register\-\_\-server\-\_\-port\-: porta di ascolto del Service\-\_\-register\-\_\-server
+
+Image\-\_\-storing\-\_\-server\-: Server per la memorizzazione delle immagini. Comando di esecuzione\-: Image\-\_\-storage\-\_\-server \mbox{[}Image\-\_\-storage\-\_\-server\-\_\-port\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-address\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-port\mbox{]} Parametri Image\-\_\-storage\-\_\-server\-\_\-port\-: porta su cui si mette in ascolto il server di memorizzazione delle immagini Service\-\_\-register\-\_\-server\-\_\-address\-: indirizzo I\-P del Service\-\_\-register\-\_\-server Service\-\_\-register\-\_\-server\-\_\-port\-: porta di ascolto del Service\-\_\-register\-\_\-server
+
+Client\-: Client generico che usufruisce dei servizi. Comando di esecuzione\-: Client \mbox{[}Client\-\_\-iteretions\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-address\mbox{]} \mbox{[}Service\-\_\-register\-\_\-server\-\_\-port\mbox{]} Parametri Client\-\_\-iteretions\-: numero di iterazioni che il Client effettua prima di terminare Service\-\_\-register\-\_\-server\-\_\-address\-: indirizzo I\-P del Service\-\_\-register\-\_\-server Service\-\_\-register\-\_\-server\-\_\-port\-: porta di ascolto del Service\-\_\-register\-\_\-server 

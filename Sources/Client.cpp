@@ -1,7 +1,28 @@
-//USAGE: Client ${Client_iteretions} ${Service_register_server_address} ${Service_register_server_port}
+/**
+ \file		Client.cpp
+ \dir		/Source/
+ \date		15/05/2013
+ \author	Tamburini Matteo <mattetambu@gmail.com>
+ \brief		\e Client che richiede servizi offerti dai server.
+*/
+
+/**
+ \fn		int main (int n_args, char ** args)
+ \param	[in]	n_args	Numero di argomenti in ingresso al \e Client.
+ \param	[in]	args	Array di argomenti in ingresso al \e Client.
+ \return	Risultato dell'esecuzione, \c 0 in caso di successo e \c -1 altrimenti.
+ \brief		Corpo del \e Client.
+ 
+ Il \e Client ciclicamente esegue le seguenti operazioni:
+ \li	sceglie a caso un'immagine da disco o la richiede al service provider
+ \li	sceglie a caso un servizio di manipolazione da applicare all'immagine (rotazione o riflessione) e lo richiede al server
+ \li	invia il risultato della manipolazione al service provider per il salvataggio.
+*/
+
+
+//USAGE: Client [Client_iteretions]	[Service_register_server_address]	[Service_register_server_port]
 
 #include "./Application/Clients/Clients_functions.h"
-
 
 int main (int n_args, char ** args) {
 	atexit (remove_working_directory);
@@ -12,14 +33,14 @@ int main (int n_args, char ** args) {
 		exit(-1);
 	}
 	
-	if ((client_number = make_working_directory(CLIENT_DIRECTORY)) == "") {
+	if ((client_number = make_client_working_directory (CLIENT_DIRECTORY)) == "") {
 		cerr << "#CLIENT > ERROR - Can't create the working directory" << endl;
 		exit(-1);
 	}
 	
 	srand(time(NULL));
 	for (int i = 0; i < iteration_number; i++) {
-		cout << endl << endl;
+		cout << endl << endl << "******* Iteration number " << i << " *******" << endl;
 		sleep(1);
 		//cin.get();
 		
@@ -62,7 +83,7 @@ int main (int n_args, char ** args) {
 				cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - No image stored in the server" << endl;
 				continue;
 			}
-			else server_image_name = choose_random_file(server_image_list);		
+			else server_image_name = choose_random_element (server_image_list);		
 			
 			cout << "#CLIENT > " << SPACER << " Service get_list successfully completed" << endl;
 			cout << "#CLIENT > " << SPACER << " Choosed image: " << server_image_name << endl;
@@ -123,7 +144,7 @@ int main (int n_args, char ** args) {
 				cerr << "#CLIENT > " << SPACER << SPACER << " ERROR - No image stored in the disk" << endl;
 				continue;
 			}
-			else disk_image_name = choose_random_file (disk_image_list);
+			else disk_image_name = choose_random_element (disk_image_list);
 
 			cout << "#CLIENT > " << SPACER << " Choosed image: " << disk_image_name << endl;
 			image_path = IMAGES_DIRECTORY + disk_image_name;

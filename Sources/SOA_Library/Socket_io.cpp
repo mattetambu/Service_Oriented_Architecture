@@ -138,6 +138,16 @@
 		return data;
 	}
 	
+	double receive_double (int socket) {
+		double data;
+		int received = recv (socket, &data, sizeof(data), MSG_WAITALL);
+		if (received == -1 || received < (int) sizeof(data)) {
+			cerr << "\t\t ERROR - Can't receive a double" << endl;
+			return -1;
+		}
+		return data;
+	}
+	
 	string receive_string (int socket) {
 		int size = receive_int (socket);
 		if (size == -1) return "";
@@ -152,16 +162,6 @@
 		received_string[size] = '\0';
 		
 		return string(received_string);
-	}
-	
-	double receive_double (int socket) {
-		double data;
-		int received = recv (socket, &data, sizeof(data), MSG_WAITALL);
-		if (received == -1 || received < (int) sizeof(data)) {
-			cerr << "\t\t ERROR - Can't receive a double" << endl;
-			return -1;
-		}
-		return data;
 	}
 	
 	buffer* receive_buffer (int socket) {

@@ -70,10 +70,10 @@
 		return cancelled;
 	}
 
-	bool Service_register::add_service (string name, Service_description* s_description) {	
-		if (!find_service(name, s_description->address, s_description->port)) {
+	bool Service_register::add_service (Service_description* s_description) {	
+		if (!find_service(s_description->name, s_description->address, s_description->port)) {
 			writers_prologue();
-			service_register[name].push_front (s_description);
+			service_register[s_description->name].push_front (s_description);
 			writers_epilogue();
 			return true;
 		}

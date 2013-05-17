@@ -1,0 +1,416 @@
+\hypertarget{_socket__io_8h}{\section{Riferimenti per il file C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Socket\-\_\-io.h}
+\label{_socket__io_8h}\index{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Socket\-\_\-io.\-h@{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Socket\-\_\-io.\-h}}
+}
+{\ttfamily \#include \char`\"{}Types.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$netdb.\-h$>$}\\*
+{\ttfamily \#include $<$sys/types.\-h$>$}\\*
+{\ttfamily \#include $<$sys/socket.\-h$>$}\\*
+{\ttfamily \#include $<$netinet/in.\-h$>$}\\*
+{\ttfamily \#include $<$arpa/inet.\-h$>$}\\*
+\subsection*{Funzioni}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_socket__io_8h_ae28b3e797db544ee71fc2c1ab8c0e070}{socket\-\_\-initialization\-\_\-client} (int $\ast$client\-\_\-socket, string address, string port)
+\begin{DoxyCompactList}\small\item\em Crea un {\itshape Socket} di tipo S\-O\-C\-K\-\_\-\-S\-T\-R\-E\-A\-M e lo utilizza per connettersi al {\itshape Server} il cui endpoint è passato come parametro. \end{DoxyCompactList}\item 
+bool \hyperlink{_socket__io_8h_aeb101eab2938035d5279e56d2b2b3276}{socket\-\_\-initialization\-\_\-server} (int $\ast$listen\-\_\-socket, string port, int backlog\-\_\-queue\-\_\-length)
+\begin{DoxyCompactList}\small\item\em Crea un {\itshape Socket} di tipo S\-O\-C\-K\-\_\-\-S\-T\-R\-E\-A\-M e lo utilizza per le primitive {\ttfamily bind} e {\ttfamily listen}. \end{DoxyCompactList}\item 
+int \hyperlink{_socket__io_8h_a989085d5366bf3befdc3d795b89c305d}{accept\-\_\-client\-\_\-connection} (int listen\-\_\-socket)
+\begin{DoxyCompactList}\small\item\em Esegue la primitiva {\ttfamily accept} sul {\itshape Socket} passato come parametro. \end{DoxyCompactList}\item 
+bool \hyperlink{_socket__io_8h_afe5a5cdd73329fce72b0e6c26441411e}{check\-\_\-address} (string address)
+\begin{DoxyCompactList}\small\item\em Testa se la stringa passata come parametro rappresenta un indirizzo I\-P valido. \end{DoxyCompactList}\item 
+string \hyperlink{_socket__io_8h_a88a7a2bbdde29a2845874a6b2808900c}{get\-\_\-my\-\_\-ip} ()
+\begin{DoxyCompactList}\small\item\em Restituisce l'indirizzo I\-P del chiamante. \end{DoxyCompactList}\item 
+bool \hyperlink{_socket__io_8h_acfbe4821c62ebd77c3968ccfc2254e74}{send\-\_\-int} (int socket, int data)
+\begin{DoxyCompactList}\small\item\em Invia l'intero passato come parametro sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+bool \hyperlink{_socket__io_8h_a5348a1bb758d79d682d75ee3381e6c91}{send\-\_\-double} (int socket, double data)
+\begin{DoxyCompactList}\small\item\em Invia il double passato come parametro sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+bool \hyperlink{_socket__io_8h_aa856f465a08736a4d3e84e8ae7ece4c4}{send\-\_\-string} (int socket, string data)
+\begin{DoxyCompactList}\small\item\em Invia la stringa passata come parametro sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+bool \hyperlink{_socket__io_8h_a150f97491074a5036f10554ccc55f5b1}{send\-\_\-buffer} (int socket, \hyperlink{structbuffer}{buffer} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Invia il buffer passato come parametro sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+bool \hyperlink{_socket__io_8h_a6d06636c3bbb6720d7512d8b7db23d67}{send\-\_\-service\-\_\-description} (int socket, \hyperlink{struct_service__description}{Service\-\_\-description} $\ast$s\-\_\-description)
+\begin{DoxyCompactList}\small\item\em Invia la descrizione del servizio passata come parametro sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+int \hyperlink{_socket__io_8h_ad3c9b2a61bc7d4c49ed52b301e71a91c}{receive\-\_\-int} (int socket)
+\begin{DoxyCompactList}\small\item\em Riceve un intero sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+double \hyperlink{_socket__io_8h_aa552405de8229faa8f21c14863106d3f}{receive\-\_\-double} (int socket)
+\begin{DoxyCompactList}\small\item\em Riceve un double sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+string \hyperlink{_socket__io_8h_ab9d7e4f1850dcf7f36c550785f047d00}{receive\-\_\-string} (int socket)
+\begin{DoxyCompactList}\small\item\em Riceve una stringa sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+\hyperlink{structbuffer}{buffer} $\ast$ \hyperlink{_socket__io_8h_ae69c0fda59e028a7f3421a31857b89fd}{receive\-\_\-buffer} (int socket)
+\begin{DoxyCompactList}\small\item\em Riceve un buffer sul {\itshape Socket} specificato. \end{DoxyCompactList}\item 
+\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$ \hyperlink{_socket__io_8h_a45887cc76771b4c1f93f9facd9c0ad8a}{receive\-\_\-service\-\_\-description} (int socket)
+\begin{DoxyCompactList}\small\item\em Riceve la descrizione del servizio sul {\itshape Socket} specificato e la ritorna al chiamante. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione delle funzioni}
+\hypertarget{_socket__io_8h_a989085d5366bf3befdc3d795b89c305d}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!accept\-\_\-client\-\_\-connection@{accept\-\_\-client\-\_\-connection}}
+\index{accept\-\_\-client\-\_\-connection@{accept\-\_\-client\-\_\-connection}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{accept\-\_\-client\-\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}int accept\-\_\-client\-\_\-connection (
+\begin{DoxyParamCaption}
+\item[{int}]{listen\-\_\-socket}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_a989085d5366bf3befdc3d795b89c305d}
+
+
+Esegue la primitiva {\ttfamily accept} sul {\itshape Socket} passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em listen\-\_\-socket} & {\itshape Socket} di ascolto del {\itshape Server}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della primitiva {\ttfamily accept} effettuata sul {\itshape Socket} passato come parametro. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 38 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_afe5a5cdd73329fce72b0e6c26441411e}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!check\-\_\-address@{check\-\_\-address}}
+\index{check\-\_\-address@{check\-\_\-address}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{check\-\_\-address}]{\setlength{\rightskip}{0pt plus 5cm}bool check\-\_\-address (
+\begin{DoxyParamCaption}
+\item[{string}]{address}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_afe5a5cdd73329fce72b0e6c26441411e}
+
+
+Testa se la stringa passata come parametro rappresenta un indirizzo I\-P valido. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em address} & Stringa da testare per verificare se rispetta il formato di un indirizzo I\-P. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato del test, {\ttfamily true} se la stringa rappresenta un indirizzo I\-P valido e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 47 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_a88a7a2bbdde29a2845874a6b2808900c}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!get\-\_\-my\-\_\-ip@{get\-\_\-my\-\_\-ip}}
+\index{get\-\_\-my\-\_\-ip@{get\-\_\-my\-\_\-ip}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{get\-\_\-my\-\_\-ip}]{\setlength{\rightskip}{0pt plus 5cm}string get\-\_\-my\-\_\-ip (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_a88a7a2bbdde29a2845874a6b2808900c}
+
+
+Restituisce l'indirizzo I\-P del chiamante. 
+
+\begin{DoxyReturn}{Restituisce}
+Stringa che rappresenta l'indirizzo I\-P del chiamante. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 54 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_ae69c0fda59e028a7f3421a31857b89fd}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!receive\-\_\-buffer@{receive\-\_\-buffer}}
+\index{receive\-\_\-buffer@{receive\-\_\-buffer}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{receive\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf buffer}$\ast$ receive\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_ae69c0fda59e028a7f3421a31857b89fd}
+
+
+Riceve un buffer sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per la ricezione del dato. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricezione, dato di tipo buffer in caso di successo e {\ttfamily N\-U\-L\-L} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 167 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_aa552405de8229faa8f21c14863106d3f}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!receive\-\_\-double@{receive\-\_\-double}}
+\index{receive\-\_\-double@{receive\-\_\-double}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{receive\-\_\-double}]{\setlength{\rightskip}{0pt plus 5cm}double receive\-\_\-double (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_aa552405de8229faa8f21c14863106d3f}
+
+
+Riceve un double sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per la ricezione del dato. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricezione, dato di tipo double in caso di successo e {\ttfamily -\/1} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 141 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_ad3c9b2a61bc7d4c49ed52b301e71a91c}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!receive\-\_\-int@{receive\-\_\-int}}
+\index{receive\-\_\-int@{receive\-\_\-int}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{receive\-\_\-int}]{\setlength{\rightskip}{0pt plus 5cm}int receive\-\_\-int (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_ad3c9b2a61bc7d4c49ed52b301e71a91c}
+
+
+Riceve un intero sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per la ricezione del dato. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricezione, dato di tipo intero in caso di successo e {\ttfamily -\/1} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 132 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_a45887cc76771b4c1f93f9facd9c0ad8a}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!receive\-\_\-service\-\_\-description@{receive\-\_\-service\-\_\-description}}
+\index{receive\-\_\-service\-\_\-description@{receive\-\_\-service\-\_\-description}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{receive\-\_\-service\-\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Service\-\_\-description}$\ast$ receive\-\_\-service\-\_\-description (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_a45887cc76771b4c1f93f9facd9c0ad8a}
+
+
+Riceve la descrizione del servizio sul {\itshape Socket} specificato e la ritorna al chiamante. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per la ricezione della descrizione di un servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Descrizione del servizio ricevuta true in caso di successo e {\ttfamily N\-U\-L\-L} altrimenti. La ricezione della descrizione del servizio avviene nel seguente modo\-: \begin{DoxyItemize}
+\item ricezione del nome del servizio \item ricezione dell'indirizzo del service provider che offre il servizio descritto \item ricezione della porta di ascolto del service provider che offre il servizio descritto \item ricezione del numero di parametri necessari al servizio (sia di ingresso che di uscita) \item Per ogni parametro riceve la direzione \mbox{[}I\-N/\-O\-U\-T\mbox{]} e il tipo \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 180 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_ab9d7e4f1850dcf7f36c550785f047d00}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!receive\-\_\-string@{receive\-\_\-string}}
+\index{receive\-\_\-string@{receive\-\_\-string}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{receive\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}string receive\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{int}]{socket}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_ab9d7e4f1850dcf7f36c550785f047d00}
+
+
+Riceve una stringa sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per la ricezione del dato. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricezione, dato di tipo stringa in caso di successo e una stringa vuota altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 151 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_a150f97491074a5036f10554ccc55f5b1}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!send\-\_\-buffer@{send\-\_\-buffer}}
+\index{send\-\_\-buffer@{send\-\_\-buffer}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{send\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}bool send\-\_\-buffer (
+\begin{DoxyParamCaption}
+\item[{int}]{socket, }
+\item[{{\bf buffer} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_a150f97491074a5036f10554ccc55f5b1}
+
+
+Invia il buffer passato come parametro sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per l'invio del dato. \\
+\hline
+\mbox{\tt in}  & {\em data} & Dato di tipo buffer da inviare sul {\itshape Socket}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'invio del dato, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 102 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_a5348a1bb758d79d682d75ee3381e6c91}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!send\-\_\-double@{send\-\_\-double}}
+\index{send\-\_\-double@{send\-\_\-double}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{send\-\_\-double}]{\setlength{\rightskip}{0pt plus 5cm}bool send\-\_\-double (
+\begin{DoxyParamCaption}
+\item[{int}]{socket, }
+\item[{double}]{data}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_a5348a1bb758d79d682d75ee3381e6c91}
+
+
+Invia il double passato come parametro sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per l'invio del dato. \\
+\hline
+\mbox{\tt in}  & {\em data} & Dato di tipo double da inviare sul {\itshape Socket}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'invio del dato, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 81 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_acfbe4821c62ebd77c3968ccfc2254e74}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!send\-\_\-int@{send\-\_\-int}}
+\index{send\-\_\-int@{send\-\_\-int}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{send\-\_\-int}]{\setlength{\rightskip}{0pt plus 5cm}bool send\-\_\-int (
+\begin{DoxyParamCaption}
+\item[{int}]{socket, }
+\item[{int}]{data}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_acfbe4821c62ebd77c3968ccfc2254e74}
+
+
+Invia l'intero passato come parametro sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per l'invio del dato. \\
+\hline
+\mbox{\tt in}  & {\em data} & Dato di tipo intero da inviare sul {\itshape Socket}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'invio del dato, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 72 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_a6d06636c3bbb6720d7512d8b7db23d67}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!send\-\_\-service\-\_\-description@{send\-\_\-service\-\_\-description}}
+\index{send\-\_\-service\-\_\-description@{send\-\_\-service\-\_\-description}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{send\-\_\-service\-\_\-description}]{\setlength{\rightskip}{0pt plus 5cm}bool send\-\_\-service\-\_\-description (
+\begin{DoxyParamCaption}
+\item[{int}]{socket, }
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_a6d06636c3bbb6720d7512d8b7db23d67}
+
+
+Invia la descrizione del servizio passata come parametro sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per l'invio della descrizione di un servizio. \\
+\hline
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio da inviare sul {\itshape Socket}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'invio della descrizione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. L'invio della descrizione del servizio passata come parametro avviene nel seguente modo\-: \begin{DoxyItemize}
+\item invio del nome del servizio \item invio dell'indirizzo del service provider che offre il servizio descritto \item invio della porta di ascolto del service provider che offre il servizio descritto \item invio del numero di parametri necessari al servizio (sia di ingresso che di uscita) \item per ogni parametro invia la direzione \mbox{[}I\-N/\-O\-U\-T\mbox{]} e il tipo \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Definizione alla linea 114 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_aa856f465a08736a4d3e84e8ae7ece4c4}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!send\-\_\-string@{send\-\_\-string}}
+\index{send\-\_\-string@{send\-\_\-string}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{send\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}bool send\-\_\-string (
+\begin{DoxyParamCaption}
+\item[{int}]{socket, }
+\item[{string}]{data}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_aa856f465a08736a4d3e84e8ae7ece4c4}
+
+
+Invia la stringa passata come parametro sul {\itshape Socket} specificato. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em socket} & {\itshape Socket} per l'invio del dato. \\
+\hline
+\mbox{\tt in}  & {\em data} & Dato di tipo stringa da inviare sul {\itshape Socket}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'invio del dato, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 90 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_ae28b3e797db544ee71fc2c1ab8c0e070}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!socket\-\_\-initialization\-\_\-client@{socket\-\_\-initialization\-\_\-client}}
+\index{socket\-\_\-initialization\-\_\-client@{socket\-\_\-initialization\-\_\-client}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{socket\-\_\-initialization\-\_\-client}]{\setlength{\rightskip}{0pt plus 5cm}bool socket\-\_\-initialization\-\_\-client (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{client\-\_\-socket, }
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_ae28b3e797db544ee71fc2c1ab8c0e070}
+
+
+Crea un {\itshape Socket} di tipo S\-O\-C\-K\-\_\-\-S\-T\-R\-E\-A\-M e lo utilizza per connettersi al {\itshape Server} il cui endpoint è passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em client\-\_\-socket} & {\itshape Socket} da utilizzare per effettuare la connessione con il {\itshape Server} \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del {\itshape Server} al quale si intende connettersi \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del {\itshape Server} al quale si intende connettersi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della connessione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 4 del file Socket\-\_\-io.\-cpp.
+
+\hypertarget{_socket__io_8h_aeb101eab2938035d5279e56d2b2b3276}{\index{Socket\-\_\-io.\-h@{Socket\-\_\-io.\-h}!socket\-\_\-initialization\-\_\-server@{socket\-\_\-initialization\-\_\-server}}
+\index{socket\-\_\-initialization\-\_\-server@{socket\-\_\-initialization\-\_\-server}!Socket_io.h@{Socket\-\_\-io.\-h}}
+\subsubsection[{socket\-\_\-initialization\-\_\-server}]{\setlength{\rightskip}{0pt plus 5cm}bool socket\-\_\-initialization\-\_\-server (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{listen\-\_\-socket, }
+\item[{string}]{port, }
+\item[{int}]{backlog\-\_\-queue\-\_\-length}
+\end{DoxyParamCaption}
+)}}\label{_socket__io_8h_aeb101eab2938035d5279e56d2b2b3276}
+
+
+Crea un {\itshape Socket} di tipo S\-O\-C\-K\-\_\-\-S\-T\-R\-E\-A\-M e lo utilizza per le primitive {\ttfamily bind} e {\ttfamily listen}. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt out}  & {\em listen\-\_\-socket} & {\itshape Socket} di ascolto da utilizzare per accettare la connessione dei {\itshape Clients} \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del {\itshape Server} \\
+\hline
+\mbox{\tt in}  & {\em backlog\-\_\-queue\-\_\-length} & Dimensione della coda di backlog da usare come parametro per la primitiva {\ttfamily listen} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della creazione del {\itshape Socket} di ascolto, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 22 del file Socket\-\_\-io.\-cpp.
+

@@ -1,0 +1,224 @@
+\hypertarget{class_get__list}{\section{Riferimenti per la classe Get\-\_\-list}
+\label{class_get__list}\index{Get\-\_\-list@{Get\-\_\-list}}
+}
+
+
+Classe che fornisce la lista dei files presenti sul server remoto. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}.  
+
+
+
+
+{\ttfamily \#include $<$Get\-\_\-list.\-h$>$}
+
+Diagramma delle classi per Get\-\_\-list\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_get__list}
+\end{center}
+\end{figure}
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_get__list_ab76ae414df34e6cb71e0f5b52ca39c92}{Get\-\_\-list} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default della classe \hyperlink{class_get__list}{Get\-\_\-list}. \end{DoxyCompactList}\item 
+\hyperlink{class_get__list_a5eb8a30fb6f1a4c3190f889a3f87129b}{Get\-\_\-list} (string name, string address, string port)
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_get__list_a252524419d25158e1115bec0d023c494}{Get\-\_\-list} (string name, string address, string port, string \hyperlink{class_get__list_a7880b35d31e6171ae53378d9d1d4afca}{path})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_get__list_a51bc5354d5a3ee2fd6598495725df152}{Get\-\_\-list} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_get__list}{Get\-\_\-list} con le informazioni ottenute dalla descrizione del servizio. \end{DoxyCompactList}\item 
+\hyperlink{class_get__list_ab81f316f9deccbc40f1811cf1c06d718}{Get\-\_\-list} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description}, string \hyperlink{class_get__list_a7880b35d31e6171ae53378d9d1d4afca}{path})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_get__list}{Get\-\_\-list} con le informazioni ottenute dalla descrizione del servizio e imposta la directory di lavoro con il path fornito in ingresso. \end{DoxyCompactList}\item 
+\hypertarget{class_get__list_ad4b5aab752d75ec562db1b8ced98eb76}{virtual \hyperlink{class_get__list_ad4b5aab752d75ec562db1b8ced98eb76}{$\sim$\-Get\-\_\-list} ()}\label{class_get__list_ad4b5aab752d75ec562db1b8ced98eb76}
+
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \hyperlink{class_get__list}{Get\-\_\-list}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_get__list_aa7304342c475406fdc5f6fc36540c309}{execute} ()
+\begin{DoxyCompactList}\small\item\em Genera la lista dei files presenti nella directory di lavoro del {\itshape Server} e con questa compila il parametro di uscita del servizio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_get__list_ac69fa4b93dbc29ee9ef48f6ad7042daa}{inizialize\-\_\-parameters} (string \hyperlink{class_get__list_a7880b35d31e6171ae53378d9d1d4afca}{path})
+\begin{DoxyCompactList}\small\item\em Inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} (è chiamata da ogni costruttore). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_get__list_a7880b35d31e6171ae53378d9d1d4afca}{string \hyperlink{class_get__list_a7880b35d31e6171ae53378d9d1d4afca}{path}}\label{class_get__list_a7880b35d31e6171ae53378d9d1d4afca}
+
+\begin{DoxyCompactList}\small\item\em Directory di lavoro dello {\itshape Storage\-\_\-server} dove ricercare le immagini con cui creare la lista. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Altri membri ereditati}
+
+
+\subsection{Descrizione dettagliata}
+Classe che fornisce la lista dei files presenti sul server remoto. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}. 
+
+Definizione alla linea 96 del file Get\-\_\-list.\-h.
+
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{class_get__list_ab76ae414df34e6cb71e0f5b52ca39c92}{\index{Get\-\_\-list@{Get\-\_\-list}!Get\-\_\-list@{Get\-\_\-list}}
+\index{Get\-\_\-list@{Get\-\_\-list}!Get_list@{Get\-\_\-list}}
+\subsubsection[{Get\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-list\-::\-Get\-\_\-list (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_get__list_ab76ae414df34e6cb71e0f5b52ca39c92}
+
+
+Costruttore di default della classe \hyperlink{class_get__list}{Get\-\_\-list}. 
+
+Costruttore di default della classe \hyperlink{class_get__list}{Get\-\_\-list}. Provoca l'inizializzazione dei parametri di ingresso e uscita del servizio e setta la directory di lavoro sulla directory default. 
+
+Definizione alla linea 5 del file Get\-\_\-list.\-cpp.
+
+\hypertarget{class_get__list_a5eb8a30fb6f1a4c3190f889a3f87129b}{\index{Get\-\_\-list@{Get\-\_\-list}!Get\-\_\-list@{Get\-\_\-list}}
+\index{Get\-\_\-list@{Get\-\_\-list}!Get_list@{Get\-\_\-list}}
+\subsubsection[{Get\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-list\-::\-Get\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_get__list_a5eb8a30fb6f1a4c3190f889a3f87129b}
+
+
+Costruttore che inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome da assegnare al servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. Costruttore che inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} con nome, indirizzo e porta forniti in ingresso, inizializza i parametri di ingresso e uscita del servizio e setta la directory di lavoro sulla directory default. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 9 del file Get\-\_\-list.\-cpp.
+
+\hypertarget{class_get__list_a252524419d25158e1115bec0d023c494}{\index{Get\-\_\-list@{Get\-\_\-list}!Get\-\_\-list@{Get\-\_\-list}}
+\index{Get\-\_\-list@{Get\-\_\-list}!Get_list@{Get\-\_\-list}}
+\subsubsection[{Get\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-list\-::\-Get\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_get__list_a252524419d25158e1115bec0d023c494}
+
+
+Costruttore che inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome da assegnare al servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em path} & Directory di lavoro dove ricercare i files per creare la lista. Costruttore che inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} con nome, indirizzo e porta forniti in ingresso, inizializza i parametri di ingresso e uscita del servizio e imposta la directory di lavoro con il path fornito in ingresso. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 12 del file Get\-\_\-list.\-cpp.
+
+\hypertarget{class_get__list_a51bc5354d5a3ee2fd6598495725df152}{\index{Get\-\_\-list@{Get\-\_\-list}!Get\-\_\-list@{Get\-\_\-list}}
+\index{Get\-\_\-list@{Get\-\_\-list}!Get_list@{Get\-\_\-list}}
+\subsubsection[{Get\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-list\-::\-Get\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{class_get__list_a51bc5354d5a3ee2fd6598495725df152}
+
+
+Costruttore che inizializza la classe \hyperlink{class_get__list}{Get\-\_\-list} con le informazioni ottenute dalla descrizione del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 15 del file Get\-\_\-list.\-cpp.
+
+\hypertarget{class_get__list_ab81f316f9deccbc40f1811cf1c06d718}{\index{Get\-\_\-list@{Get\-\_\-list}!Get\-\_\-list@{Get\-\_\-list}}
+\index{Get\-\_\-list@{Get\-\_\-list}!Get_list@{Get\-\_\-list}}
+\subsubsection[{Get\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-list\-::\-Get\-\_\-list (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_get__list_ab81f316f9deccbc40f1811cf1c06d718}
+
+
+Costruttore che inizializza la classe \hyperlink{class_get__list}{Get\-\_\-list} con le informazioni ottenute dalla descrizione del servizio e imposta la directory di lavoro con il path fornito in ingresso. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\mbox{\tt in}  & {\em path} & Directory di lavoro dove ricercare i files per creare la lista. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 21 del file Get\-\_\-list.\-cpp.
+
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{class_get__list_aa7304342c475406fdc5f6fc36540c309}{\index{Get\-\_\-list@{Get\-\_\-list}!execute@{execute}}
+\index{execute@{execute}!Get_list@{Get\-\_\-list}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool Get\-\_\-list\-::execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_get__list_aa7304342c475406fdc5f6fc36540c309}
+
+
+Genera la lista dei files presenti nella directory di lavoro del {\itshape Server} e con questa compila il parametro di uscita del servizio. 
+
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Reimplementa \hyperlink{class_service}{Service}.
+
+
+
+Definizione alla linea 38 del file Get\-\_\-list.\-cpp.
+
+\hypertarget{class_get__list_ac69fa4b93dbc29ee9ef48f6ad7042daa}{\index{Get\-\_\-list@{Get\-\_\-list}!inizialize\-\_\-parameters@{inizialize\-\_\-parameters}}
+\index{inizialize\-\_\-parameters@{inizialize\-\_\-parameters}!Get_list@{Get\-\_\-list}}
+\subsubsection[{inizialize\-\_\-parameters}]{\setlength{\rightskip}{0pt plus 5cm}Get\-\_\-list\-::inizialize\-\_\-parameters (
+\begin{DoxyParamCaption}
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_get__list_ac69fa4b93dbc29ee9ef48f6ad7042daa}
+
+
+Inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} (è chiamata da ogni costruttore). 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em path} & Directory di lavoro dove ricercare i files per creare la lista. Inizializza l'istanza della classe \hyperlink{class_get__list}{Get\-\_\-list} come segue\-: \begin{DoxyItemize}
+\item genera un parametro in uscita di tipo {\ttfamily string} che conterrà la lista dei files presenti sul server remoto \item crea la directory di lavoro del servizio se questa non esiste \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 30 del file Get\-\_\-list.\-cpp.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-storage\-\_\-server/\hyperlink{_get__list_8h}{Get\-\_\-list.\-h}\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-storage\-\_\-server/Get\-\_\-list.\-cpp\end{DoxyCompactItemize}

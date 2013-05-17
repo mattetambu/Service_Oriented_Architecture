@@ -1,0 +1,84 @@
+\hypertarget{_types_8h}{\section{Riferimenti per il file C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Types.h}
+\label{_types_8h}\index{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Types.\-h@{C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\-Types.\-h}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+\subsection*{Composti}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbuffer}{buffer}
+\begin{DoxyCompactList}\small\item\em Definizione del tipo buffer. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_parameter}{Parameter}
+\begin{DoxyCompactList}\small\item\em Valore di un parametro di un servizio. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_parameter__description}{Parameter\-\_\-description}
+\begin{DoxyCompactList}\small\item\em Descrizione di un parametro di un servizio. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_service__description}{Service\-\_\-description}
+\begin{DoxyCompactList}\small\item\em Descrizione di un servizio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Definizioni}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_types_8h_a34f990a91f8bde3acb64da09eed8a48b}{\#define {\bfseries S\-P\-A\-C\-E\-R}~\char`\"{}   \char`\"{}}\label{_types_8h_a34f990a91f8bde3acb64da09eed8a48b}
+
+\item 
+\hypertarget{_types_8h_af1d85e139cc2903156fae3cc5f8c66a8}{\#define \hyperlink{_types_8h_af1d85e139cc2903156fae3cc5f8c66a8}{R\-E\-Q\-U\-E\-S\-T\-\_\-\-N\-O\-T\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D}~0}\label{_types_8h_af1d85e139cc2903156fae3cc5f8c66a8}
+
+\begin{DoxyCompactList}\small\item\em Costante che un {\itshape Server} invia per notificare il rifiuto di una connessione. \end{DoxyCompactList}\item 
+\hypertarget{_types_8h_acc0b9b938e70643d262655e5e50fcda9}{\#define \hyperlink{_types_8h_acc0b9b938e70643d262655e5e50fcda9}{R\-E\-Q\-U\-E\-S\-T\-\_\-\-A\-C\-C\-E\-P\-T\-E\-D}~1}\label{_types_8h_acc0b9b938e70643d262655e5e50fcda9}
+
+\begin{DoxyCompactList}\small\item\em Costante che un {\itshape Server} invia per notificare l'accettazione di una connessione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Tipi enumerati (enum)}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7}{Type} \{ \hyperlink{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7aca25f0861a7b7ea6af8ae8aef7f6d977}{Integer}, 
+\hyperlink{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a67712f090f8c18a2de65a31a26762315}{Double}, 
+\hyperlink{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a885998dfc6e5d332a56835c0dd92d8fd}{String}, 
+\hyperlink{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a2ca8d49388b453cfd1eea9db06f4e927}{Buffer}
+ \}
+\item 
+enum \hyperlink{_types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction} \{ \hyperlink{_types_8h_a224b9163917ac32fc95a60d8c1eec3aaa9272bcbf44cfcc2eb05bfefaaca82ba9}{I\-N}, 
+\hyperlink{_types_8h_a224b9163917ac32fc95a60d8c1eec3aaa354044fd8e96b8529056c4a6421531dc}{O\-U\-T}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentazione dei tipi enumerati}
+\hypertarget{_types_8h_a224b9163917ac32fc95a60d8c1eec3aa}{\index{Types.\-h@{Types.\-h}!Direction@{Direction}}
+\index{Direction@{Direction}!Types.h@{Types.\-h}}
+\subsubsection[{Direction}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Direction}}}\label{_types_8h_a224b9163917ac32fc95a60d8c1eec3aa}
+Enumeratore che la direzione di un parametro di un servizio {\ttfamily }\mbox{[}I\-N/\-O\-U\-T\mbox{]}. \begin{Desc}
+\item[Valori del tipo enumerato]\par
+\begin{description}
+\index{I\-N@{I\-N}!Types.\-h@{Types.\-h}}\index{Types.\-h@{Types.\-h}!I\-N@{I\-N}}\item[{\em 
+\hypertarget{_types_8h_a224b9163917ac32fc95a60d8c1eec3aaa9272bcbf44cfcc2eb05bfefaaca82ba9}{I\-N}\label{_types_8h_a224b9163917ac32fc95a60d8c1eec3aaa9272bcbf44cfcc2eb05bfefaaca82ba9}
+}]Stabilisce che il parametro è un parametro di ingresso. \index{O\-U\-T@{O\-U\-T}!Types.\-h@{Types.\-h}}\index{Types.\-h@{Types.\-h}!O\-U\-T@{O\-U\-T}}\item[{\em 
+\hypertarget{_types_8h_a224b9163917ac32fc95a60d8c1eec3aaa354044fd8e96b8529056c4a6421531dc}{O\-U\-T}\label{_types_8h_a224b9163917ac32fc95a60d8c1eec3aaa354044fd8e96b8529056c4a6421531dc}
+}]Stabilisce che il parametro è un parametro di uscita. \end{description}
+\end{Desc}
+
+
+Definizione alla linea 137 del file Types.\-h.
+
+\hypertarget{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7}{\index{Types.\-h@{Types.\-h}!Type@{Type}}
+\index{Type@{Type}!Types.h@{Types.\-h}}
+\subsubsection[{Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Type}}}\label{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7}
+Enumeratore che rappresenta i quattro tipi di parametro necessari ai servizi (integer, double, string o buffer). \begin{Desc}
+\item[Valori del tipo enumerato]\par
+\begin{description}
+\index{Integer@{Integer}!Types.\-h@{Types.\-h}}\index{Types.\-h@{Types.\-h}!Integer@{Integer}}\item[{\em 
+\hypertarget{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7aca25f0861a7b7ea6af8ae8aef7f6d977}{Integer}\label{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7aca25f0861a7b7ea6af8ae8aef7f6d977}
+}]Rappresenta il tipo intero {\ttfamily integer}. \index{Double@{Double}!Types.\-h@{Types.\-h}}\index{Types.\-h@{Types.\-h}!Double@{Double}}\item[{\em 
+\hypertarget{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a67712f090f8c18a2de65a31a26762315}{Double}\label{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a67712f090f8c18a2de65a31a26762315}
+}]Rappresenta il tipo reale {\ttfamily double}. \index{String@{String}!Types.\-h@{Types.\-h}}\index{Types.\-h@{Types.\-h}!String@{String}}\item[{\em 
+\hypertarget{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a885998dfc6e5d332a56835c0dd92d8fd}{String}\label{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a885998dfc6e5d332a56835c0dd92d8fd}
+}]Rappresenta il tipo stringa {\ttfamily string}. \index{Buffer@{Buffer}!Types.\-h@{Types.\-h}}\index{Types.\-h@{Types.\-h}!Buffer@{Buffer}}\item[{\em 
+\hypertarget{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a2ca8d49388b453cfd1eea9db06f4e927}{Buffer}\label{_types_8h_a1d1cfd8ffb84e947f82999c682b666a7a2ca8d49388b453cfd1eea9db06f4e927}
+}]Rappresenta il tipo buffer definito nell'omonima struttura. \end{description}
+\end{Desc}
+
+
+Definizione alla linea 130 del file Types.\-h.
+

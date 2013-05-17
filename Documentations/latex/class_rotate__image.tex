@@ -1,0 +1,226 @@
+\hypertarget{class_rotate__image}{\section{Riferimenti per la classe Rotate\-\_\-image}
+\label{class_rotate__image}\index{Rotate\-\_\-image@{Rotate\-\_\-image}}
+}
+
+
+Classe che fornisce il servizio di rotazione di un immagine. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}.  
+
+
+
+
+{\ttfamily \#include $<$Rotate\-\_\-image.\-h$>$}
+
+Diagramma delle classi per Rotate\-\_\-image\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rotate__image}
+\end{center}
+\end{figure}
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_rotate__image_a3bc89728401a10db11d79ea841f5c1e3}{Rotate\-\_\-image} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image}. \end{DoxyCompactList}\item 
+\hyperlink{class_rotate__image_a429fab26a1695b3b904a3f20eca28784}{Rotate\-\_\-image} (string name, string address, string port)
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_rotate__image_a087945bc368560697a8dcb3728d045b7}{Rotate\-\_\-image} (string name, string address, string port, string \hyperlink{class_rotate__image_a30a932131de7296fef03f8c47d65594e}{path})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_rotate__image_a04bc5f8be9d04ddde1268ec7a8c086d7}{Rotate\-\_\-image} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con le informazioni ottenute dalla descrizione del servizio. \end{DoxyCompactList}\item 
+\hyperlink{class_rotate__image_afbc9a78fd11c1181a516f31fa2341d8b}{Rotate\-\_\-image} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description}, string \hyperlink{class_rotate__image_a30a932131de7296fef03f8c47d65594e}{path})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con le informazioni ottenute dalla descrizione del servizio e imposta la directory di lavoro con il path fornito in ingresso. \end{DoxyCompactList}\item 
+\hypertarget{class_rotate__image_a81aa40308590dff5f6df897bc96329f4}{virtual \hyperlink{class_rotate__image_a81aa40308590dff5f6df897bc96329f4}{$\sim$\-Rotate\-\_\-image} ()}\label{class_rotate__image_a81aa40308590dff5f6df897bc96329f4}
+
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_rotate__image_a58d6614345b8c9a70c7b052be314b5d7}{execute} ()
+\begin{DoxyCompactList}\small\item\em Funzione che espleta il servizio di rotazione dell'immagine. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_rotate__image_a347de309e790cea7c72b5ff47c1591ce}{inizialize\-\_\-parameters} (string \hyperlink{class_rotate__image_a30a932131de7296fef03f8c47d65594e}{path})
+\begin{DoxyCompactList}\small\item\em Inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} (è chiamata da ogni costruttore). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_rotate__image_a30a932131de7296fef03f8c47d65594e}{string \hyperlink{class_rotate__image_a30a932131de7296fef03f8c47d65594e}{path}}\label{class_rotate__image_a30a932131de7296fef03f8c47d65594e}
+
+\begin{DoxyCompactList}\small\item\em Directory di lavoro dove salvare i risultati temporanei (immagini sorgente e risultato della rotazione). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Altri membri ereditati}
+
+
+\subsection{Descrizione dettagliata}
+Classe che fornisce il servizio di rotazione di un immagine. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}. 
+
+Definizione alla linea 114 del file Rotate\-\_\-image.\-h.
+
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{class_rotate__image_a3bc89728401a10db11d79ea841f5c1e3}{\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate\-\_\-image@{Rotate\-\_\-image}}
+\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate_image@{Rotate\-\_\-image}}
+\subsubsection[{Rotate\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Rotate\-\_\-image\-::\-Rotate\-\_\-image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_rotate__image_a3bc89728401a10db11d79ea841f5c1e3}
+
+
+Costruttore di default della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image}. 
+
+Costruttore di default della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image}. Provoca l'inizializzazione dei parametri di ingresso e uscita del servizio e setta la directory di lavoro sulla directory default. 
+
+Definizione alla linea 5 del file Rotate\-\_\-image.\-cpp.
+
+\hypertarget{class_rotate__image_a429fab26a1695b3b904a3f20eca28784}{\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate\-\_\-image@{Rotate\-\_\-image}}
+\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate_image@{Rotate\-\_\-image}}
+\subsubsection[{Rotate\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Rotate\-\_\-image\-::\-Rotate\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_rotate__image_a429fab26a1695b3b904a3f20eca28784}
+
+
+Costruttore che inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome da assegnare al servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. Costruttore che inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con nome, indirizzo e porta forniti in ingresso, inizializza i parametri di ingresso e uscita del servizio e setta la directory di lavoro sulla directory default. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 9 del file Rotate\-\_\-image.\-cpp.
+
+\hypertarget{class_rotate__image_a087945bc368560697a8dcb3728d045b7}{\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate\-\_\-image@{Rotate\-\_\-image}}
+\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate_image@{Rotate\-\_\-image}}
+\subsubsection[{Rotate\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Rotate\-\_\-image\-::\-Rotate\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_rotate__image_a087945bc368560697a8dcb3728d045b7}
+
+
+Costruttore che inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome da assegnare al servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em path} & Directory di lavoro da assegnare al servizio dove salvare i files temporanei. Costruttore che inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con nome, indirizzo e porta forniti in ingresso, inizializza i parametri di ingresso e uscita del servizio e imposta la directory di lavoro con il path fornito in ingresso. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 12 del file Rotate\-\_\-image.\-cpp.
+
+\hypertarget{class_rotate__image_a04bc5f8be9d04ddde1268ec7a8c086d7}{\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate\-\_\-image@{Rotate\-\_\-image}}
+\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate_image@{Rotate\-\_\-image}}
+\subsubsection[{Rotate\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Rotate\-\_\-image\-::\-Rotate\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{class_rotate__image_a04bc5f8be9d04ddde1268ec7a8c086d7}
+
+
+Costruttore che inizializza la classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con le informazioni ottenute dalla descrizione del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 15 del file Rotate\-\_\-image.\-cpp.
+
+\hypertarget{class_rotate__image_afbc9a78fd11c1181a516f31fa2341d8b}{\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate\-\_\-image@{Rotate\-\_\-image}}
+\index{Rotate\-\_\-image@{Rotate\-\_\-image}!Rotate_image@{Rotate\-\_\-image}}
+\subsubsection[{Rotate\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Rotate\-\_\-image\-::\-Rotate\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_rotate__image_afbc9a78fd11c1181a516f31fa2341d8b}
+
+
+Costruttore che inizializza la classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} con le informazioni ottenute dalla descrizione del servizio e imposta la directory di lavoro con il path fornito in ingresso. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\mbox{\tt in}  & {\em path} & Directory di lavoro da assegnare al servizio dove salvare i files temporanei. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 21 del file Rotate\-\_\-image.\-cpp.
+
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{class_rotate__image_a58d6614345b8c9a70c7b052be314b5d7}{\index{Rotate\-\_\-image@{Rotate\-\_\-image}!execute@{execute}}
+\index{execute@{execute}!Rotate_image@{Rotate\-\_\-image}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool Rotate\-\_\-image\-::execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_rotate__image_a58d6614345b8c9a70c7b052be314b5d7}
+
+
+Funzione che espleta il servizio di rotazione dell'immagine. 
+
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. Il servizio di rotazione viene effettuato come segue\-: \begin{DoxyItemize}
+\item genera nella directory di lavoro l'immagine da elaborare a partire dal parametro {\ttfamily buffer} in ingresso al servizio \item vi applica l'operatore di rotazione ottenendo una nuova immagine (da ritornare al chiamante) \item compila il parametro di uscita del servizio (di tipo {\itshape buffer}) con i dati dell'immagine ruotata \item se {\itshape R\-E\-M\-O\-V\-E\-\_\-\-I\-M\-A\-G\-E\-S} è impostato a {\ttfamily true}, rimuove le due immagini appena create (ormai inutili) dalla directory di lavoro \end{DoxyItemize}
+
+\end{DoxyReturn}
+
+
+Reimplementa \hyperlink{class_service}{Service}.
+
+
+
+Definizione alla linea 40 del file Rotate\-\_\-image.\-cpp.
+
+\hypertarget{class_rotate__image_a347de309e790cea7c72b5ff47c1591ce}{\index{Rotate\-\_\-image@{Rotate\-\_\-image}!inizialize\-\_\-parameters@{inizialize\-\_\-parameters}}
+\index{inizialize\-\_\-parameters@{inizialize\-\_\-parameters}!Rotate_image@{Rotate\-\_\-image}}
+\subsubsection[{inizialize\-\_\-parameters}]{\setlength{\rightskip}{0pt plus 5cm}Rotate\-\_\-image\-::inizialize\-\_\-parameters (
+\begin{DoxyParamCaption}
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_rotate__image_a347de309e790cea7c72b5ff47c1591ce}
+
+
+Inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} (è chiamata da ogni costruttore). 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em path} & Directory di lavoro da assegnare al servizio dove salvare i files temporanei. Inizializza l'istanza della classe \hyperlink{class_rotate__image}{Rotate\-\_\-image} come segue\-: \begin{DoxyItemize}
+\item genera un parametro in ingresso di tipo {\ttfamily buffer} atto a mantenere le informazioni relative all'immagine da elaborare \item genera un parametro in ingresso di tipo {\ttfamily integer} che conterrà l'informazione di rotazione dell'immagine (di quanti gradi ruotare l'immagine) \item genera un parametro in uscita di tipo {\itshape buffer} per l'immagine ruotata \item crea la directory di lavoro del servizio se questa non esiste \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 30 del file Rotate\-\_\-image.\-cpp.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-manipulation\-\_\-server/\hyperlink{_rotate__image_8h}{Rotate\-\_\-image.\-h}\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-manipulation\-\_\-server/Rotate\-\_\-image.\-cpp\end{DoxyCompactItemize}

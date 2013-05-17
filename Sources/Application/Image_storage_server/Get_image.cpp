@@ -4,29 +4,31 @@
 
 	Get_image::Get_image () {
 		s_description.name = "get_image";
-		path = string(IMAGES_STORAGE_DIRECTORY);
-		inizialize_parameters (path);
+		inizialize_parameters (string(GET_IMAGE_DIRECTORY));
 	}
 	Get_image::Get_image (string name, string address, string port) : Service (name, address, port) {
-		path = string(IMAGES_STORAGE_DIRECTORY);
-		inizialize_parameters (path);
+		inizialize_parameters (string(GET_IMAGE_DIRECTORY));
 	}
 	Get_image::Get_image (string name, string address, string port, string path) : Service (name, address, port) {
-		(*this).path = path;
 		inizialize_parameters (path);
 	}
 	Get_image::Get_image (Service_description* s_description) : Service (s_description) {
-		path = string(IMAGES_STORAGE_DIRECTORY);
-		inizialize_parameters (path);
+		path = string(GET_IMAGE_DIRECTORY);
+		
+		string command = "mkdir -p " + path;
+		if (system(command.c_str())) cerr << "ERROR - Can't create the service directory" << endl;
 	}
 	Get_image::Get_image (Service_description* s_description, string path) : Service (s_description) {
 		(*this).path = path;
-		inizialize_parameters (path);
+		
+		string command = "mkdir -p " + path;
+		if (system(command.c_str())) cerr << "ERROR - Can't create the service directory" << endl;
 	}
 	
 	Get_image::~Get_image () {}
 
 	void Get_image::inizialize_parameters (string path) {
+		(*this).path = path;
 		add_parameter (IN, String);
 		add_parameter (OUT, Buffer);
 		

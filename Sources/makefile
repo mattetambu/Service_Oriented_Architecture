@@ -7,7 +7,7 @@ Service_register_server_address		:= "127.0.0.1"
 Service_register_server_port		:= "23456"
 Image_manipulation_server_port		:= "34567"
 Image_storage_server_port			:= "45678"
-Client_iteretions					:= "1"
+Client_iteretions					:= "100"
 
 # Setting up enviroment
 ifeq (${Interactive}, "false")
@@ -22,22 +22,13 @@ Service_register_server_command 	:= "Service_register_server"
 Client_command						:= "Client"
 endif
 
-# Setting up Xterm enviroment
-XtermCommand = @xterm -hold -leftbar -geometry
-
 Service_oriented_architecture:
 	@clear
 	@echo "Service Oriented Architecture"
 	@echo ""
 	@make -s Compile
 	@make -s Make_directories
-	@make -s Execute
 	@echo ""
-
-Erase:
-	@echo "Removing previus build results"
-	@echo ""
-	@rm -f Image_manipulation_server Image_storage_server Service_register_server Client
 
 Compile:
 	@echo "Compiling sources"
@@ -60,25 +51,14 @@ Image_storage_server: SOA_Library/*.cpp Application/Image_storage_server/*.h App
 Client: SOA_Library/*.cpp Application/Clients/*.h Client.cpp
 	@echo "   Compiling Client"
 	${Compile_command} Client.cpp -o Client
-
+	
 Make_directories:
 	@mkdir -p Images
 	@mkdir -p Work_directories/Clients
 	@mkdir -p Work_directories/Servers/Image_manipulation_server
 	@mkdir -p Work_directories/Servers/Image_storage_server
-
-Execute: Image_manipulation_server Image_storage_server Service_register_server Client
-	@echo "Executing application"
-	@xterm -e "echo Pre-fetching xterm"
-	@echo "   Launching Service Register"
-	${XtermCommand} 75x45+0+0 -e "./${Service_register_server_command}" & sleep 1
-	@echo "   Launching Image Manipulation Server"
-	${XtermCommand} 75x45+525+0 -e "./${Image_manipulation_server_command}" & sleep 0.2
-	@echo "   Launching Image Storage Server"
-	${XtermCommand} 75x45+988+0 -e "./${Image_storage_server_command}" & sleep 3
-	@echo "   Launching Clients"
-	${XtermCommand} 75x30+1500+220 -e "./${Client_command}" & sleep 0.2
-	${XtermCommand} 75x30+0+1500 -e "./${Client_command}" & sleep 0.2
-	${XtermCommand} 75x30+525+1500 -e "./${Client_command}" & sleep 0.2
-	${XtermCommand} 75x30+988+1500 -e "./${Client_command}" & sleep 0.2
-	${XtermCommand} 75x30+1500+1500 -e "./${Client_command}" & sleep 0.2
+	
+Erase:
+	@echo "Removing previus build results"
+	@echo ""
+	@rm -f Image_manipulation_server Image_storage_server Service_register_server Client

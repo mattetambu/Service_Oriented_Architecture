@@ -1,3 +1,70 @@
+/**
+ \file		Image_manipulation_server_functions.h
+ \dir		/Source/Application/Image_manipulation_server/
+ \date		15/05/2013
+ \author	Tamburini Matteo <mattetambu@gmail.com>
+ \brief		Raccolta di funzioni utili per l'implementazione dell' \e Image_manipulation_server.
+*/
+
+/**
+ \def		N_THREADS
+ \brief		Numero di \e threads di servizio da avviare.
+*/
+ 
+/**
+ \def		BACKLOG_QUEUE
+ \brief		Dimensione della \e backlog \e queue associatta al \e listen_socket.
+*/
+
+/**
+ \fn		bool check_server_arguments (int n_args, char** args)
+ \param	[in]	n_args	Numero di argomenti in ingresso al \e Server.
+ \param	[in]	args	Array di argomenti in ingresso al \e Server.
+ \return	Risultato della verifica, \c true in caso di successo e \c false altrimenti.
+ \brief		Controllo dei parametri della funzione main del \e Server.
+
+ Al \e Server sono necessari tre parametri per la sua esecuzione e se viene invocato con un numero inferiore di argomenti 
+ questa funzione richiede l'inserimento di quelli mancanti. Il controllo sui parametri necessari al \e Server viene effettuato nel seguente modo:
+ \li	il primo deve essere un intero nell'intervallo [1024-65535] e rappresenta la porta di ascolto dell' \e Image_manipulation_server
+ \li	il secondo deve essere un indirizzo IP e rappresenta l'indirizzo IP del \e Service_register_server
+ \li	il terzo deve essere un intero nell'intervallo [1024-65535] e rappresenta la porta di ascolto del \e Service_register_server
+*/
+
+/**
+ \fn		bool assign_execution_thread (int client_socket)
+ \return	\c true in caso di assegnamento eseguito con successo, \c false altrimenti (tutti i \e threads sono occupati).
+ \brief		Cerca fra i \e threads di servizio un \e thread libero e lo assegna all'esecuzione della richiesta
+*/
+
+/**
+ \fn		bool Image_manipulation_server_help ()
+ \brief		Fornisce l'elenco dei comandi accettati dal \e Server.
+*/
+
+/**
+ \fn		void* thread_body (void* thread_ID)
+ \param	[out]	thread_ID	Intero che identifica il \e thread a cui è associata l'istanza della funzione.
+ \brief		Corpo di tutti i \e threads di servizio dell' \e Image_manipulation_server.
+
+ Ogni \e thread di servizio, fino alla ricezione del comando di terminazione, esegue ciclicamente le seguenti operazioni:
+ \li	segnala la sua disponibilità a ricevere connessioni e si pone in attesa di essere attivato per servire un \e Client
+ \li	riceve il nome del servizio richiesto dal \e Client e se questo non corrisponde ad un servizio fornito rifiuta al richiesta
+ \li	se la richiesta del \e Client viene accettata riceve i parametri necessari per l'esecuzione del servizio
+ \li	richiama il servizio richiesto (rotazione o riflessione dell'immagine) ottenendo il risultato della manipolazione
+ \li	invia al \e Client il risultato dell'esecuzione del servizio
+*/
+
+/**
+ \fn		void* control_thread_body (void*)
+ \brief		Corpo del \e thread di controllo dell' \e Image_manipulation_server.
+
+ Il \e thread di controllo, fino alla ricezione del comando di terminazione, esegue ciclicamente le seguenti operazioni:
+ \li	si pone in attesa di essere attivato (manualmente) per eseguire un comando
+ \li	richiede l'inserimento del comando e verifica se è in grado di eseguirlo (altrimenti lo rifiuta)
+ \li	se il comando viene accettato esegue l'operazione corrispondente
+*/
+
+
 #ifndef Image_manipulation_server_functions_H_
 #define Image_manipulation_server_functions_H_ 
 
@@ -6,7 +73,6 @@
 	#include "./Horizontal_flip_image.h"
 	#include "./Rotate_image.h"
 	
-	#define REQUEST_NOT_ACCEPTED 0
 	#define N_THREADS 5
 	#define BACKLOG_QUEUE 5
 
@@ -129,8 +195,8 @@
 			if (command == "register_server" && operand == "") result = register_service_provider (SP_address, SP_port);
 			else if (command == "unregister_server" && operand == "") result = unregister_service_provider (SP_address, SP_port);
 			else if (command == "register_service") {
-				if (operand == "rotate_image") result = register_service (rotate_image);
-				else if (operand == "horizontal_flip_image") result = register_service (horizontal_flip_image);
+				if (operand == "rotate_image") result = register_service (rotate_image->get_description());
+				else if (operand == "horizontal_flip_image") result = register_service (horizontal_flip_image->get_description());
 				else cout << "#SERVER > Can't register the service - Service " << operand.c_str() << " unknown" << endl;
 			}
 			else if (command == "unregister_service") {

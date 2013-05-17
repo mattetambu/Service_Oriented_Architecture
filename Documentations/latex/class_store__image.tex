@@ -1,0 +1,224 @@
+\hypertarget{class_store__image}{\section{Riferimenti per la classe Store\-\_\-image}
+\label{class_store__image}\index{Store\-\_\-image@{Store\-\_\-image}}
+}
+
+
+Classe che fornisce il servizio di memorizzazione di un immagine sul server remoto. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}.  
+
+
+
+
+{\ttfamily \#include $<$Store\-\_\-image.\-h$>$}
+
+Diagramma delle classi per Store\-\_\-image\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_store__image}
+\end{center}
+\end{figure}
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_store__image_a0aafc6c6b1b4576fe2de4d4a0feba356}{Store\-\_\-image} ()
+\begin{DoxyCompactList}\small\item\em Costruttore di default della classe \hyperlink{class_store__image}{Store\-\_\-image}. \end{DoxyCompactList}\item 
+\hyperlink{class_store__image_abb51b6465dd579b07268133b8c6dd8ef}{Store\-\_\-image} (string name, string address, string port)
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_store__image_a5ac30f07f3db9fcbfc784ef79b6907c0}{Store\-\_\-image} (string name, string address, string port, string \hyperlink{class_store__image_ae7e32f8d0404e94e02a234ec54a17d70}{path})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} con i parametri forniti. \end{DoxyCompactList}\item 
+\hyperlink{class_store__image_a2303ecf6c9d27ef0af198b27f924b460}{Store\-\_\-image} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_store__image}{Store\-\_\-image} con le informazioni ottenute dalla descrizione del servizio. \end{DoxyCompactList}\item 
+\hyperlink{class_store__image_a89d05f2212b79d1aa5a297c217dc96cb}{Store\-\_\-image} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$\hyperlink{class_service_a55e991ff18c0dceca202388a771283dc}{s\-\_\-description}, string \hyperlink{class_store__image_ae7e32f8d0404e94e02a234ec54a17d70}{path})
+\begin{DoxyCompactList}\small\item\em Costruttore che inizializza la classe \hyperlink{class_store__image}{Store\-\_\-image} con le informazioni ottenute dalla descrizione del servizio e imposta la directory di lavoro con il path fornito in ingresso. \end{DoxyCompactList}\item 
+\hypertarget{class_store__image_a8188f68bd84bf1408b1dd053392f005c}{virtual \hyperlink{class_store__image_a8188f68bd84bf1408b1dd053392f005c}{$\sim$\-Store\-\_\-image} ()}\label{class_store__image_a8188f68bd84bf1408b1dd053392f005c}
+
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \hyperlink{class_store__image}{Store\-\_\-image}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_store__image_a4023d6ecc72801dcbc52b30e89f17b2b}{execute} ()
+\begin{DoxyCompactList}\small\item\em Genera una nuova immagine nella directory dello {\itshape Storage\-\_\-server} con nome e dati pari a quelli forniti in ingresso al servizio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_store__image_a4156bdcb994ac460690dce12fbdeee79}{inizialize\-\_\-parameters} (string \hyperlink{class_store__image_ae7e32f8d0404e94e02a234ec54a17d70}{path})
+\begin{DoxyCompactList}\small\item\em Inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} (è chiamata da ogni costruttore). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_store__image_ae7e32f8d0404e94e02a234ec54a17d70}{string \hyperlink{class_store__image_ae7e32f8d0404e94e02a234ec54a17d70}{path}}\label{class_store__image_ae7e32f8d0404e94e02a234ec54a17d70}
+
+\begin{DoxyCompactList}\small\item\em Directory di lavoro dello {\itshape Storage\-\_\-server} dove memorizzazione le immagini fornite dai {\itshape Clients}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Altri membri ereditati}
+
+
+\subsection{Descrizione dettagliata}
+Classe che fornisce il servizio di memorizzazione di un immagine sul server remoto. E' una classe derivate di {\ttfamily \hyperlink{class_service}{Service}}. 
+
+Definizione alla linea 97 del file Store\-\_\-image.\-h.
+
+
+
+\subsection{Documentazione dei costruttori e dei distruttori}
+\hypertarget{class_store__image_a0aafc6c6b1b4576fe2de4d4a0feba356}{\index{Store\-\_\-image@{Store\-\_\-image}!Store\-\_\-image@{Store\-\_\-image}}
+\index{Store\-\_\-image@{Store\-\_\-image}!Store_image@{Store\-\_\-image}}
+\subsubsection[{Store\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Store\-\_\-image\-::\-Store\-\_\-image (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_store__image_a0aafc6c6b1b4576fe2de4d4a0feba356}
+
+
+Costruttore di default della classe \hyperlink{class_store__image}{Store\-\_\-image}. 
+
+Costruttore di default della classe \hyperlink{class_store__image}{Store\-\_\-image}. Provoca l'inizializzazione dei parametri di ingresso del servizio e setta la directory di lavoro sulla directory default. 
+
+Definizione alla linea 5 del file Store\-\_\-image.\-cpp.
+
+\hypertarget{class_store__image_abb51b6465dd579b07268133b8c6dd8ef}{\index{Store\-\_\-image@{Store\-\_\-image}!Store\-\_\-image@{Store\-\_\-image}}
+\index{Store\-\_\-image@{Store\-\_\-image}!Store_image@{Store\-\_\-image}}
+\subsubsection[{Store\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Store\-\_\-image\-::\-Store\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_store__image_abb51b6465dd579b07268133b8c6dd8ef}
+
+
+Costruttore che inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome da assegnare al servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. Costruttore che inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} con nome, indirizzo e porta forniti in ingresso, inizializza i parametri di ingresso del servizio e setta la directory di lavoro sulla directory default. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 9 del file Store\-\_\-image.\-cpp.
+
+\hypertarget{class_store__image_a5ac30f07f3db9fcbfc784ef79b6907c0}{\index{Store\-\_\-image@{Store\-\_\-image}!Store\-\_\-image@{Store\-\_\-image}}
+\index{Store\-\_\-image@{Store\-\_\-image}!Store_image@{Store\-\_\-image}}
+\subsubsection[{Store\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Store\-\_\-image\-::\-Store\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_store__image_a5ac30f07f3db9fcbfc784ef79b6907c0}
+
+
+Costruttore che inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} con i parametri forniti. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome da assegnare al servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em path} & Directory di lavoro da assegnare al servizio dove salvare i files temporanei. Costruttore che inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} con nome, indirizzo e porta forniti in ingresso, inizializza i parametri di ingresso del servizio e imposta la directory di lavoro con il path fornito in ingresso. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 12 del file Store\-\_\-image.\-cpp.
+
+\hypertarget{class_store__image_a2303ecf6c9d27ef0af198b27f924b460}{\index{Store\-\_\-image@{Store\-\_\-image}!Store\-\_\-image@{Store\-\_\-image}}
+\index{Store\-\_\-image@{Store\-\_\-image}!Store_image@{Store\-\_\-image}}
+\subsubsection[{Store\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Store\-\_\-image\-::\-Store\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{class_store__image_a2303ecf6c9d27ef0af198b27f924b460}
+
+
+Costruttore che inizializza la classe \hyperlink{class_store__image}{Store\-\_\-image} con le informazioni ottenute dalla descrizione del servizio. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 15 del file Store\-\_\-image.\-cpp.
+
+\hypertarget{class_store__image_a89d05f2212b79d1aa5a297c217dc96cb}{\index{Store\-\_\-image@{Store\-\_\-image}!Store\-\_\-image@{Store\-\_\-image}}
+\index{Store\-\_\-image@{Store\-\_\-image}!Store_image@{Store\-\_\-image}}
+\subsubsection[{Store\-\_\-image}]{\setlength{\rightskip}{0pt plus 5cm}Store\-\_\-image\-::\-Store\-\_\-image (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description, }
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_store__image_a89d05f2212b79d1aa5a297c217dc96cb}
+
+
+Costruttore che inizializza la classe \hyperlink{class_store__image}{Store\-\_\-image} con le informazioni ottenute dalla descrizione del servizio e imposta la directory di lavoro con il path fornito in ingresso. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\mbox{\tt in}  & {\em path} & Directory di lavoro da assegnare al servizio dove salvare i files temporanei. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 21 del file Store\-\_\-image.\-cpp.
+
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{class_store__image_a4023d6ecc72801dcbc52b30e89f17b2b}{\index{Store\-\_\-image@{Store\-\_\-image}!execute@{execute}}
+\index{execute@{execute}!Store_image@{Store\-\_\-image}}
+\subsubsection[{execute}]{\setlength{\rightskip}{0pt plus 5cm}bool Store\-\_\-image\-::execute (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_store__image_a4023d6ecc72801dcbc52b30e89f17b2b}
+
+
+Genera una nuova immagine nella directory dello {\itshape Storage\-\_\-server} con nome e dati pari a quelli forniti in ingresso al servizio. 
+
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Reimplementa \hyperlink{class_service}{Service}.
+
+
+
+Definizione alla linea 39 del file Store\-\_\-image.\-cpp.
+
+\hypertarget{class_store__image_a4156bdcb994ac460690dce12fbdeee79}{\index{Store\-\_\-image@{Store\-\_\-image}!inizialize\-\_\-parameters@{inizialize\-\_\-parameters}}
+\index{inizialize\-\_\-parameters@{inizialize\-\_\-parameters}!Store_image@{Store\-\_\-image}}
+\subsubsection[{inizialize\-\_\-parameters}]{\setlength{\rightskip}{0pt plus 5cm}Store\-\_\-image\-::inizialize\-\_\-parameters (
+\begin{DoxyParamCaption}
+\item[{string}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_store__image_a4156bdcb994ac460690dce12fbdeee79}
+
+
+Inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} (è chiamata da ogni costruttore). 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em path} & Directory di lavoro da assegnare al servizio dove salvare i files temporanei. Inizializza l'istanza della classe \hyperlink{class_store__image}{Store\-\_\-image} come segue\-: \begin{DoxyItemize}
+\item genera un parametro in ingresso di tipo {\ttfamily string} che conterrà il nome con cui memorizzare l'immagine sul {\itshape Server} \item genera un parametro in ingresso di tipo {\ttfamily buffer} atto a mantenere le informazioni relative all'immagine da memorizzare \item crea la directory di lavoro del servizio se questa non esiste \end{DoxyItemize}
+\\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 30 del file Store\-\_\-image.\-cpp.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-storage\-\_\-server/\hyperlink{_store__image_8h}{Store\-\_\-image.\-h}\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Image\-\_\-storage\-\_\-server/Store\-\_\-image.\-cpp\end{DoxyCompactItemize}

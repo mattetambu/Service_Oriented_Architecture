@@ -1,0 +1,217 @@
+\hypertarget{class_threads}{\section{Riferimenti per la classe Threads}
+\label{class_threads}\index{Threads@{Threads}}
+}
+
+
+Classe per la gestione dei threads di servizio e di controllo dei vari {\itshape Servers}.  
+
+
+
+
+{\ttfamily \#include $<$Threads.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_threads_af2a22bb9473d2300df0797d0aa07e4bf}{\hyperlink{class_threads_af2a22bb9473d2300df0797d0aa07e4bf}{Threads} ()}\label{class_threads_af2a22bb9473d2300df0797d0aa07e4bf}
+
+\begin{DoxyCompactList}\small\item\em Costruttore della classe \hyperlink{class_threads}{Threads}. Inizializza il semaforo e la variabile condition e setta il thread come attivo e libero. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_a2b4399a2f8fc2b507f118c27fba9eca4}{virtual \hyperlink{class_threads_a2b4399a2f8fc2b507f118c27fba9eca4}{$\sim$\-Threads} ()}\label{class_threads_a2b4399a2f8fc2b507f118c27fba9eca4}
+
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \hyperlink{class_threads}{Threads}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_threads_a46da5f5ed9ee3711f566dc6c4f608dd8}{test\-\_\-and\-\_\-set\-\_\-busy} ()
+\begin{DoxyCompactList}\small\item\em Se il {\itshape thread} è libero lo setta come occupato altrimenti non effettua alcuna operazione e ritorna. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_a507afb25cd6e8b044e02150f57b43a85}{void \hyperlink{class_threads_a507afb25cd6e8b044e02150f57b43a85}{set\-\_\-busy} ()}\label{class_threads_a507afb25cd6e8b044e02150f57b43a85}
+
+\begin{DoxyCompactList}\small\item\em Setta il {\itshape thread} su occupato. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_a06e59568497fd19f0fb115ffb40d25a5}{void \hyperlink{class_threads_a06e59568497fd19f0fb115ffb40d25a5}{set\-\_\-free} ()}\label{class_threads_a06e59568497fd19f0fb115ffb40d25a5}
+
+\begin{DoxyCompactList}\small\item\em Setta il {\itshape thread} su libero. \end{DoxyCompactList}\item 
+void \hyperlink{class_threads_a203c8939f82209d7d73ff4888f9de30e}{set\-\_\-socket} (int \hyperlink{class_threads_a5e30e204ecd4404d0f88514227b849a9}{client\-\_\-socket})
+\begin{DoxyCompactList}\small\item\em Setta il {\itshape Socket} al valore passato come parametro. \end{DoxyCompactList}\item 
+void \hyperlink{class_threads_ae976db915d6d729bf33b1368c9be191a}{set\-\_\-\-I\-D} (pthread\-\_\-t \hyperlink{class_threads_ab7e3c990d2c44c2352b4d9d682a5edaf}{thread\-\_\-\-I\-D})
+\begin{DoxyCompactList}\small\item\em Setta l'identificativo del {\itshape thread} al valore passato come parametro. \end{DoxyCompactList}\item 
+int \hyperlink{class_threads_a8c9867eae5ffe0142930e14f93194f82}{get\-\_\-socket} ()
+\begin{DoxyCompactList}\small\item\em Ritorna al chiamante il {\itshape socket} associato al {\itshape thread}. \end{DoxyCompactList}\item 
+pthread\-\_\-t \hyperlink{class_threads_ad044422afc205e16fb9104fe4cfa1a4f}{get\-\_\-\-I\-D} ()
+\begin{DoxyCompactList}\small\item\em Ritorna al chiamante l'I\-D del {\itshape thread}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_threads_ad770694763602c65aa13388a380721c3}{is\-\_\-busy} ()
+\begin{DoxyCompactList}\small\item\em Verifica se il {\itshape thread} è occupato o meno. \end{DoxyCompactList}\item 
+bool \hyperlink{class_threads_ae56ff1063a0be830f73291b0e22a9c2b}{is\-\_\-active} ()
+\begin{DoxyCompactList}\small\item\em Verifica se il {\itshape thread} è attivo o meno. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_a876bab16a1294650147391f9b294b522}{void \hyperlink{class_threads_a876bab16a1294650147391f9b294b522}{wait\-\_\-start} ()}\label{class_threads_a876bab16a1294650147391f9b294b522}
+
+\begin{DoxyCompactList}\small\item\em Se il {\itshape thread} è libero si sospende in attesa dell'invocazione del metodo {\ttfamily \hyperlink{class_threads_aae72428047672adac8701f3986b84683}{thread\-\_\-start()}}. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_aae72428047672adac8701f3986b84683}{void \hyperlink{class_threads_aae72428047672adac8701f3986b84683}{thread\-\_\-start} ()}\label{class_threads_aae72428047672adac8701f3986b84683}
+
+\begin{DoxyCompactList}\small\item\em Attiva il {\itshape thread} in attesa per servire una richiesta di un {\itshape Client}. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_aec60551054d334fb7d6c38471ebfd3bd}{void \hyperlink{class_threads_aec60551054d334fb7d6c38471ebfd3bd}{thread\-\_\-exit} ()}\label{class_threads_aec60551054d334fb7d6c38471ebfd3bd}
+
+\begin{DoxyCompactList}\small\item\em Setta il {\itshape thread} su occupato e inattivo e lo sveglia per far terminare la sua esecuzione. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_threads_abed55b6a7e70edfb736b738bce7964d6}{bool \hyperlink{class_threads_abed55b6a7e70edfb736b738bce7964d6}{busy}}\label{class_threads_abed55b6a7e70edfb736b738bce7964d6}
+
+\begin{DoxyCompactList}\small\item\em {\itshape Thread} occupato, viene impostato a {\ttfamily true} se il {\itshape thread} è stato associato ad un {\itshape Client} per rispondere ad una richiesta. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_a13f564c85b6bd2bc3bd39c12c612bb7a}{bool \hyperlink{class_threads_a13f564c85b6bd2bc3bd39c12c612bb7a}{active}}\label{class_threads_a13f564c85b6bd2bc3bd39c12c612bb7a}
+
+\begin{DoxyCompactList}\small\item\em {\itshape Thread} attivo, viene impostato a {\ttfamily false} per terminare il {\itshape thread}. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_a5e30e204ecd4404d0f88514227b849a9}{int \hyperlink{class_threads_a5e30e204ecd4404d0f88514227b849a9}{client\-\_\-socket}}\label{class_threads_a5e30e204ecd4404d0f88514227b849a9}
+
+\begin{DoxyCompactList}\small\item\em {\itshape Socket} associato al {\itshape thread} per dialogare con il {\itshape Client}. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_ab7e3c990d2c44c2352b4d9d682a5edaf}{pthread\-\_\-t \hyperlink{class_threads_ab7e3c990d2c44c2352b4d9d682a5edaf}{thread\-\_\-\-I\-D}}\label{class_threads_ab7e3c990d2c44c2352b4d9d682a5edaf}
+
+\begin{DoxyCompactList}\small\item\em Identificativo del {\itshape thread}. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_afc98741291ee4f116654a90c0d26bc7b}{pthread\-\_\-mutex\-\_\-t \hyperlink{class_threads_afc98741291ee4f116654a90c0d26bc7b}{mutex}}\label{class_threads_afc98741291ee4f116654a90c0d26bc7b}
+
+\begin{DoxyCompactList}\small\item\em {\itshape Semaforo} per l'accesso in mutua esclusione agli attributi della classe. \end{DoxyCompactList}\item 
+\hypertarget{class_threads_a9ba05d7a4e514f04fd3aee99393d3c94}{pthread\-\_\-cond\-\_\-t \hyperlink{class_threads_a9ba05d7a4e514f04fd3aee99393d3c94}{condition}}\label{class_threads_a9ba05d7a4e514f04fd3aee99393d3c94}
+
+\begin{DoxyCompactList}\small\item\em {\itshape Condizione} utilizzata per sospendere il {\itshape thread} in attesa di una richiesta da parte di un {\itshape Client}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Classe per la gestione dei threads di servizio e di controllo dei vari {\itshape Servers}. 
+
+Definizione alla linea 101 del file Threads.\-h.
+
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{class_threads_ad044422afc205e16fb9104fe4cfa1a4f}{\index{Threads@{Threads}!get\-\_\-\-I\-D@{get\-\_\-\-I\-D}}
+\index{get\-\_\-\-I\-D@{get\-\_\-\-I\-D}!Threads@{Threads}}
+\subsubsection[{get\-\_\-\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}pthread\-\_\-t Threads\-::get\-\_\-\-I\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_threads_ad044422afc205e16fb9104fe4cfa1a4f}
+
+
+Ritorna al chiamante l'I\-D del {\itshape thread}. 
+
+\begin{DoxyReturn}{Restituisce}
+{\itshape Identificativo} associato al {\itshape thread}. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 50 del file Threads.\-cpp.
+
+\hypertarget{class_threads_a8c9867eae5ffe0142930e14f93194f82}{\index{Threads@{Threads}!get\-\_\-socket@{get\-\_\-socket}}
+\index{get\-\_\-socket@{get\-\_\-socket}!Threads@{Threads}}
+\subsubsection[{get\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}int Threads\-::get\-\_\-socket (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_threads_a8c9867eae5ffe0142930e14f93194f82}
+
+
+Ritorna al chiamante il {\itshape socket} associato al {\itshape thread}. 
+
+\begin{DoxyReturn}{Restituisce}
+{\itshape Socket} associato al {\itshape thread}. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 46 del file Threads.\-cpp.
+
+\hypertarget{class_threads_ae56ff1063a0be830f73291b0e22a9c2b}{\index{Threads@{Threads}!is\-\_\-active@{is\-\_\-active}}
+\index{is\-\_\-active@{is\-\_\-active}!Threads@{Threads}}
+\subsubsection[{is\-\_\-active}]{\setlength{\rightskip}{0pt plus 5cm}bool Threads\-::is\-\_\-active (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_threads_ae56ff1063a0be830f73291b0e22a9c2b}
+
+
+Verifica se il {\itshape thread} è attivo o meno. 
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se il {\itshape thread} è attivo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 58 del file Threads.\-cpp.
+
+\hypertarget{class_threads_ad770694763602c65aa13388a380721c3}{\index{Threads@{Threads}!is\-\_\-busy@{is\-\_\-busy}}
+\index{is\-\_\-busy@{is\-\_\-busy}!Threads@{Threads}}
+\subsubsection[{is\-\_\-busy}]{\setlength{\rightskip}{0pt plus 5cm}bool Threads\-::is\-\_\-busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_threads_ad770694763602c65aa13388a380721c3}
+
+
+Verifica se il {\itshape thread} è occupato o meno. 
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se il {\itshape thread} è occupato e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 54 del file Threads.\-cpp.
+
+\hypertarget{class_threads_ae976db915d6d729bf33b1368c9be191a}{\index{Threads@{Threads}!set\-\_\-\-I\-D@{set\-\_\-\-I\-D}}
+\index{set\-\_\-\-I\-D@{set\-\_\-\-I\-D}!Threads@{Threads}}
+\subsubsection[{set\-\_\-\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}void Threads\-::set\-\_\-\-I\-D (
+\begin{DoxyParamCaption}
+\item[{pthread\-\_\-t}]{thread\-\_\-\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{class_threads_ae976db915d6d729bf33b1368c9be191a}
+
+
+Setta l'identificativo del {\itshape thread} al valore passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em thread\-\_\-\-I\-D} & I\-D da assegnare al {\itshape thread}. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 40 del file Threads.\-cpp.
+
+\hypertarget{class_threads_a203c8939f82209d7d73ff4888f9de30e}{\index{Threads@{Threads}!set\-\_\-socket@{set\-\_\-socket}}
+\index{set\-\_\-socket@{set\-\_\-socket}!Threads@{Threads}}
+\subsubsection[{set\-\_\-socket}]{\setlength{\rightskip}{0pt plus 5cm}void Threads\-::set\-\_\-socket (
+\begin{DoxyParamCaption}
+\item[{int}]{client\-\_\-socket}
+\end{DoxyParamCaption}
+)}}\label{class_threads_a203c8939f82209d7d73ff4888f9de30e}
+
+
+Setta il {\itshape Socket} al valore passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em client\-\_\-socket} & {\itshape Socket} per l'interazione con il {\itshape Client}. \\
+\hline
+\end{DoxyParams}
+
+
+Definizione alla linea 34 del file Threads.\-cpp.
+
+\hypertarget{class_threads_a46da5f5ed9ee3711f566dc6c4f608dd8}{\index{Threads@{Threads}!test\-\_\-and\-\_\-set\-\_\-busy@{test\-\_\-and\-\_\-set\-\_\-busy}}
+\index{test\-\_\-and\-\_\-set\-\_\-busy@{test\-\_\-and\-\_\-set\-\_\-busy}!Threads@{Threads}}
+\subsubsection[{test\-\_\-and\-\_\-set\-\_\-busy}]{\setlength{\rightskip}{0pt plus 5cm}bool Threads\-::test\-\_\-and\-\_\-set\-\_\-busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_threads_a46da5f5ed9ee3711f566dc6c4f608dd8}
+
+
+Se il {\itshape thread} è libero lo setta come occupato altrimenti non effettua alcuna operazione e ritorna. 
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily true} se il {\itshape thread} è stato settato come occupato (era libero al momento della chiamata) e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 13 del file Threads.\-cpp.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/\hyperlink{_threads_8h}{Threads.\-h}\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-S\-O\-A\-\_\-\-Library/Threads.\-cpp\end{DoxyCompactItemize}

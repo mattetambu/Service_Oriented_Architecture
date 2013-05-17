@@ -1,0 +1,256 @@
+\hypertarget{class_service__register}{\section{Riferimenti per la classe Service\-\_\-register}
+\label{class_service__register}\index{Service\-\_\-register@{Service\-\_\-register}}
+}
+
+
+Classe che implementa il registro dei servizi. Qui vengono registrati i servizi forniti dai vari service provider.  
+
+
+
+
+{\ttfamily \#include $<$Service\-\_\-register.\-h$>$}
+
+\subsection*{Membri pubblici}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_service__register_a5713def23a52276752bf518527b9735c}{\hyperlink{class_service__register_a5713def23a52276752bf518527b9735c}{Service\-\_\-register} ()}\label{class_service__register_a5713def23a52276752bf518527b9735c}
+
+\begin{DoxyCompactList}\small\item\em Costruttore di default della classe \hyperlink{class_service__register}{Service\-\_\-register}. Inizializza i semafori di mutua esclusione. \end{DoxyCompactList}\item 
+\hypertarget{class_service__register_a7a2d852e303fb6019871ba62eb5a9c8b}{\hyperlink{class_service__register_a7a2d852e303fb6019871ba62eb5a9c8b}{$\sim$\-Service\-\_\-register} ()}\label{class_service__register_a7a2d852e303fb6019871ba62eb5a9c8b}
+
+\begin{DoxyCompactList}\small\item\em Distruttore della classe \hyperlink{class_service__register}{Service\-\_\-register}. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service__register_abf7d561090bae06f91fe8b0a9fc1f5bf}{add\-\_\-service\-\_\-provider} (string address, string port)
+\begin{DoxyCompactList}\small\item\em Aggiunge al registro il service provider il cui endpoint è passato come parametro. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service__register_aa60c54247b649909f5f5775d62d9ae35}{remove\-\_\-service\-\_\-provider} (string address, string port)
+\begin{DoxyCompactList}\small\item\em Rimuove dal registro il service provider il cui endpoint è passato come parametro. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service__register_a94110c8083c4cba9d20186d9f5c7ec5c}{add\-\_\-service} (\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$s\-\_\-description)
+\begin{DoxyCompactList}\small\item\em Aggiunge al registro il servizio i cui dati sono passati come parametro. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service__register_a600ffedf9bfcdf64f72aab435f3dd54f}{remove\-\_\-service} (string name, string address, string port)
+\begin{DoxyCompactList}\small\item\em Rimuove dal registro il servizio i cui dati sono passati come parametro. \end{DoxyCompactList}\item 
+\hyperlink{struct_service__description}{Service\-\_\-description} $\ast$ \hyperlink{class_service__register_a72fa4990209781c20e8d1d92e7b989ab}{get\-\_\-service} (string required\-\_\-service\-\_\-name)
+\begin{DoxyCompactList}\small\item\em Ritorna al chiamante la descrizione completa del servizio richiesto. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service__register_adf027594b08fe6fea2e554bf4b17053c}{find\-\_\-service} (string name, string address, string port)
+\begin{DoxyCompactList}\small\item\em Ricerca nel registro il servizio le cui informazioni sono passate come parametro. \end{DoxyCompactList}\item 
+bool \hyperlink{class_service__register_aaf0f7e8d09c289bd94d9f90774836d15}{print\-\_\-register} ()
+\begin{DoxyCompactList}\small\item\em Stampa a schermo il registro dei servizi ordinato secondo il nome dei servizi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Membri privati}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_service__register_ae6797428e100cd11445045c758776068}{void {\bfseries readers\-\_\-prologue} ()}\label{class_service__register_ae6797428e100cd11445045c758776068}
+
+\item 
+\hypertarget{class_service__register_ae669771d699cb3e0f22bee094a9bcf91}{void {\bfseries readers\-\_\-epilogue} ()}\label{class_service__register_ae669771d699cb3e0f22bee094a9bcf91}
+
+\item 
+\hypertarget{class_service__register_ace8e28500462659c4bbadfca9e492a96}{void {\bfseries writers\-\_\-prologue} ()}\label{class_service__register_ace8e28500462659c4bbadfca9e492a96}
+
+\item 
+\hypertarget{class_service__register_a9f89952581ecc0cb3f97a662abefef37}{void {\bfseries writers\-\_\-epilogue} ()}\label{class_service__register_a9f89952581ecc0cb3f97a662abefef37}
+
+\end{DoxyCompactItemize}
+\subsection*{Attributi privati}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_service__register_a13985e013b173ff7eecdfdcd12b43f9e}{map$<$ string, list\\*
+$<$ \hyperlink{struct_service__description}{Service\-\_\-description} $\ast$ $>$ $>$ \hyperlink{class_service__register_a13985e013b173ff7eecdfdcd12b43f9e}{service\-\_\-register}}\label{class_service__register_a13985e013b173ff7eecdfdcd12b43f9e}
+
+\begin{DoxyCompactList}\small\item\em Registro dei servizi. \end{DoxyCompactList}\item 
+\hypertarget{class_service__register_a81270bf181f27c5864ae2e7108f0cf48}{pthread\-\_\-mutex\-\_\-t {\bfseries mutex\-\_\-1}}\label{class_service__register_a81270bf181f27c5864ae2e7108f0cf48}
+
+\item 
+\hypertarget{class_service__register_a66404cee532c879f2347d7fda10712ad}{pthread\-\_\-mutex\-\_\-t \hyperlink{class_service__register_a66404cee532c879f2347d7fda10712ad}{mutex\-\_\-2}}\label{class_service__register_a66404cee532c879f2347d7fda10712ad}
+
+\begin{DoxyCompactList}\small\item\em Semafori per la mutua esclusione nell'accesso corretto al registro. \end{DoxyCompactList}\item 
+\hypertarget{class_service__register_afc9c10758a1c08b97051c01e4810da1f}{int \hyperlink{class_service__register_afc9c10758a1c08b97051c01e4810da1f}{readers\-\_\-count}}\label{class_service__register_afc9c10758a1c08b97051c01e4810da1f}
+
+\begin{DoxyCompactList}\small\item\em Contatore dei lettori attivi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrizione dettagliata}
+Classe che implementa il registro dei servizi. Qui vengono registrati i servizi forniti dai vari service provider. 
+
+Definizione alla linea 111 del file Service\-\_\-register.\-h.
+
+
+
+\subsection{Documentazione delle funzioni membro}
+\hypertarget{class_service__register_a94110c8083c4cba9d20186d9f5c7ec5c}{\index{Service\-\_\-register@{Service\-\_\-register}!add\-\_\-service@{add\-\_\-service}}
+\index{add\-\_\-service@{add\-\_\-service}!Service_register@{Service\-\_\-register}}
+\subsubsection[{add\-\_\-service}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-\_\-register\-::add\-\_\-service (
+\begin{DoxyParamCaption}
+\item[{{\bf Service\-\_\-description} $\ast$}]{s\-\_\-description}
+\end{DoxyParamCaption}
+)}}\label{class_service__register_a94110c8083c4cba9d20186d9f5c7ec5c}
+
+
+Aggiunge al registro il servizio i cui dati sono passati come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em s\-\_\-description} & Descrizione del servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 73 del file Service\-\_\-register.\-cpp.
+
+\hypertarget{class_service__register_abf7d561090bae06f91fe8b0a9fc1f5bf}{\index{Service\-\_\-register@{Service\-\_\-register}!add\-\_\-service\-\_\-provider@{add\-\_\-service\-\_\-provider}}
+\index{add\-\_\-service\-\_\-provider@{add\-\_\-service\-\_\-provider}!Service_register@{Service\-\_\-register}}
+\subsubsection[{add\-\_\-service\-\_\-provider}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-\_\-register\-::add\-\_\-service\-\_\-provider (
+\begin{DoxyParamCaption}
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_service__register_abf7d561090bae06f91fe8b0a9fc1f5bf}
+
+
+Aggiunge al registro il service provider il cui endpoint è passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 44 del file Service\-\_\-register.\-cpp.
+
+\hypertarget{class_service__register_adf027594b08fe6fea2e554bf4b17053c}{\index{Service\-\_\-register@{Service\-\_\-register}!find\-\_\-service@{find\-\_\-service}}
+\index{find\-\_\-service@{find\-\_\-service}!Service_register@{Service\-\_\-register}}
+\subsubsection[{find\-\_\-service}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-\_\-register\-::find\-\_\-service (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_service__register_adf027594b08fe6fea2e554bf4b17053c}
+
+
+Ricerca nel registro il servizio le cui informazioni sono passate come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome del servizio da ricercare nel registro. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato della ricerca, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 122 del file Service\-\_\-register.\-cpp.
+
+\hypertarget{class_service__register_a72fa4990209781c20e8d1d92e7b989ab}{\index{Service\-\_\-register@{Service\-\_\-register}!get\-\_\-service@{get\-\_\-service}}
+\index{get\-\_\-service@{get\-\_\-service}!Service_register@{Service\-\_\-register}}
+\subsubsection[{get\-\_\-service}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Service\-\_\-description} $\ast$ Service\-\_\-register\-::get\-\_\-service (
+\begin{DoxyParamCaption}
+\item[{string}]{required\-\_\-service\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{class_service__register_a72fa4990209781c20e8d1d92e7b989ab}
+
+
+Ritorna al chiamante la descrizione completa del servizio richiesto. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome del servizio da richiedere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Descrizione del servizio fornita dal registo e {\ttfamily N\-U\-L\-L} se il servizio non è presente nel registro. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 101 del file Service\-\_\-register.\-cpp.
+
+\hypertarget{class_service__register_aaf0f7e8d09c289bd94d9f90774836d15}{\index{Service\-\_\-register@{Service\-\_\-register}!print\-\_\-register@{print\-\_\-register}}
+\index{print\-\_\-register@{print\-\_\-register}!Service_register@{Service\-\_\-register}}
+\subsubsection[{print\-\_\-register}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-\_\-register\-::print\-\_\-register (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_service__register_aaf0f7e8d09c289bd94d9f90774836d15}
+
+
+Stampa a schermo il registro dei servizi ordinato secondo il nome dei servizi. 
+
+\begin{DoxyReturn}{Restituisce}
+{\ttfamily false} se il registro è completamente vuoto e {\ttfamily true} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 137 del file Service\-\_\-register.\-cpp.
+
+\hypertarget{class_service__register_a600ffedf9bfcdf64f72aab435f3dd54f}{\index{Service\-\_\-register@{Service\-\_\-register}!remove\-\_\-service@{remove\-\_\-service}}
+\index{remove\-\_\-service@{remove\-\_\-service}!Service_register@{Service\-\_\-register}}
+\subsubsection[{remove\-\_\-service}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-\_\-register\-::remove\-\_\-service (
+\begin{DoxyParamCaption}
+\item[{string}]{name, }
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_service__register_a600ffedf9bfcdf64f72aab435f3dd54f}
+
+
+Rimuove dal registro il servizio i cui dati sono passati come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em name} & Nome del servizio. \\
+\hline
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider che fornisce il servizio. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider che fornisce il servizio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 83 del file Service\-\_\-register.\-cpp.
+
+\hypertarget{class_service__register_aa60c54247b649909f5f5775d62d9ae35}{\index{Service\-\_\-register@{Service\-\_\-register}!remove\-\_\-service\-\_\-provider@{remove\-\_\-service\-\_\-provider}}
+\index{remove\-\_\-service\-\_\-provider@{remove\-\_\-service\-\_\-provider}!Service_register@{Service\-\_\-register}}
+\subsubsection[{remove\-\_\-service\-\_\-provider}]{\setlength{\rightskip}{0pt plus 5cm}bool Service\-\_\-register\-::remove\-\_\-service\-\_\-provider (
+\begin{DoxyParamCaption}
+\item[{string}]{address, }
+\item[{string}]{port}
+\end{DoxyParamCaption}
+)}}\label{class_service__register_aa60c54247b649909f5f5775d62d9ae35}
+
+
+Rimuove dal registro il service provider il cui endpoint è passato come parametro. 
+
+
+\begin{DoxyParams}[1]{Parametri}
+\mbox{\tt in}  & {\em address} & Indirizzo I\-P del service provider. \\
+\hline
+\mbox{\tt in}  & {\em port} & Porta di ascolto del service provider. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Restituisce}
+Risultato dell'esecuzione, {\ttfamily true} in caso di successo e {\ttfamily false} altrimenti. 
+\end{DoxyReturn}
+
+
+Definizione alla linea 58 del file Service\-\_\-register.\-cpp.
+
+
+
+La documentazione per questa classe è stata generata a partire dai seguenti file\-:\begin{DoxyCompactItemize}
+\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Service\-\_\-register\-\_\-server/\hyperlink{_service__register_8h}{Service\-\_\-register.\-h}\item 
+C\-:/\-Users/\-Matteo/\-Dropbox/\-Universita/\-Sistemi Operativi e Programmazione Distribuita/\-Progetto/\-Service\-\_\-\-Oriented\-\_\-\-Architecture/\-Sources/\-Application/\-Service\-\_\-register\-\_\-server/Service\-\_\-register.\-cpp\end{DoxyCompactItemize}

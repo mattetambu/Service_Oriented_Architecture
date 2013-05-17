@@ -1,0 +1,122 @@
+\documentclass{book}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{makeidx}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{sectsty}
+\usepackage{amssymb}
+\usepackage[titles]{tocloft}
+\usepackage{doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=4,numbers=left }
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\familydefault}{\sfdefault}
+\hfuzz=15pt
+\setlength{\emergencystretch}{15pt}
+\hbadness=750
+\tolerance=750
+\begin{document}
+\hypersetup{pageanchor=false,citecolor=blue}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large Service Oriented Architecture \\[1ex]\large 1.\-0 }\\
+\vspace*{1cm}
+{\large Generato da Doxygen 1.8.3.1}\\
+\vspace*{0.5cm}
+{\small Ven 17 Mag 2013 23:38:31}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true,citecolor=blue}
+\chapter{Progetto di \textbackslash{}e Sistemi \textbackslash{}e Operativi \textbackslash{}e e \textbackslash{}e Programmazione \textbackslash{}e Distribuita.}
+\label{index}\hypertarget{index}{}\input{index}
+\chapter{L\-I\-C\-E\-N\-S\-E}
+\label{md_LICENSE}
+\hypertarget{md_LICENSE}{}
+\input{md__l_i_c_e_n_s_e}
+\chapter{R\-E\-A\-D\-M\-E}
+\label{md_README}
+\hypertarget{md_README}{}
+\input{md__r_e_a_d_m_e}
+\chapter{Indice della gerarchia}
+\input{hierarchy}
+\chapter{Indice dei tipi composti}
+\input{annotated}
+\chapter{Indice dei file}
+\input{files}
+\chapter{Documentazione delle classi}
+\input{structbuffer}
+\input{class_get__image}
+\input{class_get__list}
+\input{class_horizontal__flip__image}
+\input{struct_parameter}
+\input{struct_parameter__description}
+\input{class_responce}
+\input{class_rotate__image}
+\input{class_service}
+\input{struct_service__description}
+\input{class_service__register}
+\input{class_store__image}
+\input{class_threads}
+\chapter{Documentazione dei file}
+\input{_l_i_c_e_n_s_e_8md}
+\input{_horizontal__flip__image_8h}
+\input{_image__manipulation__server__functions_8h}
+\input{_rotate__image_8h}
+\input{_get__image_8h}
+\input{_get__list_8h}
+\input{_image__storage__server__functions_8h}
+\input{_store__image_8h}
+\input{_service__register_8h}
+\input{_service__register__server__functions_8h}
+\input{_client_8cpp}
+\input{_image__manipulation__server_8cpp}
+\input{_image__storage__server_8cpp}
+\input{_service__register__server_8cpp}
+\input{_files__manager_8h}
+\input{_interface_8h}
+\input{_responce_8h}
+\input{_service_8h}
+\input{_socket__io_8h}
+\input{_threads_8h}
+\input{_types_8h}
+\addcontentsline{toc}{part}{Indice}
+\printindex
+\end{document}
